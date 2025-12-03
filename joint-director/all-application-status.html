@@ -836,8 +836,6 @@
               tableBody.append('<tr><td colspan="9" class="text-center">No Data Found</td></tr>');
               return;
             }
-
-
             const createDownloadLink = (content, mimeType, filename) => {
               if (!content) return "N/A";
 
@@ -863,8 +861,6 @@
                 return "Invalid content";
               }
             };
-
-
 
             tableData.forEach(item => {
               const newRow = `
