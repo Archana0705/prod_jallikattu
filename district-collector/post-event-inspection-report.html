@@ -1046,6 +1046,32 @@
         tableBody.empty();
 
         if (response.success == 1) {
+          const createDownloadLink = (content, mimeType, filename) => {
+            if (!content) return "N/A";
+
+            try {
+              const base64Pattern = /^[A-Za-z0-9+/=]+$/;
+              if (base64Pattern.test(content.replace(/\s/g, ""))) {
+                const blob = new Blob(
+                  [new Uint8Array(atob(content).split("").map(c => c.charCodeAt(0)))],
+                  { type: mimeType }
+                );
+                const url = URL.createObjectURL(blob);
+                return `<a href="${url}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+              }
+
+              // ✅ Avoid double "uploads/"
+              if (content.startsWith("http")) {
+                return `<a href="${content}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+              }
+
+              return `<a href="${FILE_BASE_URL}/${content.replace(/^uploads\//, "")}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+            } catch (error) {
+              console.error("Error creating download link:", error);
+              return "Invalid content";
+            }
+          };
+
           // Loop through the API data and populate the table
           tableData.forEach(item => {
             var applicationInfo = btoa(JSON.stringify(item.event_id));
@@ -1079,8 +1105,8 @@
                 <td class="u-tL">${escapeHtml(item.number_of_police_died || 'N/A')}</td>
                 <td class="u-tL">${escapeHtml(item.fir_no || 'N/A')}</td>
                 <td class="u-tL">${escapeHtml(item.fir_remarks || 'N/A')}</td>
-                <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.fir_attachment}" data-mimetype="${item.fir_attach_mimetype} data-filename="${item.fir_attach_filename}" target="_blank">Download</a></td>
-                <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.death_report_attachment}" data-mimetype="${item.death_report_attach_mimetype} data-filename="${item.death_report_attach_filename}" target="_blank">Download</a></td>
+                 <td class="u-tL">${createDownloadLink(item.fir_attachment, item.fir_attach_mimetype, item.fir_attach_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.death_report_attachment, item.death_report_attach_mimetype, item.death_report_attach_filename)}</td>
                 <td class="u-tL">${escapeHtml(item.status || 'N/A')}</td>
               </tr>`;
 

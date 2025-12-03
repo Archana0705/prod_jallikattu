@@ -1025,6 +1025,32 @@
         tableBody.empty();
 
         if (response.success == 1) {
+          const createDownloadLink = (content, mimeType, filename) => {
+            if (!content) return "N/A";
+
+            try {
+              const base64Pattern = /^[A-Za-z0-9+/=]+$/;
+              if (base64Pattern.test(content.replace(/\s/g, ""))) {
+                const blob = new Blob(
+                  [new Uint8Array(atob(content).split("").map(c => c.charCodeAt(0)))],
+                  { type: mimeType }
+                );
+                const url = URL.createObjectURL(blob);
+                return `<a href="${url}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+              }
+
+              // ✅ Avoid double "uploads/"
+              if (content.startsWith("http")) {
+                return `<a href="${content}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+              }
+
+              return `<a href="${FILE_BASE_URL}/${content.replace(/^uploads\//, "")}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+            } catch (error) {
+              console.error("Error creating download link:", error);
+              return "Invalid content";
+            }
+          };
+
           // Loop through the API data and populate the table
           tableData.forEach(item => {
             var applicationInfo = btoa(JSON.stringify(item.event_id));
@@ -1042,19 +1068,19 @@
               <td class="u-tL">${escapeHtml(item.name_of_president || 'N/A')}</td>
               <td class="u-tL">${escapeHtml(item.contact_of_president || 'N/A')}</td>
               <td class="u-tL">${escapeHtml(item.mobile_of_president || 'N/A')}</td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.request_letter}" data-mimetype="${item.attach_mimetype} data-filename="${item.attach_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.insurance_copy}" data-mimetype="${item.insurance_copy_attach_mimetype} data-filename="${item.insurance_copy_attach_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.assurance_bond}" data-mimetype="${item.assurance_bond_attach_mimetype} data-filename="${item.assurance_bond_attach_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.layout_sketch}" data-mimetype="${item.layout_sketch_attach_mimetype} data-filename="${item.layout_sketch_attach_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.panchayat_union}" data-mimetype="${item.panchayat_union_attach_mimetype} data-filename="${item.panchayat_union_attach_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.previous_event}" data-mimetype="${item.previous_event_attach_mimetype} data-filename="${item.previous_event_attach_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.other_docs}" data-mimetype="${item.other_docs_attach_mimetype} data-filename="${item.other_docs_attach_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.fir}" data-mimetype="${item.fir_attach_mimetype} data-filename="${item.fir_attach_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.upload_photo}" data-mimetype="${item.upload_photo_attach_mimetype} data-filename="${item.upload_photo_attach_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.arena_upload}" data-mimetype="${item.arena_upload_mime_type} data-filename="${item.arena_upload_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.bull_arena_upload}" data-mimetype="${item.bull_arena_upload_mime_type} data-filename="${item.bull_arena_upload_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.length_arena_upload}" data-mimetype="${item.length_arena_upload_mime_type} data-filename="${item.length_arena_upload_filename}" target="_blank">Download</a></td>
-              <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.bull_examination_upload}" data-mimetype="${item.bull_examination_upload_mime_type} data-filename="${item.bull_examination_upload_filename}" target="_blank">Download</a></td>
+               <td class="u-tL">${createDownloadLink(item.request_letter, item.attach_mimetype, item.attach_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.insurance_copy, item.insurance_copy_attach_mimetype, item.insurance_copy_attach_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.assurance_bond, item.assurance_bond_attach_mimetype, item.assurance_bond_attach_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.layout_sketch, item.layout_sketch_attach_mimetype, item.layout_sketch_attach_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.panchayat_union, item.panchayat_union_attach_mimetype, item.panchayat_union_attach_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.previous_event, item.previous_event_attach_mimetype, item.previous_event_attach_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.other_docs, item.other_docs_attach_mimetype, item.other_docs_attach_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.fir, item.fir_attach_mimetype, item.fir_attach_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.upload_photo, item.upload_photo_attach_mimetype, item.upload_photo_attach_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.arena_upload, item.arena_upload_mime_type, item.arena_upload_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.bull_arena_upload, item.bull_arena_upload_mime_type, item.bull_arena_upload_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.length_arena_upload, item.length_arena_upload_mime_type, item.length_arena_upload_filename)}</td>
+                <td class="u-tL">${createDownloadLink(item.bull_examination_upload, item.bull_examination_upload_mime_type, item.bull_examination_upload_filename)}</td>
               <td class="u-tL">${escapeHtml(item.mhs_comments || 'N/A')}</td>
             </tr>`;
 

@@ -1,5 +1,9 @@
 
-const environment = "dev";
+if (window.location.hostname === "www.jallikattu.tn.gov.in") {
+    window.location.href = "https://jallikattu.tn.gov.in" + window.location.pathname + window.location.search;
+}
+
+const environment = "prod";
 
 const baseUrls = {
     dev: "https://jallikattu.tn.gov.in/jallikattu_api/v1",
@@ -7,6 +11,7 @@ const baseUrls = {
 };
 
 const BASE_API_URL = baseUrls[environment];
+const FILE_BASE_URL = BASE_API_URL.replace(/\/v1$/, "") + "/uploads";
 
 const apiPaths = {
     login: "/access/login",
@@ -34,7 +39,6 @@ const apiPaths = {
     getEventPlace: "/mhs_user/get_event_place",
     getTaluk: "/mhs_user/get_taluk",
     mhsFinalEventCompletionForm: "/mhs_user/mhs_final_event_completion_form",
-
     getDistrictMonitoring: "/mhs_user/get_district_monitoring",
     approveParticipant: "/mhs_user/approve_participant",
     fetchEditCategory: "/mhs_user/fetch_edit_category",

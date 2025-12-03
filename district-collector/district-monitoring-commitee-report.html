@@ -912,6 +912,32 @@
         tableBody.empty();
 
         if (response.success == 1) {
+          const createDownloadLink = (content, mimeType, filename) => {
+            if (!content) return "N/A";
+
+            try {
+              const base64Pattern = /^[A-Za-z0-9+/=]+$/;
+              if (base64Pattern.test(content.replace(/\s/g, ""))) {
+                const blob = new Blob(
+                  [new Uint8Array(atob(content).split("").map(c => c.charCodeAt(0)))],
+                  { type: mimeType }
+                );
+                const url = URL.createObjectURL(blob);
+                return `<a href="${url}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+              }
+
+              // ✅ Avoid double "uploads/"
+              if (content.startsWith("http")) {
+                return `<a href="${content}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+              }
+
+              return `<a href="${FILE_BASE_URL}/${content.replace(/^uploads\//, "")}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+            } catch (error) {
+              console.error("Error creating download link:", error);
+              return "Invalid content";
+            }
+          };
+
           // Loop through the API data and populate the table
           tableData.forEach(item => {
             const selectedFields = {
@@ -930,16 +956,17 @@
                 <td class="u-tL">${escapeHtml(item.preevent_arrangements || 'N/A')}</td>
                 <td class="u-tL">${escapeHtml(item.arena_length || 'N/A')}</td>
                 <td class="u-tL">${escapeHtml(item.arena_breath || 'N/A')}</td>
-                <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.arena_upload}" data-mimetype="${item.arena_upload_mime_type} data-filename="${item.arena_upload_filename}" target="_blank">Download</a></td>
+                <td class="u-tL">${createDownloadLink(item.arena_upload, item.arena_upload_mime_type, item.arena_upload_filename)}</td>
                 <td class="u-tL">${escapeHtml(item.length_arena_length || 'N/A')}</td>
                 <td class="u-tL">${escapeHtml(item.length_arena_breath || 'N/A')}</td>
                 <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.length_arena_upload}" data-mimetype="${item.length_arena_upload_mime_type} data-filename="${item.length_arena_upload_filename}" target="_blank">Download</a></td>
+                <td class="u-tL">${createDownloadLink(item.length_arena_upload, item.length_arena_upload_mime_type, item.length_arena_upload_filename)}</td>
                 <td class="u-tL">${escapeHtml(item.bull_arena_length || 'N/A')}</td>
                 <td class="u-tL">${escapeHtml(item.bull_arena_breath || 'N/A')}</td>
-                <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.bull_arena_upload}" data-mimetype="${item.bull_arena_upload_mime_type} data-filename="${item.bull_arena_upload_filename}" target="_blank">Download</a></td>
+                <td class="u-tL">${createDownloadLink(item.bull_arena_upload, item.bull_arena_upload_mime_type, item.bull_arena_upload_filename)}</td>
                 <td class="u-tL">${escapeHtml(item.bull_examination_length || 'N/A')}</td>
                 <td class="u-tL">${escapeHtml(item.bull_examination_breath || 'N/A')}</td>
-                <td class="u-tL"><a href="javascript:void(0);" class="download-btn" data-download="${item.bull_examination_upload}" data-mimetype="${item.bull_examination_upload_mime_type} data-filename="${item.bull_examination_upload_filename}" target="_blank">Download</a></td>
+                <td class="u-tL">${createDownloadLink(item.bull_examination_upload, item.bull_examination_upload_mime_type, item.bull_examination_upload_filename)}</td>
                 <td class="u-tL">${escapeHtml(item.mhs_comments || 'N/A')}</td>
                 <td class="u-tL">${escapeHtml(item.request_status || 'N/A')}</td>
               </tr>`;
