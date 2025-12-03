@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html class="no-js  page-1 app-JLIKTU" lang="en">
+
+<head>
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>Jallikattu</title>
+  <link rel="stylesheet" href="../assets/css/oj-redwood-notag-min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Core.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Theme-Standard.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/font-apex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Coreone.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/aos.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/custom.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/theme.css" type="text/css" />
+  <link rel="apple-touch-icon" href="../assets/img/app-icon-192.png" />
+  <link rel="icon" href="../assets/img/app-icon-32.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="../assets/vendor/datatable/css/dataTables.css" rel="stylesheet">
+  <!-- CSS File -->
+  <link rel="stylesheet" href="../assets/vendor/datatable/dataTables.bootstrap5.min.css">
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/toastr/toastr.min.css" rel="stylesheet">
+  <style type="text/css">
+    #editSection {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    strong {
+      color: #151414;
+      /* Red color for required fields */
+    }
+
+    .row {
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin: 0;
+      padding: 5px 0;
+    }
+
+    span {
+      font-weight: normal;
+    }
+
+    .col-md-6 {
+      padding-right: 15px;
+    }
+
+    .col-md-12 {
+      padding-right: 15px;
+    }
+
+    .toast-container {
+      right: 0.5%;
+    }
+
+    #successToast {
+      background: #198754 !important;
+    }
+
+    #errorToast {
+      background: #ff0000 !important;
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Toast -->
+  <div class="toast-container position-fixed p-3 custom_toast" x-data="transButtonComponent()">
+    <div id="errorToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="errorMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+    <div id="successToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="successMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <!-- Toast -->
+</head>
+
+<body
+  class="t-PageBody t-PageBody--hideLeft t-PageBody--hideActions no-anim t-PageTemplate--standard   apex-top-nav apex-icons-fontapex apex-theme-vita-copy-1"
+  id="t_PageBody" onload="loadPopup()">
+  <!-- <a href="#main" id="t_Body_skipToContent">Skip to Main Content</a> -->
+  <form role="none" action="wwv_flow.accept?p_context=jliktu/home/2597975764641" method="post" name="wwv_flow"
+    id="wwvFlowForm" data-oj-binding-provider="none" novalidate autocomplete="off">
+    <input type="hidden" name="p_flow_id" value="110" id="pFlowId" /><input type="hidden" name="p_flow_step_id"
+      value="1" id="pFlowStepId" /><input type="hidden" name="p_instance" value="2597975764641" id="pInstance" /><input
+      type="hidden" name="p_page_submission_id" value="10395721457111162221688521457493366676"
+      id="pPageSubmissionId" /><input type="hidden" name="p_request" value="" id="pRequest" /><input type="hidden"
+      name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden"
+      value="jliktu&#x2F;home&#x2F;2597975764641" id="pContext" /><input type="hidden"
+      value="10395721457111162221688521457493366676" id="pSalt" />
+    <header class="t-Header" id="t_Header" role="banner">
+      <div class="t-Header-branding">
+        <div class="t-Header-controls">
+          <button class="t-Button t-Button--icon t-Button--header t-Button--headerTree" aria-label="Main Navigation"
+            title="Main Navigation" id="t_Button_navControl" type="button"><span class="t-Header-controlsIcon"
+              aria-hidden="true"></span></button>
+        </div>
+        <div class="t-Header-logo">
+          <!-- <a href="&#x2F;ords&#x2F;r&#x2F;wsjallikattu&#x2F;jliktu&#x2F;home?session=2597975764641" class="t-Header-logo-link"><span class="apex-logo-text">Jallikattu</span></a> -->
+          <div class="gigw">
+            <li><a data-aos="fade-up" data-aos-delay="200" class="linkedin btn-decrease"><span class="d-inline-block"
+                  tabindex="0" data-toggle="tooltip" title="font size Decrease"><i></i> A -</a></li>
+            <li><a data-aos="fade-up" data-aos-delay="300" class="linkedin btn-orig"><span class="d-inline-block"
+                  tabindex="0" data-toggle="tooltip" title="Reset font"><i></i> A <sup></sup></a></li>
+            <li><a data-aos="fade-up" data-aos-delay="400" class="instagram btn-increase"><span class="d-inline-block"
+                  tabindex="0" data-toggle="tooltip" title="font size Increase"><i></i> A +</a></li>
+            <li><a data-aos="fade-up" data-aos-delay="500"><span class="d-inline-block" tabindex="0"
+                  data-toggle="tooltip" title="Dark Mode"><i class="t-Icon fa fa-moon-o" id="darkmode"></i></a></li>
+            <li><a data-aos="fade-up" data-aos-delay="600" class="form-check form-switch"><label
+                  class="form-check-label" for="screenReaderSwitch">
+                  <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Screen Reader">
+                    <i id="sound" class="t-Icon fa fa-volume-up"></i></label><input class="form-check-input"
+                  type="checkbox" role="switch" id="screenReaderSwitch"
+                  onclick="readText(document.getElementsByTagName('body')[0])" /></span></a>
+            </li>
+          </div>
+        </div>
+        <div class="t-Header-navBar">
+          <div class="t-Header-navBar--start"></div>
+          <div class="t-Header-navBar--center">
+            <ul class="t-NavigationBar " id="70091113641892546086">
+              <li class="t-NavigationBar-item ">
+                <button class="t-Button t-Button--icon t-Button t-Button--header t-Button--navBar" type="button"
+                  id="L70091125771514546098" data-menu="menu_L70091125771514546098" title="">
+                  <span class="t-Icon fa&#x20;fa-user" aria-hidden="true"></span><span
+                    class="t-Button-label">User</span><span class="t-Button-badge"></span><span
+                    class="a-Icon icon-down-arrow" aria-hidden="true"></span>
+                </button>
+                <div class="t-NavigationBar-menu" style="display: none" id="menu_L70091125771514546098">
+                  <ul>
+                    <li class="" data-current="false" data-icon=""><a href="separator" title="" target="">---</a></li>
+                    <!-- <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password">
+                        <a id="open-modal-btn" href="#" title="" target="">Change Password</a>
+                      </li> -->
+                    <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a href="javascript:void();"
+                        title="" target="">Change Password</a></li>
+                    <li class="" data-current="false" data-icon="fa fa-sign-out">
+                      <a href="#" id="globalSignOutBtn" title="Sign Out">Sign Out</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="t-Header-navBar--end"></div>
+        </div>
+      </div>
+      <div class="top">
+        <!-- <img id="leftlogo" data-aos="fade-right" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/TN_logo.png"> -->
+        <h2 data-aos="zoom-in" data-aos-duration="800" class="dept-name text-middle">DIRECTORATE OF ANIMAL HUSBANDRY AND
+          VETERINARY SERVICES</h2>
+        <h3 data-aos="zoom-in" data-aos-duration="800" class="dept-name2 text-middle">JALLIKATTU IN TAMIL NADU</h3>
+        <!-- <img id="rightlogo" data-aos="fade-left" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/right.png"> -->
+      </div>
+      <div class="t-Header-nav">
+        <div class="t-Header-nav-list js-tabLike js-tabLike" id="t_MenuNav">
+          <ul>
+            <li class="a-MenuBar-item a-Menu--current" data-current="true" data-id="" data-disabled="" data-hide=""
+              data-shortcut="" data-icon=""><a class="a-MenuBar-label" href="" title="" target="">Home</a></li>
+            <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+                class="a-MenuBar-label" href="event-registration.html" title="" target="">Event Registration</a></li>
+            <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+                class="a-MenuBar-label" href="application-status.html" title="" target="">Application Status</a></li>
+            <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+                class="a-MenuBar-label" href="download-go.html" title="" target="">Download GO&#x2F;Proceedings</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="t-Body">
+      <div class="t-Body-main">
+        <div class="t-Body-title" id="t_Body_title"></div>
+        <div class="t-Body-content" id="t_Body_content">
+          <main id="main" class="t-Body-mainContent">
+            <span id="APEX_SUCCESS_MESSAGE" data-template-id="76689956809586187806_S"
+              class="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE"
+              data-template-id="76689956809586187806_E" class="apex-page-error u-hidden"></span>
+            <div class="t-Body-fullContent">
+              <div class="container">
+                <div class="row pad">
+                  <div class="col col-12 apex-col-auto col-start col-end">
+                    <h2 data-aos="fade-up" class="text-middle">Welcome!</h2>
+                    <div class="text-middle">
+                      <p data-aos="fade-down" class="text-justify">
+                        <br><b>Jallikattu</b>, a traditional event of rural people in Tamil Nadu, which is conducted
+                        during Pongal festival, has a
+                        5,000-year-old tradition and a history associated with the socio-cultural ethos of Tamil Nadu.
+                        Jallikattu events are to
+                        be conducted only in those places that are notified in the State Gazette. The conduct of each
+                        Jallikattu event is
+                        subject to the <b>Tamil Nadu Prevention of Cruelty to Animals (Conduct of Jallikattu) Rules,
+                          2017.</b><span id="readmore"><br>The Department ensures
+                          compliance to the Prevention of Cruelty to Animals (Tamil Nadu amendment) Act, 2017 through
+                          adequate precautionary
+                          measures. While preserving the cultural sentiments of Tamil Nadu, it is ensured that the bulls
+                          are not subjected to
+                          unnecessary pain and suffering during the events.
+                          <br><br>
+                          In the present day context, Jallikattu means embracing the bull and run along with it for a
+                          short distance of 15
+                          meters or holding on the bull's hump for 30 seconds as it jumps thrice. It is to be reiterated
+                          that there is no fight
+                          between the bull and the men. There are many variants of Jallikattu which are practiced namely
+                          <b>Jallikattu,
+                            ManjuVirattu, Vadamaadu and Erudhuvidum vizha.</b>
+                          <!--</span><a id="readmore-btn" class="readmore-btn" onclick="toggleReadMore()">Read more</a> -->
+                      </p>
+                      <img data-aos="fade-down" data-aos-duration="2000" src="../assets/img/home-pic.png" id="home-pic">
+                    </div>
+                    <div class="row">
+                      <div class="col-3 event-desc">
+                        <h3>Jallikattu</h3>
+                        <p>The bulls are let to the arena from an entry point called as “Vaadi Vaasal” and the bulls
+                          have to be embraced by the hump within a distance of 15 metres or sustaining three jumps
+                          holding on the bull's hump.</p>
+                      </div>
+                      <div class="col-3 event-desc">
+                        <h3>Manjuvirattu</h3>
+                        <p>Bulls are let to the arena and the participants are allowed to embrace the bull after the
+                          bull runs for a distance of 15 metres.</p>
+                      </div>
+                      <div class="col-3 event-desc">
+                        <h3>EruduVidumVizha</h3>
+                        <p>Bulls are let run freely one by one. The bull which finishes at the least time is declared as
+                          winner.</p>
+                      </div>
+                      <div class="col-3 event-desc">
+                        <h3>VadaMaadu</h3>
+                        <p>A Bull is tied to a 20 feet long rope tethered to a pole deeply dug inside the ground at the
+                          center of a circular arena and 9 participants belonging to a team tries to embrace the bull
+                          one at a time.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="t-Body-contentInner">
+              <div class="container">
+                <div class="row ">
+                  <div class="col col-12 apex-col-auto col-start col-end">
+                    <div class="t-CardsRegion pad u-colors" id="R12285207193993848" role="region" aria-label="Overall">
+                      <div class="t-Region-orderBy"></div>
+
+
+                      <div id="R12285207193993848_Cards" class="a-TMV--cards a-TMV a-TMV--variableHeight"
+                        style="width: 1041.05px;">
+                        <div class="a-TMV-body">
+                          <div class="a-GV-noDataMsg a-GV-altMessage" style="display:none;" role="region"
+                            aria-label="No data found">
+                            <div class="a-GV-altMessage-icon" role="img" aria-label="No data found"><span
+                                class="a-Icon icon-irr-no-results"></span></div>
+                            <div role="status"><span class="a-GV-altMessage-text">No data found</span></div>
+                          </div>
+                          <div class="a-GV-moreDataMsg a-GV-altMessage" style="display:none;">
+                            <div class="a-GV-altMessage-icon" aria-hidden="true"><span
+                                class="a-Icon icon-warning"></span></div>
+                            <div role="status"><span class="a-GV-altMessage-text"></span></div>
+                          </div>
+                          <div class="a-TMV-w-scroll" tabindex="-1" style="width: 1041.05px;">
+                            <ul class="a-CardView-items a-CardView-items--grid" id="district-list">
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col col-12 apex-col-auto col-start col-end">
+                    <div class="t-Region t-Region--scrollBody js-apex-region" id="R10707135224633237" role="region"
+                      aria-label="EruduVidumVizha">
+                      <div class="t-Region-header">
+                        <div class="t-Region-headerItems t-Region-headerItems--title">
+                          <span class="t-Region-headerIcon"><span class="t-Icon " aria-hidden="true"></span></span>
+                        </div>
+                        <div class="t-Region-headerItems t-Region-headerItems--buttons"><span
+                            class="js-maximizeButtonContainer"></span></div>
+                      </div>
+                      <div class="t-Region-bodyWrap">
+                        <div class="t-Region-buttons t-Region-buttons--top">
+                          <div class="t-Region-buttons-left"></div>
+                          <div class="t-Region-buttons-right"></div>
+                        </div>
+                        <div class="t-Region-body">
+                          <canvas id="myChart" width="400" height="100"></canvas>
+                        </div>
+                        <div class="t-Region-buttons t-Region-buttons--bottom">
+                          <div class="t-Region-buttons-left"></div>
+                          <div class="t-Region-buttons-right"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </main>
+          <footer class="t-Footer" id="t_Footer" role="contentinfo">
+            <div class="t-Footer-body">
+              <div class="t-Footer-content"></div>
+              <div class="t-Footer-apex">
+                <!-- <div class="t-Footer-version">Release 1.0</div>
+                    <div class="t-Footer-customize"></div>
+                     -->
+                <div class="row">
+                  <div class="col-6">
+                    <p class="text-center"><img class="footer-logo" src="../assets/img/right.png"><br>Content owned by
+                      Department of Animal Husbandry and Veterinary Services</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="text-center"><img class="footer-logo" src="../assets/img/tnegalogo.png"><br>Designed and
+                      Developed by Tamil Nadu e-Governance Agency</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="t-Footer-top">
+              <a href="#top" class="t-Footer-topButton" id="t_Footer_topButton" title="Start of page"
+                aria-label="Start of page"><span class="a-Icon icon-up-chevron" aria-hidden="true"></span></a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <div class="t-Body-inlineDialogs" id="t_Body_inlineDialogs"></div>
+    <input type="hidden" id="pPageFormRegionChecksums" value="&#x5B;&#x5D;">
+    <input type="hidden" id="pPageItemsRowVersion" value="" /><input type="hidden" id="pPageItemsProtected"
+      value="&#x2F;UQIQD37iB4rhDHdgZjjieYzzylQlBIPPL9l24jBxh-eDoSGh3m2XA1C1yzlW8a5dOyvBECmzq6efULlgrlGG2w" />
+  </form>
+
+  <!-- Modal Structure -->
+  <div id="modal" title="User Creation/பயனாளர் உருவாக்கம்">
+    <!-- <span class="close-button">✖</span> -->
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col col-12 apex-col-auto col-start col-end">
+          <div id="R136631087895371437" class="">
+            <input type="hidden" name="P6_USER_ID" id="P6_USER_ID" value="">
+            <input type="hidden" data-for="P6_USER_ID"
+              value="brcqpms_usl93Zoiz8xc_l7y4WInxgPnsON7ta4poLCHtiPMurOVEWtlChmX-kZI9uIGnf9VsQlx8uJCKtAsTg">
+            <div class="container">
+              <div class="row">
+                <div class="col col-12 apex-col-auto col-start col-end">
+                  <div
+                    class="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--text-field"
+                    id="P6_USER_NAME_CONTAINER">
+                    <div class="t-Form-labelContainer">
+                      <label for="P6_USER_NAME" id="P6_USER_NAME_LABEL" class="t-Form-label">User Name/பயனாளர்
+                        பெயர்</label>
+                    </div>
+                    <div class="t-Form-inputContainer">
+                      <div class="t-Form-itemRequired-marker" aria-hidden="true"></div>
+                      <div class="t-Form-itemWrapper">
+                        <input type="text" id="P6_USER_NAME" name="P6_USER_NAME" required
+                          class="text_field apex-item-text" value="" size="32" maxlength="100" data-trim-spaces="NONE">
+                      </div>
+                      <div class="t-Form-itemAssistance">
+                        <span id="P6_USER_NAME_error_placeholder" class="a-Form-error"
+                          data-template-id="116685279179319612_ET"></span>
+                        <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="P6_USER_ROLE" id="P6_USER_ROLE" value="PUBLIC">
+                  <input type="hidden" data-for="P6_USER_ROLE"
+                    value="k7rh9p9I8ILCJImSxw5lIFd9p0hLHYufkF5nZrR06Fh5b3Ib0DlxK-Xpc6JDmNJEjTla9o8WOcNb-kweqtKxQA">
+                  <input type="hidden" name="P6_EMAIL_ID" id="P6_EMAIL_ID" value="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-12 apex-col-auto col-start col-end">
+                  <div
+                    class="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required apex-item-wrapper apex-item-wrapper--number-field"
+                    id="P6_PHONE_NO_CONTAINER">
+                    <div class="t-Form-labelContainer">
+                      <label for="P6_PHONE_NO" id="P6_PHONE_NO_LABEL" class="t-Form-label">Mobile Number/கைப்பேசி
+                        எண்</label>
+                    </div>
+                    <div class="t-Form-inputContainer">
+                      <div class="t-Form-itemRequired-marker" aria-hidden="true"></div>
+                      <div class="t-Form-itemWrapper">
+                        <input type="text" id="P6_PHONE_NO" name="P6_PHONE_NO" required
+                          class="number_field apex-item-text apex-item-number" value="" size="32" maxlength="10"
+                          inputmode="decimal" style="text-align:start">
+                      </div>
+                      <div class="t-Form-itemAssistance">
+                        <span id="P6_PHONE_NO_error_placeholder" class="a-Form-error"
+                          data-template-id="116685279179319612_ET"></span>
+                        <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="P6_ACTIVE_STATUS" id="P6_ACTIVE_STATUS" value="">
+                  <input type="hidden" data-for="P6_ACTIVE_STATUS">
+                  <input type="hidden" name="P6_CREATED_BY" id="P6_CREATED_BY" value="">
+                  <input type="hidden" data-for="P6_CREATED_BY"
+                    value="sqdEdWwKWiIlXMcav0YPwL98BYQJWdu-fYMMjlWN_b-AIHImVF-7sLskcAiaN_Jxn6bCnJtntY159ED2uXfLXA">
+                  <input type="hidden" name="P6_CREATED_ON" id="P6_CREATED_ON" value="">
+                  <input type="hidden" data-for="P6_CREATED_ON">
+                  <input type="hidden" name="P6_MODIFIED_BY" id="P6_MODIFIED_BY" value="">
+                  <input type="hidden" data-for="P6_MODIFIED_BY"
+                    value="knmINKzI3cbHEK-fmmDaF0xWUKj22fBLtXDPIVtlN2jj1-MfrhdUeO68zPQkK6Kc7ZCw1gBX_-rtNOqiZdZjEQ">
+                  <input type="hidden" name="P6_MODIFIED_DATE" id="P6_MODIFIED_DATE" value="">
+                  <input type="hidden" data-for="P6_MODIFIED_DATE">
+                </div>
+              </div>
+              <div class="row">
+                <div class="t-ButtonRegion-wrap">
+                  <div class="t-ButtonRegion-col t-ButtonRegion-col--left">
+                    <div class="t-ButtonRegion-buttons"><button onclick="void(0);" class="cancel-btn t-Button "
+                        type="button" id="B136639615710371443"><span class="t-Button-label">Cancel/ரத்து
+                          செய்</span></button></div>
+                  </div>
+                  <div class="t-ButtonRegion-col t-ButtonRegion-col--content">
+                    <div class="t-ButtonRegion-buttons"></div>
+                  </div>
+                  <div class="t-ButtonRegion-col t-ButtonRegion-col--right">
+                    <div class="t-ButtonRegion-buttons "><button
+                        onclick="apex.submit({request:'CREATE',validate:true});"
+                        class="t-Button t-Button--hot create-btn" type="button" id="B136641775162371444"><span
+                          class="t-Button-label">Create/உருவாக்கு</span></button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+
+  <script>
+    var apex_img_dir = "\u002Fi\u002F";
+    var apex = {
+      env: { APP_USER: "9751929455", APP_ID: "110", APP_PAGE_ID: "1", APP_SESSION: "2597975764641", APP_FILES: "r\u002Fwsjallikattu\u002F110\u002Ffiles\u002Fstatic\u002Fv1667\u002F", WORKSPACE_FILES: "r\u002Fwsjallikattu\u002Ffiles\u002Fstatic\u002Fv1\u002F", APEX_VERSION: "23.2.1", APEX_BASE_VERSION: "23.2" },
+      libVersions: { ckeditor5: "36.0.0", cropperJs: "1.5.13", domPurify: "3.0.5", fullcalendar: "6.1.8", hammer: "2.0.8", jquery: "3.6.4", jqueryUi: "1.13.2", maplibre: "2.4.0", markedJs: "5.1.2", prismJs: "1.29.0", oraclejet: "15.0.7", tinymce: "6.7.1", turndown: "7.1.1", monacoEditor: "0.32.1", lessJs: "4.1.3" }
+    };
+  </script>
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="../assets/js/jquery-ui.min.js"></script>
+  <!-- JavaScript function to show the modal -->
+  <script>
+    $(document).ready(function () {
+      // Initialize the modal as draggable
+      $("#modal").dialog({
+        autoOpen: false, // Keep it closed by default
+        modal: true, // Prevent interaction with the background
+        closeOnEscape: true, // Allow closing with escape key
+        draggable: true, // Enable dragging
+        width: 720 // Set the width to 720px
+      });
+
+      // Show the modal when the button is clicked
+      $("#open-modal-btn").on("click", function () {
+        $("#modal").dialog("open");
+      });
+
+      // Close the modal when the close button is clicked
+      $(".close-button").on("click", function () {
+        $("#modal").dialog("close");
+      });
+    });
+  </script>
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/crypto-js.min.js"></script>
+  <script src="../assets/js/globalLogout.js"></script>
+  <script src="../assets/js/desktop_all.min.js"></script>
+  <script src="../assets/js/theme42.min.js"></script>
+  <script src="../assets/js/aos.js"></script>
+  <script src="../assets/js/add.min.js"></script>
+  <script type="text/javascript" src="../assets/js/aos.js"></script>
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <!-- Include DataTables and Buttons JS -->
+
+  <script src="../assets/js/widget.apexTabs.min.js"></script>
+  <script src="../assets/js/widget.interactiveReport.min.js"></script>
+  <script src="../assets/js/widget.iconList.min.js"></script>
+  <script src="../assets/js/widget.stickyTableHeader.min.js"></script>
+  <script src="../assets/js/widget.stickyWidget.min.js"></script>
+  <script src="../assets/js/item.Colorpicker.min.js"></script>
+  <script src="../assets/js/require.js"></script>
+  <script src="../assets/js/requirejs.jetConfig.min.js"></script>
+  <script src="../assets/js/jetCommonBundle.min.js"></script>
+  <script src="../assets/js/chartBundle.min.js"></script>
+  <script src="../apiConfig.js"></script>
+  <script type="text/javascript">
+    apex.session.initTimeouts(900, { "idle_time_ms": 1189000, "life_time_ms": 28772000, "max_idle_time_ms": 1200000 }, '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome', '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome');
+    apex.jQuery(function () {
+      apex.page.init(this, function () {
+        try {
+          (function () {
+            var e = apex.jQuery("#t_MenuNav", apex.gPageContext$);
+            if (e.hasClass("js-addActions")) {
+              apex.actions.addFromMarkup(e);
+            }
+            e.menu({
+              behaveLikeTabs: e.hasClass("js-tabLike"),
+              menubarShowSubMenuIcon: e.hasClass("js-showSubMenuIcons") || null,
+              menubar: true,
+              menubarOverflow: true,
+              callout: e.hasClass("js-menu-callout")
+            });
+          })();
+          (function () { apex.widget.jetChart.init("R10705095741633216", "", "400", { "type": "bar", "legend": { "rendered": "off" }, "valueFormats": { "value": { "converter": { "style": "decimal", "minimumFractionDigits": 0, "maximumFractionDigits": 0 }, "scaling": "none" }, "label": { "converter": { "style": "decimal", "minimumFractionDigits": 0, "maximumFractionDigits": 0 }, "scaling": "none" } }, "selectionMode": "single", "styleDefaults": { "dataCursor": { "lineWidth": 1 } }, "xAxis": { "baselineScaling": "zero", "scale": "linear", "majorTick": { "rendered": "on" }, "minorTick": { "rendered": "off" }, "tickLabel": { "rendered": "on", "position": "outside", "rotation": "auto" } }, "yAxis": { "baselineScaling": "zero", "scale": "linear", "position": "auto", "majorTick": { "rendered": "on" }, "minorTick": { "rendered": "off" }, "tickLabel": { "rendered": "on", "converter": { "style": "decimal", "minimumFractionDigits": 0, "maximumFractionDigits": 0 }, "scaling": "none" } }, "animationOnDisplay": "auto", "animationOnDataChange": "auto", "orientation": "vertical", "hoverBehavior": "dim", "stack": "off", "stackLabel": "off", "sorting": "label-asc", "zoomAndScroll": "off", "translations": { "componentName": "Bar: Overall Submitted applications" } }, false, true, null, "UkVHSU9OIFRZUEV-fjEwNzA1MDk1NzQxNjMzMjE2\u002FLj0CXKBCJQUXiSfsDMgavFRrCOSXRH3t0eIVAcBFmmdNf23zinqDrSKygeu9MDbsgzNha5sQUZ-3v2dEZwRLUQ"); })();
+        } catch (e) { apex.debug.error(e) };
+        apex.item.waitForDelayLoadItems().done(function () {
+          try {
+            apex.theme42.initializePage.noSideCol();
+
+            apex.page.warnOnUnsavedChanges();
+          } finally {
+            apex.event.trigger(apex.gPageContext$, 'apexreadyend');
+          };
+        });
+      });
+    }); apex.pwa.init({ serviceWorkerPath: '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fsw.js?v=23.2.1-460263366\u0026lang=en' });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script type="module" src="../assets/js/roleGuard.js"></script>
+
+  <script>
+    AOS.init();
+    // Retrieve the encrypted data from localStorage
+    let encryptedDataFromStorage = localStorage.getItem('userDetails');
+    let decryptedData;
+    if (encryptedDataFromStorage) {
+      const secretKey = 'V7gN4dY8pT2xB3kRz';
+      // Decrypt the data: decrypt the string and convert it to UTF-8
+      const bytes = CryptoJS.AES.decrypt(encryptedDataFromStorage, secretKey);
+      decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    } else {
+      console.log('No data found in localStorage');
+    }
+    let userDetails = decryptedData;
+    let userId = '';
+    // Find the element where the name should be displayed
+    var userNameElement = document.querySelector('.t-Button-label');
+    // If user is logged in (i.e., user details exist in localStorage)
+    if (userDetails) {
+      // Parse user details
+      const user = JSON.parse(userDetails);
+      // Update the username in the profile button (if available)
+      if (user && user.name) {
+        userId = user.user_id;
+        userNameElement.textContent = user.name; // or userNameElement.innerText
+      }
+    } else {
+      localStorage.clear();
+      sessionStorage.clear();
+      setTimeout(function () {
+        window.location.href = "../index.html";
+      }, 1000);
+    }
+    function showSuccessToast(message) {
+      const toastElement = document.getElementById('successToast');
+      const toastBody = document.getElementById('successMessage');
+
+      toastBody.textContent = message;
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+    function showErrorToast(message) {
+      const toastElement = document.getElementById('errorToast');
+      const toastBody = document.getElementById('errorMessage');
+      toastBody.textContent = message;
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+    $.ajax({
+      url: `${BASE_API_URL}dashboard/district_wise_summary`,
+      method: 'GET',
+      headers: { 'X-APP-KEY': 'j6ll!k@ttu', 'X-APP-NAME': 'tn jallikattu' },
+      success: function (response) {
+        // Check if the response is successful and contains data
+        if (response.success === 1 && response.data.length > 0) {
+          // Get the container where the items will be inserted
+          var listContainer = $('#district-list');
+
+          // Loop through the data array and create dynamic list items
+          response.data.forEach(function (item) {
+            // Create a new list item for each district
+            var listItem = `
+                <li class="a-CardView-item" data-id="${item.name_of_district}" data-rownum="1">
+                  <div class="a-CardView has-title has-body has-icon has-icon--start">
+                    <div class="a-CardView-header">
+                      <div class="a-CardView-iconWrap a-CardView-iconWrap--start">
+                        <span class="a-CardView-initials u-color" aria-hidden="true">${item.total}</span>
+                      </div>
+                      <div class="a-CardView-headerBody">
+                        <h3 class="a-CardView-title">${item.name_of_district}</h3>
+                      </div>
+                    </div>
+                    <div class="a-CardView-body">
+                      <div class="a-CardView-mainContent">${item.event_type}</div>
+                    </div>
+                  </div>
+                </li>
+              `;
+
+            // Append the new list item to the list container
+            listContainer.append(listItem);
+          });
+        } else {
+          // Handle case where no data is available
+          listContainer.append('<li>No data available</li>');
+        }
+      },
+      error: function () {
+        // Handle errors if the API call fails
+        $('#district-list').append('<li>Failed to load data</li>');
+      }
+    });
+    async function fetchData() {
+      const response = await fetch(`${BASE_API_URL}dashboard/charts`, {
+        method: 'GET',
+        headers: {
+          'X-APP-KEY': 'j6ll!k@ttu',
+          'X-APP-NAME': 'tn jallikattu'
+        }
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        const groupedData = groupByEventType(data.data);
+
+        const labels = Array.from(new Set(data.data.map(item => item.name_of_district))); // Unique district names
+        const datasets = [];
+
+        Object.keys(groupedData).forEach((eventType, index) => {
+          const dataForEvent = labels.map(district => {
+            const districtData = groupedData[eventType].find(item => item.district === district);
+            return districtData ? districtData.total : 0; // Fill with 0 if no data for that district
+          });
+
+          datasets.push({
+            label: eventType,
+            data: dataForEvent,
+            backgroundColor: getRandomColor(index),
+            borderColor: getRandomBorderColor(index),
+            borderWidth: 1
+          });
+        });
+
+        renderChart(labels, datasets);
+      } else {
+        console.error(data.message);
+      }
+    }
+
+    function groupByEventType(data) {
+      const grouped = {};
+
+      data.forEach(item => {
+        const key = item.event_type;
+
+        if (!grouped[key]) {
+          grouped[key] = [];
+        }
+
+        grouped[key].push({
+          district: item.name_of_district,
+          total: item.total
+        });
+      });
+
+      return grouped;
+    }
+
+    function renderChart(labels, datasets) {
+      const ctx = document.getElementById('myChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: datasets
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const dataset = context.dataset;
+                  const district = context.label;
+                  return [
+                    `Event: ${dataset.label}`,
+                    `District: ${district}`,
+                    `Value: ${context.raw}`
+                  ];
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              stacked: false,
+              title: {
+                display: true,
+                text: 'Districts'
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Total Events'
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Helper functions to generate random colors for datasets
+    function getRandomColor(index) {
+      const colors = [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ];
+      return colors[index % colors.length];
+    }
+
+    function getRandomBorderColor(index) {
+      const colors = [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ];
+      return colors[index % colors.length];
+    }
+
+    // Initiate data fetching
+    fetchData();
+  </script>
+  <script src="../assets/js/changePassword.js"></script>
+  <link rel="stylesheet" href="../assets/css/popUp.css" type="text/css" />
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/js/crypto-js.min.js"></script>
+    <title>Encryption and Decryption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Encryption and Decryption UI</h2>
+
+    <!-- HOD Form -->
+    <div class="form-container">
+        <h3>HOD Encryption and Decryption</h3>
+        <form method="POST">
+            <textarea name="hod_json_data" rows="6" placeholder="Enter HOD JSON data here..."
+                required=""></textarea><br>
+            <label for="key">Encryption Key</label>
+            <input type="text" name="key" value="xmcK|fbngp@!71L$" required=""><br>
+            <label for="iv">IV (16 bytes)</label>
+            <input type="text" name="iv" value="1234567890123456" required=""><br><br>
+            <button type="submit" name="hod_encrypt">Encrypt HOD Data</button>
+        </form>
+
+
+        <h3>Decrypt HOD Data</h3>
+        <form method="POST">
+            <textarea name="hod_encrypted_data" rows="6" placeholder="Enter HOD encrypted data here..."
+                required=""></textarea><br>
+            <label for="key">Encryption Key</label>
+            <input type="text" name="key" value="xmcK|fbngp@!71L$" required=""><br>
+            <label for="iv">IV (16 bytes)</label>
+            <input type="text" name="iv" value="1234567890123456" required=""><br><br>
+            <button type="submit" name="hod_decrypt">Decrypt HOD Data</button>
+        </form>
+
+    </div>
+
+    <!-- Student Form -->
+    <div class="form-container">
+        <h3>Student Encryption and Decryption</h3>
+        <form method="POST">
+            <textarea name="student_json_data" rows="6" placeholder="Enter Student JSON data here..."
+                required=""></textarea><br>
+            <label for="key">Encryption Key</label>
+            <input type="text" name="key" value="xmcK|fbngp@!71L$" required=""><br><br>
+            <button type="submit" name="student_encrypt">Encrypt Student Data</button>
+        </form>
+
+        <div class="result"><strong>Encrypted Data (Student):</strong><br><textarea
+                rows="6">mNEZmORCgp6raYBfWbX83kFLL1N5VFYzakM4TkxuMW1adExzUmFLMHNSOFNrSU1Ka0p3OW1zeVZua1V6Z2tXRXRPTnZySW0xdmV2VUhuOCtxZXVXNlZTSjZ6SVd1N2c3OUpPOWtOdk9Kc214SHIrSGNqSDdjSjRmcDVvPQ==</textarea>
+        </div>
+        <h3>Decrypt Student Data</h3>
+        <form method="POST">
+            <textarea name="student_encrypted_data" rows="6" placeholder="Enter Student encrypted data here..."
+                required=""></textarea><br>
+            <label for="key">Encryption Key</label>
+            <input type="text" name="key" value="xmcK|fbngp@!71L$" required=""><br><br>
+            <button type="submit" name="student_decrypt">Decrypt Student Data</button>
+        </form>
+
+    </div>
+
+    <!-- Institute Form -->
+    <div class="form-container">
+        <h3>Institute Encryption and Decryption</h3>
+        <form method="POST">
+            <textarea name="institute_json_data" rows="6" placeholder="Enter Institute JSON data here..."
+                required=""></textarea><br>
+            <label for="key">Encryption Key</label>
+            <input type="text" name="key" value="xmcK|fbngp@!71L$" required=""><br>
+            <label for="iv">IV (16 bytes)</label>
+            <input type="text" name="iv" value="1234567890123456" required=""><br><br>
+            <button type="submit" name="institute_encrypt">Encrypt Institute Data</button>
+        </form>
+
+
+        <h3>Decrypt Institute Data</h3>
+        <form method="POST">
+            <textarea name="institute_encrypted_data" rows="6" placeholder="Enter Institute encrypted data here..."
+                required=""></textarea><br>
+            <label for="key">Encryption Key</label>
+            <input type="text" name="key" value="xmcK|fbngp@!71L$" required=""><br>
+            <label for="iv">IV (16 bytes)</label>
+            <input type="text" name="iv" value="1234567890123456" required=""><br><br>
+            <button type="submit" name="institute_decrypt">Decrypt Institute Data</button>
+        </form>
+
+    </div>
+
+
+    <!-- api response decrypt_data -->
+
+    <div class="">
+        <h3>Decrypt API Response</h3>
+
+        <textarea name="api_response" rows="6" placeholder="Enter API response here..."
+            id="api_encrypt_text"></textarea><br>
+        <label for="key">Encryption Key</label>
+        <textarea name="key" id="api_dectypt_text" rows="20"></textarea>
+
+        <button type="button" name="api_decrypt" id="api_decrypt">Decrypt API Response</button>
+
+
+
+    </div>
+    <script>
+        document.getElementById("api_decrypt").addEventListener("click", function () {
+            var api_response = document.getElementById("api_encrypt_text").value;
+            function decryptData(encryptedData) {
+                const secretKey = 'xmcK|fbngp@@$%#@@!71L$';// Same secret key
+                const key = CryptoJS.enc.Hex.parse(CryptoJS.SHA256(secretKey).toString()); // Derive 256-bit key
+
+                // Decode Base64 and split IV and ciphertext
+                const decodedData = CryptoJS.enc.Base64.parse(encryptedData).toString(CryptoJS.enc.Hex);
+                const ivHex = decodedData.slice(0, 32); // First 16 bytes (IV)
+                const cipherHex = decodedData.slice(32); // Remaining bytes (Ciphertext)
+
+                const iv = CryptoJS.enc.Hex.parse(ivHex); // Parse IV
+                const ciphertext = CryptoJS.enc.Hex.parse(cipherHex); // Parse Ciphertext
+
+                // Decrypt using AES-256-CBC
+                const decrypted = CryptoJS.AES.decrypt(
+                    { ciphertext: ciphertext },
+                    key,
+                    {
+                        iv: iv,
+                        mode: CryptoJS.mode.CBC,
+                        padding: CryptoJS.pad.Pkcs7, // Default padding
+                    }
+                );
+
+                // Convert decrypted data to a string
+                return JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
+            }
+
+            const decryptedData = decryptData(api_response);
+            document.getElementById("api_dectypt_text").value = JSON.stringify(decryptedData, null, 2);
+        })
+    </script>
+
+
+
+</body>
+
+</html>

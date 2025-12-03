@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html class="no-js  page-95 app-JLIKTU" lang="en">
+
+<head>
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>Participant Registration</title>
+  <link rel="stylesheet" href="../assets/css/oj-redwood-notag-min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Core.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Theme-Standard.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/font-apex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Coreone.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/aos.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/custom.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/theme.css" type="text/css" />
+  <link rel="apple-touch-icon" href="../assets/img/app-icon-192.png" />
+  <link rel="icon" href="../assets/img/app-icon-32.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="../assets/vendor/datatable/css/dataTables.css" rel="stylesheet">
+  <!-- CSS File -->
+  <link rel="stylesheet" href="../assets/vendor/datatable/dataTables.bootstrap5.min.css">
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/toastr/toastr.min.css" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <style type="text/css">
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 9999;
+      overflow: hidden;
+      background: #12121261;
+      /*width: 57%;*/
+      border-radius: 13px 35px;
+    }
+
+    #preloader:before {
+      content: "";
+      position: fixed;
+      top: calc(50% - 30px);
+      left: calc(53% - 30px);
+      border: 6px solid #f92020b8;
+      border-top-color: #e2eefd;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: animate-preloader 1s linear infinite;
+      animation: animate-preloader 1s linear infinite;
+      z-index: 9999;
+    }
+
+    @-webkit-keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    #editSection {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    strong {
+      color: #151414;
+      /* Red color for required fields */
+    }
+
+    .row {
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin: 0;
+      padding: 5px 0;
+    }
+
+    span {
+      font-weight: normal;
+    }
+
+    .col-md-6 {
+      padding-right: 15px;
+    }
+
+    .col-md-12 {
+      padding-right: 15px;
+    }
+
+    .toast-container {
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+
+    #successToast {
+      background: #198754 !important;
+    }
+
+    #errorToast {
+      background: #ff0000 !important;
+    }
+  </style>
+  <!-- <div id="preloader"></div> -->
+  <!-- Toast -->
+  <div class="toast-container position-fixed p-3 custom_toast" x-data="transButtonComponent()">
+    <div id="errorToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="errorMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+    <div id="successToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="successMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <!-- Toast -->
+</head>
+
+<body
+  class="t-PageBody t-PageBody--hideLeft t-PageBody--hideActions no-anim t-PageTemplate--standard   apex-top-nav apex-icons-fontapex apex-theme-vita-copy-1"
+  id="t_PageBody" onload="loadPopup()">
+  <!-- <a href="#main" id="t_Body_skipToContent">Skip to Main Content</a> -->
+  <form id="registrationForm" role="none" action="wwv_flow.accept?p_context=jliktu/bull-registration/319187703904"
+    method="post" name="wwv_flow" id="wwvFlowForm" data-oj-binding-provider="none" novalidate
+    enctype="multipart/form-data" autocomplete="off">
+    <input type="hidden" name="p_flow_id" value="110" id="pFlowId" /><input type="hidden" name="p_flow_step_id"
+      value="95" id="pFlowStepId" /><input type="hidden" name="p_instance" value="319187703904" id="pInstance" /><input
+      type="hidden" name="p_page_submission_id" value="15006395097460276714248464387711764061"
+      id="pPageSubmissionId" /><input type="hidden" name="p_request" value="" id="pRequest" /><input type="hidden"
+      name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden"
+      value="jliktu&#x2F;bull-registration&#x2F;319187703904" id="pContext" /><input type="hidden"
+      value="15006395097460276714248464387711764061" id="pSalt" />
+    <header class="t-Header" id="t_Header" role="banner">
+
+      <div class="t-Header-branding">
+        <div class="t-Header-controls">
+          <button class="t-Button t-Button--icon t-Button--header t-Button--headerTree" aria-label="Main Navigation"
+            title="Main Navigation" id="t_Button_navControl" type="button"><span class="t-Header-controlsIcon"
+              aria-hidden="true"></span></button>
+        </div>
+        <div class="t-Header-logo">
+          <!-- <a href="&#x2F;ords&#x2F;r&#x2F;wsjallikattu&#x2F;jliktu&#x2F;home?session=319187703904" class="t-Header-logo-link"><span class="apex-logo-text">Jallikattu</span></a> -->
+          <div class="gigw">
+            <li><a data-aos="fade-up" data-aos-delay="200" class="linkedin btn-decrease"><span class="d-inline-block"
+                  tabindex="0" data-toggle="tooltip" title="font size Decrease"><i></i> A -</a></li>
+            <li><a data-aos="fade-up" data-aos-delay="300" class="linkedin btn-orig"><span class="d-inline-block"
+                  tabindex="0" data-toggle="tooltip" title="Reset font"><i></i>
+                  A <sup></sup></a></li>
+            <li><a data-aos="fade-up" data-aos-delay="400" class="instagram btn-increase"><span class="d-inline-block"
+                  tabindex="0" data-toggle="tooltip" title="font size Increase"><i></i> A +</a></li>
+            <li><a data-aos="fade-up" data-aos-delay="500"><span class="d-inline-block" tabindex="0"
+                  data-toggle="tooltip" title="Dark Mode"><i class="t-Icon fa fa-moon-o" id="darkmode"></i></a></li>
+            <li><a data-aos="fade-up" data-aos-delay="600" class="form-check form-switch"><label
+                  class="form-check-label" for="screenReaderSwitch">
+                  <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Screen Reader">
+                    <i id="sound" class="t-Icon fa fa-volume-up"></i></label><input class="form-check-input"
+                  type="checkbox" role="switch" id="screenReaderSwitch"
+                  onclick="readText(document.getElementsByTagName('body')[0])" /></span></a>
+            </li>
+          </div>
+        </div>
+        <div class="t-Header-navBar">
+          <div class="t-Header-navBar--start"></div>
+          <div class="t-Header-navBar--center">
+            <ul class="t-NavigationBar " id="70091113641892546086">
+              <li class="t-NavigationBar-item ">
+                <button class="t-Button t-Button--icon t-Button t-Button--header t-Button--navBar" type="button"
+                  id="L70091125771514546098" data-menu="menu_L70091125771514546098" title="">
+                  <span class="t-Icon fa&#x20;fa-user" aria-hidden="true"></span><span
+                    class="t-Button-label">User</span><span class="t-Button-badge"></span><span
+                    class="a-Icon icon-down-arrow" aria-hidden="true"></span>
+                </button>
+                <div class="t-NavigationBar-menu" style="display: none" id="menu_L70091125771514546098">
+                  <ul>
+                    <li class="" data-current="false" data-icon=""><a href="separator" title="" target="">---</a></li>
+                    <!-- <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a
+                        href="javascript:apex.theme42.dialog('\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fchange-password?session=2744786075576\u0026dialogCs=gvbEwR0Bqu_RUF2-7x9e2u_yiRxcwDoShpokfu7tWYSpchSylxHH8jxyyPVA8SsNhIMgo-kcu-5Zm9IfSU1IwA',{title:'Change Password',h:'auto',w:'720',mxw:'960',modal:true,dialog:null,dlgCls:'t-Dialog-page--standard '+''},'',apex.gPageContext$)"
+                        title="" target="">Change Password</a></li> -->
+                    <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a href="javascript:void();"
+                        title="" target="">Change Password</a></li>
+                    <li class="" data-current="false" data-icon="fa fa-sign-out">
+                      <a href="#" id="globalSignOutBtn" title="Sign Out">Sign Out</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="t-Header-navBar--end"></div>
+        </div>
+      </div>
+      <div class="top">
+        <!-- <img id="leftlogo" data-aos="fade-right" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1668/TN_logo.png"> -->
+        <h2 data-aos="zoom-in" data-aos-duration="800" class="dept-name text-middle">DIRECTORATE OF ANIMAL
+          HUSBANDRY AND VETERINARY SERVICES</h2>
+        <h3 data-aos="zoom-in" data-aos-duration="800" class="dept-name2 text-middle">JALLIKATTU IN TAMIL NADU
+        </h3>
+        <!-- <img id="rightlogo" data-aos="fade-left" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1668/right.png"> -->
+      </div>
+      <div class="t-Header-nav">
+        <div class="t-Header-nav-list js-tabLike js-tabLike" id="t_MenuNav">
+          <ul>
+            <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+                class="a-MenuBar-label" href="index.html" title="" target="">Home</a></li>
+            <li class="a-MenuBar-item a-Menu--current" data-current="true" data-id="" data-disabled="" data-hide=""
+              data-shortcut="" data-icon=""><a class="a-MenuBar-label" href="participants-registration.html" title=""
+                target="">Participants Registration</a></li>
+            <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+                class="a-MenuBar-label" href="event-registration.html" title="" target="">Event Registration </a>
+            </li>
+            <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+                class="a-MenuBar-label" href="registered-details.html" title="" target="">Registered Details</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="t-Body">
+
+      <div class="t-Body-main">
+        <div class="t-Body-title" id="t_Body_title"></div>
+        <div class="t-Body-content" id="t_Body_content">
+          <main id="main" class="t-Body-mainContent">
+            <span id="APEX_SUCCESS_MESSAGE" data-template-id="76689956809586187806_S"
+              class="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE"
+              data-template-id="76689956809586187806_E" class="apex-page-error u-hidden"></span>
+            <div class="t-Body-fullContent"></div>
+            <div class="t-Body-contentInner">
+              <div class="container">
+                <div class="row ">
+                  <div class="col col-12 apex-col-auto col-start col-end">
+                    <div class="t-Region t-Region--scrollBody" id="R24305457928097840" role="region"
+                      aria-label="Bull&#x20;Registration">
+                      <div class="t-Region-header">
+                        <div class="t-Region-headerItems t-Region-headerItems--title">
+                          <span class="t-Region-headerIcon"><span class="t-Icon " aria-hidden="true"></span></span>
+                          <h2 class="t-Region-title" id="R24305457928097840_heading" data-apex-heading>Participant
+                            Registration
+                          </h2>
+                        </div>
+                        <div class="t-Region-headerItems t-Region-headerItems--buttons"><span
+                            class="js-maximizeButtonContainer"></span></div>
+                      </div>
+                      <div class="t-Region-bodyWrap">
+                        <div class="t-Region-buttons t-Region-buttons--top">
+                          <div class="t-Region-buttons-left"></div>
+                          <div class="t-Region-buttons-right"></div>
+                        </div>
+                        <div class="t-Region-body">
+                          <div class="t-Region-orderBy"></div>
+                          <input type="hidden" name="P95_BULLS_MUZZLE_ID" id="P95_BULLS_MUZZLE_ID" value=""><input
+                            type="hidden" data-for="P95_BULLS_MUZZLE_ID"
+                            value="JxKGwsvQ7OuqoTb7faFevVGCw5I5tIIt_wP6HTqAgVB73UKsuEumyuyh4oQAlqq90AbDHcsNIhpdy2QcIsD5kQ">
+                          <div class="container">
+                            <div class="row ">
+                              <div class="col col-6 apex-col-auto col-start">
+
+                              </div>
+                              <div class="row ">
+                                <div class="col col-6 apex-col-auto col-start">
+                                  <div
+                                    class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                    id="PARTICIPANTS_NAME_CONTAINER">
+                                    <div class="t-Form-labelContainer col col-2">
+                                      <label for="PARTICIPANTS_NAME" id="PARTICIPANTS_NAME_LABEL"
+                                        class="t-Form-label">Participant Name</label>
+                                    </div>
+                                    <div class="t-Form-inputContainer col col-4">
+                                      <div class="t-Form-itemWrapper"><input type="text" id="PARTICIPANTS_NAME"
+                                          name="PARTICIPANTS_NAME" required class="text_field&#x20;apex-item-text"
+                                          value="" size="32" maxlength="10" />
+                                      </div>
+                                      <div class="t-Form-itemAssistance">
+                                        <span id="PARTICIPANTS_NAME_error_placeholder" class="a-Form-error"
+                                          data-template-id="70091003340642546032_ET"></span>
+                                        <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col col-6 apex-col-auto col-end">
+                                  <div
+                                    class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--select-list"
+                                    id="P95_GENDER_CONTAINER">
+                                    <div class="t-Form-labelContainer col col-2">
+                                      <label for="P95_GENDER" id="P95_GENDER_LABEL" class="t-Form-label">
+                                        Gender / பாலினம்
+                                      </label>
+                                    </div>
+                                    <div class="t-Form-inputContainer col col-4">
+                                      <div class="t-Form-itemWrapper">
+                                        <select id="P95_GENDER" name="P95_GENDER" required
+                                          class="selectlist apex-item-select">
+                                          <option value="">-- Select Gender / பாலினம் தேர்ந்தெடுக்கவும் --</option>
+                                          <option value="male">Male / ஆண்</option>
+                                          <option value="female">Female / பெண்</option>
+                                          <option value="other">Other / பிற</option>
+                                        </select>
+                                      </div>
+                                      <div class="t-Form-itemAssistance">
+                                        <span id="P95_GENDER_error_placeholder" class="a-Form-error"
+                                          data-template-id="70091003340642546032_ET"></span>
+                                        <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                              <div class="row">
+                                <!-- Date of Birth Field -->
+                                <div class="col col-6 apex-col-auto col-end">
+                                  <div
+                                    class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--date-picker"
+                                    id="P95_DATE_OF_BIRTH_CONTAINER">
+                                    <div class="t-Form-labelContainer col col-2">
+                                      <label for="P95_DATE_OF_BIRTH" id="P95_DATE_OF_BIRTH_LABEL" class="t-Form-label">
+                                        Date of Birth / பிறந்த தேதி
+                                      </label>
+                                    </div>
+                                    <div class="t-Form-inputContainer col col-4">
+                                      <div class="t-Form-itemWrapper">
+                                        <input type="date" id="P95_DATE_OF_BIRTH" name="P95_DATE_OF_BIRTH" required
+                                          class="text_field apex-item-date" value="" oninput="calculateAge()" />
+                                      </div>
+                                      <div class="t-Form-itemAssistance">
+                                        <span id="P95_DATE_OF_BIRTH_error_placeholder" class="a-Form-error"
+                                          data-template-id="70091003340642546032_ET"></span>
+                                        <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!-- Age Field -->
+                                <div class="col col-6 apex-col-auto col-end">
+                                  <div
+                                    class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                    id="P95_AGE_CONTAINER">
+                                    <div class="t-Form-labelContainer col col-2">
+                                      <label for="P95_AGE" id="P95_AGE_LABEL" class="t-Form-label">
+                                        Age / வயது
+                                      </label>
+                                    </div>
+                                    <div class="t-Form-inputContainer col col-4">
+                                      <div class="t-Form-itemWrapper">
+                                        <input type="text" id="P95_AGE" name="P95_AGE" class="text_field apex-item-text"
+                                          value="" readonly />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+                            </div>
+                            <div class="row ">
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--select-list"
+                                  id="P95_BLOOD_GROUP_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P95_BLOOD_GROUP" id="P95_BLOOD_GROUP_LABEL" class="t-Form-label">
+                                      Blood Group / இரத்த வகை
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper">
+                                      <select id="P95_BLOOD_GROUP" name="P95_BLOOD_GROUP" required
+                                        class="select_list apex-item-select">
+                                        <option value="">--Select--</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                      </select>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P95_BLOOD_GROUP_error_placeholder" class="a-Form-error"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P95_EMAIL_ADDRESS_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P95_EMAIL_ADDRESS" id="P95_EMAIL_ADDRESS_LABEL" class="t-Form-label">
+                                      Email Address / மின்னஞ்சல் முகவரி
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper">
+                                      <input type="email" id="P95_EMAIL_ADDRESS" name="P95_EMAIL_ADDRESS" required
+                                        class="text_field apex-item-text" value="" maxlength="100" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P95_EMAIL_ADDRESS_error_placeholder" class="a-Form-error"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+
+                            </div>
+                            <div class="row ">
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P95_MOBILE_NUMBER_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P95_MOBILE_NUMBER" id="P95_MOBILE_NUMBER_LABEL" class="t-Form-label">
+                                      Mobile Number / கைபேசி எண்
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper">
+                                      <input type="text" id="P95_MOBILE_NUMBER" name="P95_MOBILE_NUMBER" required
+                                        class="text_field apex-item-text" maxlength="10" pattern="^[0-9]{10}$"
+                                        title="Please enter a valid 10-digit mobile number" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P95_MOBILE_NUMBER_error_placeholder" class="a-Form-error"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P95_EMERGENCY_MOBILE_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P95_EMERGENCY_MOBILE" id="P95_EMERGENCY_MOBILE_LABEL"
+                                      class="t-Form-label">
+                                      Emergency Mobile Number / அவசர நிலை கைபேசி எண்
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper">
+                                      <input type="text" id="P95_EMERGENCY_MOBILE" name="P95_EMERGENCY_MOBILE"
+                                        class="text_field apex-item-text" maxlength="10" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+                            </div>
+                            <div class="row ">
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--file">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P95_FITNESS_FILE" id="P95_FITNESS_FILE_LABEL" class="t-Form-label">
+                                      Physical Fitness File / உடல் நலம் பத்திரம்
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper">
+                                      <input type="file" id="P95_PHYSICAL_CERTIFICATE_input" name="P95_FITNESS_FILE"
+                                        accept=".pdf,.jpg,.jpeg,.png" required />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--file">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P95_AGE_PROOF_input" id="P95_AGE_PROOF_LABEL" class="t-Form-label">
+                                      Age Proof
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper">
+                                      <input type="file" id="P95_AGE_PROOF_input" name="P95_AGE_PROOF"
+                                        accept=".pdf,.jpg,.jpeg,.png" required />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--textarea">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P95_ADDRESS" id="P95_ADDRESS_LABEL" class="t-Form-label">
+                                      Address / முகவரி
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper">
+                                      <textarea id="P95_ADDRESS" name="P95_ADDRESS" required
+                                        class="textarea apex-item-textarea" rows="4"></textarea>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P95_ADDRESS_error_placeholder" class="a-Form-error"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="row ">
+                    <div class="col col-12 apex-col-auto col-start col-end onYesShow">
+                      <div class=" t-Region t-Region--scrollBody" id="R81457234082064835210" role="region"
+                        aria-label="Owner&#x20;Pledge&#x20;Form&#x20;&#x2F;&#x20;&#x0B89;&#x0BB0;&#x0BBF;&#x0BAE;&#x0BC8;&#x0BAF;&#x0BBE;&#x0BB3;&#x0BB0;&#x0BCD;&#x20;&#x0B89;&#x0BB1;&#x0BC1;&#x0BA4;&#x0BBF;&#x0BAE;&#x0BCA;&#x0BB4;&#x0BBF;&#x20;&#x0BAA;&#x0B9F;&#x0BBF;&#x0BB5;&#x0BAE;&#x0BCD;">
+                        <div class="t-Region-header">
+                          <div class="t-Region-headerItems t-Region-headerItems--title">
+                            <span class="t-Region-headerIcon"><span class="t-Icon " aria-hidden="true"></span></span>
+                            <h2 class="t-Region-title" id="R81457234082064835210_heading" data-apex-heading>Owner
+                              Pledge Form / உரிமையாளர் உறுதிமொழி
+                              படிவம்</h2>
+                          </div>
+                          <div class="t-Region-headerItems t-Region-headerItems--buttons"><span
+                              class="js-maximizeButtonContainer"></span></div>
+                        </div>
+                        <div class="t-Region-bodyWrap">
+                          <div class="t-Region-buttons t-Region-buttons--top">
+                            <div class="t-Region-buttons-left"></div>
+                            <div class="t-Region-buttons-right"></div>
+                          </div>
+                          <div class="t-Region-body">
+                            <div class="t-Region-orderBy"></div>
+                            <div class="container">
+                              <div class="row ">
+                                <div class="col col-12 apex-col-auto col-start col-end">
+                                  <div
+                                    class="t-Form-fieldContainer t-Form-fieldContainer--floatingLabel is-required t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--xlarge apex-item-wrapper apex-item-wrapper--single-checkbox"
+                                    id="OWNER_PLEGE_FORM_CONTAINER">
+                                    <div class="t-Form-labelContainer">
+                                      <label for="OWNER_PLEGE_FORM" id="OWNER_PLEGE_FORM_LABEL"
+                                        class="t-Form-label">மேலே குறிப்பிட்டுள்ள
+                                        எனது ஜல்லிக்கட்டு காளையினை அரசின்
+                                        ஜல்லிக்கட்டு விதிகளுக்கு உட்பட்டு
+                                        ஜல்லிக்கட்டில் பங்கேற்க செய்வேன் எனவும் எனது
+                                        காளைக்கு ஊக்கமருந்து கொடுக்கவோ,
+                                        துன்புறுத்தவோ மாட்டேன் எனவும்
+                                        உறுதியளிக்கிறேன். </label>
+                                    </div>
+                                    <div class="t-Form-inputContainer">
+                                      <div class="t-Form-itemRequired-marker" aria-hidden="true"></div>
+                                      <div class="t-Form-itemWrapper">
+                                        <div class="apex-item-single-checkbox">
+                                          <input type="hidden" name="OWNER_PLEGE_FORM" id="OWNER_PLEGE_FORM_HIDDENVALUE"
+                                            value="N"><input type="checkbox" required id="OWNER_PLEGE_FORM"
+                                            aria-label="&#x0BAE;&#x0BC7;&#x0BB2;&#x0BC7;&#x20;&#x0B95;&#x0BC1;&#x0BB1;&#x0BBF;&#x0BAA;&#x0BCD;&#x0BAA;&#x0BBF;&#x0B9F;&#x0BCD;&#x0B9F;&#x0BC1;&#x0BB3;&#x0BCD;&#x0BB3;&#x20;&#x0B8E;&#x0BA9;&#x0BA4;&#x0BC1;&#x20;&#x0B9C;&#x0BB2;&#x0BCD;&#x0BB2;&#x0BBF;&#x0B95;&#x0BCD;&#x0B95;&#x0B9F;&#x0BCD;&#x0B9F;&#x0BC1;&#x20;&#x0B95;&#x0BBE;&#x0BB3;&#x0BC8;&#x0BAF;&#x0BBF;&#x0BA9;&#x0BC8;&#x20;&#x0B85;&#x0BB0;&#x0B9A;&#x0BBF;&#x0BA9;&#x0BCD;&#x20;&#x0B9C;&#x0BB2;&#x0BCD;&#x0BB2;&#x0BBF;&#x0B95;&#x0BCD;&#x0B95;&#x0B9F;&#x0BCD;&#x0B9F;&#x0BC1;&#x20;&#x0BB5;&#x0BBF;&#x0BA4;&#x0BBF;&#x0B95;&#x0BB3;&#x0BC1;&#x0B95;&#x0BCD;&#x0B95;&#x0BC1;&#x20;&#x0B89;&#x0B9F;&#x0BCD;&#x0BAA;&#x0B9F;&#x0BCD;&#x0B9F;&#x0BC1;&#x20;&#x0B9C;&#x0BB2;&#x0BCD;&#x0BB2;&#x0BBF;&#x0B95;&#x0BCD;&#x0B95;&#x0B9F;&#x0BCD;&#x0B9F;&#x0BBF;&#x0BB2;&#x0BCD;&#x20;&#x0BAA;&#x0B99;&#x0BCD;&#x0B95;&#x0BC7;&#x0BB1;&#x0BCD;&#x0B95;&#x20;&#x0B9A;&#x0BC6;&#x0BAF;&#x0BCD;&#x0BB5;&#x0BC7;&#x0BA9;&#x0BCD;&#x20;&#x0B8E;&#x0BA9;&#x0BB5;&#x0BC1;&#x0BAE;&#x0BCD;&#x20;&#x0B8E;&#x0BA9;&#x0BA4;&#x0BC1;&#x20;&#x0B95;&#x0BBE;&#x0BB3;&#x0BC8;&#x0B95;&#x0BCD;&#x0B95;&#x0BC1;&#x20;&#x0B8A;&#x0B95;&#x0BCD;&#x0B95;&#x0BAE;&#x0BB0;&#x0BC1;&#x0BA8;&#x0BCD;&#x0BA4;&#x0BC1;&#x20;&#x0B95;&#x0BCA;&#x0B9F;&#x0BC1;&#x0B95;&#x0BCD;&#x0B95;&#x0BB5;&#x0BCB;,&#x20;&#x0BA4;&#x0BC1;&#x0BA9;&#x0BCD;&#x0BAA;&#x0BC1;&#x0BB1;&#x0BC1;&#x0BA4;&#x0BCD;&#x0BA4;&#x0BB5;&#x0BCB;&#x20;&#x0BAE;&#x0BBE;&#x0B9F;&#x0BCD;&#x0B9F;&#x0BC7;&#x0BA9;&#x0BCD;&#x20;&#x0B8E;&#x0BA9;&#x0BB5;&#x0BC1;&#x0BAE;&#x0BCD;&#x20;&#x0B89;&#x0BB1;&#x0BC1;&#x0BA4;&#x0BBF;&#x0BAF;&#x0BB3;&#x0BBF;&#x0B95;&#x0BCD;&#x0B95;&#x0BBF;&#x0BB1;&#x0BC7;&#x0BA9;&#x0BCD;."
+                                            data-unchecked-value="N" value="Y" />
+                                        </div>
+                                      </div>
+                                      <div class="t-Form-itemAssistance">
+                                        <span id="OWNER_PLEGE_FORM_error_placeholder" class="a-Form-error"
+                                          data-template-id="70091004519172546032_ET"></span>
+                                        <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                              <tr>
+                                <td align="left"><button class="t-Button js-ignoreChange" type="button"
+                                    id="B73430230298918211267"><span class="t-Button-label">Cancel</span></button>
+                                </td>
+                                <td align="right"><button onclick="registerParticipant()"
+                                    class="t-Button t-Button--large&#x20;t-Button--success" type="button"
+                                    id="B73430231685993211268"><span class="t-Button-label">Register
+                                      Bull</span></button></td>
+                              </tr>
+                            </table>
+
+                          </div>
+                          <div class="t-Region-buttons t-Region-buttons--bottom">
+                            <div class="t-Region-buttons-left"></div>
+                            <div class="t-Region-buttons-right"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </main>
+          <footer class="t-Footer" id="t_Footer" role="contentinfo">
+            <div class="t-Footer-body">
+              <div class="t-Footer-content"></div>
+              <div class="t-Footer-apex">
+                <!-- <div class="t-Footer-version">Release 1.0</div>
+            <div class="t-Footer-customize"></div>
+             -->
+                <div class="row">
+                  <div class="col-6">
+                    <p class="text-center"><img class="footer-logo"
+                        src="r/wsjallikattu/110/files/static/v1668/right.png"><br>Content owned
+                      by Department of Animal Husbandry and Veterinary Services</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="text-center"><img class="footer-logo"
+                        src="r/wsjallikattu/110/files/static/v1668/tnegalogo.png"><br>Designed
+                      and Developed by Tamil Nadu e-Governance Agency</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="t-Footer-top">
+              <a href="#top" class="t-Footer-topButton" id="t_Footer_topButton" title="Start of page"
+                aria-label="Start of page"><span class="a-Icon icon-up-chevron" aria-hidden="true"></span></a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <div class="t-Body-inlineDialogs" id="t_Body_inlineDialogs"></div><input type="hidden" id="pPageFormRegionChecksums"
+      value="&#x5B;&#x5D;">
+    <input type="hidden" id="pPageItemsRowVersion" value="" /><input type="hidden" id="pPageItemsProtected"
+      value="UDk1X0JVTExTX01VWlpMRV9JRA&#x2F;oszdX1UtVVpl0p5v9XQtSMuWZZb24G8IHClRFCF1i3F0JNGXrepABA8e3rJz0CEULnEi4WIaNLfdo8BA-3NOXA" />
+  </form>
+
+
+  <script>
+    var apex_img_dir = "\u002Fi\u002F";
+    var apex = {
+      env: { APP_USER: "9940093823", APP_ID: "110", APP_PAGE_ID: "95", APP_SESSION: "319187703904", APP_FILES: "r\u002Fwsjallikattu\u002F110\u002Ffiles\u002Fstatic\u002Fv1668\u002F", WORKSPACE_FILES: "r\u002Fwsjallikattu\u002Ffiles\u002Fstatic\u002Fv1\u002F", APEX_VERSION: "23.2.1", APEX_BASE_VERSION: "23.2" },
+      libVersions: { ckeditor5: "36.0.0", cropperJs: "1.5.13", domPurify: "3.0.5", fullcalendar: "6.1.8", hammer: "2.0.8", jquery: "3.6.4", jqueryUi: "1.13.2", maplibre: "2.4.0", markedJs: "5.1.2", prismJs: "1.29.0", oraclejet: "15.0.7", tinymce: "6.7.1", turndown: "7.1.1", monacoEditor: "0.32.1", lessJs: "4.1.3" }
+    };
+  </script>
+  <script src="/i/libraries/apex/minified/desktop_all.min.js?v=23.2.1"></script>
+  <script src="wwv_flow.js_messages?p_app_id=110&p_lang=en&p_version=23.2.1-642939088"></script>
+
+  <script type="text/javascript">
+    apex.da.initDaEventList = function () {
+      apex.da.gEventList = [
+        {
+          "triggeringElementType": "BUTTON", "triggeringButtonId": "B24344435626097860", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "click", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () {
+              $(document).ready(function () {
+                sendSMSOnPageLoad();
+              });
+
+              function sendSMSOnPageLoad() {
+                var lv_content;
+                var lv_template_id = '1007159018195093113';
+                var lv_entity_id = '1001730754604494181';
+                var lv_api_key = 'r8o9j9JV';
+                var lv_sender_id = 'TNAHVS';
+                var lv_url;
+                var lv_mobile_number = '91' + apex.item("PARTICIPANTS_NAME").getValue();
+                lv_content = 'தங்களது காளை ஜல்லிக்கட்டு நிகழ்ச்சிகளில் பங்கேற்பதற்கு வெற்றிகரமாக பதிவு செய்யப்பட்டுள்ளது-TNAHVS';
+                lv_url = 'https://tmegov.onex-aura.com/api/sms?key=' + lv_api_key + '&to=' + lv_mobile_number + '&from=' + lv_sender_id + '&body=' + lv_content + '&entityid=' + lv_entity_id + '&templateid=' + lv_template_id;
+
+                $.ajax({
+                  type: 'GET',
+                  url: lv_url,
+                  dataType: "html",
+                  success: function (data, textStatus, jqXHR) {
+                    apex.message.showPageSuccess("Registered .");
+                  }
+                });
+              }
+
+              apex.submit('CREATE');
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        }];
+    }
+  </script>
+
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/crypto-js.min.js"></script>
+  <script src="../assets/js/globalLogout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../assets/js/jquery-ui.min.js"></script>
+  <script src="../assets/js/desktop_all.min.js"></script>
+  <script src="../assets/js/theme42.min.js"></script>
+  <script src="../assets/js/aos.js"></script>
+  <script src="../assets/js/add.min.js"></script>
+  <script src="../assets/js/widget.apexTabs.min.js"></script>
+  <script src="../assets/js/widget.interactiveReport.min.js"></script>
+  <script src="../assets/js/widget.iconList.min.js"></script>
+  <script src="../assets/js/widget.stickyTableHeader.min.js"></script>
+  <script src="../assets/js/widget.stickyWidget.min.js"></script>
+  <script src="../assets/js/item.Colorpicker.min.js"></script>
+  <script src="../assets/js/require.js"></script>
+  <script src="../assets/js/requirejs.jetConfig.min.js"></script>
+  <script src="../assets/js/jetCommonBundle.min.js"></script>
+  <script src="../assets/js/chartBundle.min.js"></script>
+  <script src="../apiConfig.js"></script>
+
+  <script type="text/javascript">
+    apex.da.initDaEventList = function () {
+      apex.da.gEventList = [
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_MOBILE_OF_PRESIDENT", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_MOBILE_OF_PRESIDENT');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove non-numeric characters and spaces
+                inputValue = inputValue.replace(/[^0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_PINCODE", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_PINCODE');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove non-numeric characters and spaces
+                inputValue = inputValue.replace(/[^0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_NAME_OF_ORGANIZATION", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_NAME_OF_ORGANIZATION');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove special characters, but allow letters, numbers, and spaces
+                inputValue = inputValue.replace(/[^a-zA-Z0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_COMMITEE_REGISTER_NUMBER", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_COMMITEE_REGISTER_NUMBER');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove special characters, but allow letters, numbers, and spaces
+                inputValue = inputValue.replace(/[^a-zA-Z0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_NAME_OF_PRSEIDENT", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_NAME_OF_PRSEIDENT');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove special characters, but allow letters, numbers, and spaces
+                inputValue = inputValue.replace(/[^a-zA-Z0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_CONTACT_OF_PRESIDENT", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_CONTACT_OF_PRESIDENT');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_NAME_OF_VILLAGE", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_NAME_OF_VILLAGE');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove special characters, but allow letters, numbers, and spaces
+                inputValue = inputValue.replace(/[^a-zA-Z0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        }];
+    }
+  </script>
+
+  <script type="text/javascript">
+    apex.session.initTimeouts(900, { "idle_time_ms": 1200000, "life_time_ms": 28496000, "max_idle_time_ms": 1200000 }, '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome', '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome');
+    apex.jQuery(function () {
+      apex.page.init(this, function () {
+        try {
+          (function () {
+            var e = apex.jQuery("#t_MenuNav", apex.gPageContext$);
+            if (e.hasClass("js-addActions")) {
+              apex.actions.addFromMarkup(e);
+            }
+            e.menu({
+              behaveLikeTabs: e.hasClass("js-tabLike"),
+              menubarShowSubMenuIcon: e.hasClass("js-showSubMenuIcons") || null,
+              menubar: true,
+              menubarOverflow: true,
+              callout: e.hasClass("js-menu-callout")
+            });
+          })();
+        } catch (e) { apex.debug.error(e) };
+        apex.item.waitForDelayLoadItems().done(function () {
+          try {
+            (function () {
+              apex.da.initDaEventList();
+              apex.da.init();
+            })();
+            apex.theme42.initializePage.noSideCol();
+
+            apex.page.warnOnUnsavedChanges();
+          } finally {
+            apex.event.trigger(apex.gPageContext$, 'apexreadyend');
+          };
+        });
+      });
+    }); apex.pwa.init({ serviceWorkerPath: '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fsw.js?v=23.2.1-460263366\u0026lang=en' });
+  </script>
+  <script>
+    AOS.init();
+    // Retrieve the encrypted data from localStorage
+    let encryptedDataFromStorage = localStorage.getItem('userDetails');
+    let decryptedData;
+    if (encryptedDataFromStorage) {
+      const secretKey = 'V7gN4dY8pT2xB3kRz';
+      // Decrypt the data: decrypt the string and convert it to UTF-8
+      const bytes = CryptoJS.AES.decrypt(encryptedDataFromStorage, secretKey);
+      decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    } else {
+      console.log('No data found in localStorage');
+    }
+    let userDetails = decryptedData;
+    let userId = '';
+    // Find the element where the name should be displayed
+    var userNameElement = document.querySelector('.t-Button-label');
+    // If user is logged in (i.e., user details exist in localStorage)
+    if (userDetails) {
+      // Parse user details
+      const user = JSON.parse(userDetails);
+      // Update the username in the profile button (if available)
+      if (user && user.name) {
+        userId = user.user_id;
+        userNameElement.textContent = user.name; // or userNameElement.innerText
+      }
+    } else {
+      showErrorToast("Something went wrong");
+      localStorage.clear();
+      sessionStorage.clear();
+      setTimeout(function () {
+        window.location.href = "../index.html";
+      }, 1000);
+    }
+    let eventId = null;
+    // Function to show a success toast with a dynamic message
+    function showSuccessToast(message) {
+      const toastElement = document.getElementById('successToast');
+      const toastBody = document.getElementById('successMessage');
+
+      // Set the dynamic message
+      toastBody.textContent = message;
+
+      // Initialize and show the toast
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+    // Function to show a error toast with a dynamic message
+    function showErrorToast(message) {
+      const toastElement = document.getElementById('errorToast');
+      const toastBody = document.getElementById('errorMessage');
+
+      // Set the dynamic message
+      toastBody.textContent = message;
+
+      // Initialize and show the toast
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+
+    function sanitizeInput(value) {
+      const tagRemoved = value.replace(/<\/?[^>]+(>|$)/g, ""); // Strip HTML tags
+      const cleanValue = tagRemoved.replace(/[<>\/\\{}$]/g, ''); // Block dangerous characters
+      return cleanValue;
+    }
+
+    function attachInputSanitizer(inputId) {
+      const input = document.getElementById(inputId);
+      if (input) {
+        input.addEventListener("input", function () {
+          const sanitized = sanitizeInput(this.value);
+          if (this.value !== sanitized) {
+            showErrorToast("Invalid characters or HTML tags are not allowed.");
+            this.value = sanitized;
+          }
+        });
+      }
+    }
+
+    const inputIds = [
+      "PARTICIPANTS_NAME",
+      "P95_AGE",
+      "P95_EMAIL_ADDRESS",
+      "P95_MOBILE_NUMBER",
+      "P95_EMERGENCY_MOBILE",
+      "P95_ADDRESS"
+    ];
+
+    inputIds.forEach(attachInputSanitizer);
+
+    // document.getElementById("P95_PHYSICAL_CERTIFICATE_input").addEventListener("change", function () {
+    //   const file = this.files[0];
+    //   // const disallowedExtensions = ['html', 'php', 'exe', 'js'];
+    //   const disallowedExtensions = ['html', 'php', 'exe', 'js'];
+    //   const ext = file.name.split('.').pop().toLowerCase();
+
+    //   if (disallowedExtensions.includes(ext)) {
+    //     showErrorToast("This file type is not allowed.");
+    //     this.value = ''; // Clear the input
+    //   }
+    // });
+
+    function isPdf(file) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+          const arr = new Uint8Array(reader.result).subarray(0, 4);
+          const header = arr.reduce((str, byte) => str + byte.toString(16), '');
+          resolve(header === '25504446'); // '25504446' = %PDF
+        };
+        reader.readAsArrayBuffer(file.slice(0, 4));
+      });
+    }
+
+    document.getElementById("P95_PHYSICAL_CERTIFICATE_input").addEventListener("change", async function () {
+      const file = this.files[0];
+
+      const ext = file.name.split('.').pop().toLowerCase();
+      const allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png'];
+      const allowedMimeTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+
+      if (!allowedExtensions.includes(ext) || !allowedMimeTypes.includes(file.type)) {
+        showErrorToast("Invalid file type.");
+        this.value = '';
+        return;
+      }
+
+      // Extra check for PDF magic number
+      if (ext === 'pdf') {
+        const isRealPdf = await isPdf(file);
+        if (!isRealPdf) {
+          showErrorToast("This is not a valid PDF file.");
+          this.value = '';
+        }
+      }
+    });
+
+
+    document.getElementById("P95_AGE_PROOF_input").addEventListener("change", async function () {
+      const file = this.files[0];
+
+      const ext = file.name.split('.').pop().toLowerCase();
+      const allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png'];
+      const allowedMimeTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+
+      if (!allowedExtensions.includes(ext) || !allowedMimeTypes.includes(file.type)) {
+        showErrorToast("Invalid file type.");
+        this.value = '';
+        return;
+      }
+
+      // Extra check for PDF magic number
+      if (ext === 'pdf') {
+        const isRealPdf = await isPdf(file);
+        if (!isRealPdf) {
+          showErrorToast("This is not a valid PDF file.");
+          this.value = '';
+        }
+      }
+    });
+
+    // async function registerBull() {
+    //     debugger
+    //     const medicalCertificate = await processFile('#P95_BULLS_MEDICAL_CERTIFICATE_input');
+    //     const aadharFile = await processFile('#P95_AADHAR_FILE_input');
+    //     const bullsOwnerFile = await processFile('#P95_BULLS_OWNER_input');
+    //     const payload = {
+    //         p_BULLS_BREED: 'Jallikattu',
+    //         p_BULL_AGE: $('#P95_BULL_AGE').val() || 0, // Ensure default values
+    //         p_BULL_DENTITION: $('#P95_BULL_DENTITION').val(),
+    //         p_BULLS_HORN_LENGTH: $('#P95_BULLS_HORN_LENGTH').val(),
+    //         p_INTER_CORNUAL_LENGTH: $('#P95_INTER_CORNUAL_LENGTH').val(),
+    //         p_BULL_LENGTH: $('#P95_BULL_LENGTH').val(),
+    //         p_BULLS_COLOR: $('#P95_BULLS_COLOR').val(),
+    //         p_BULLS_IDENTIFICATION_MARKS: $('#P95_BULLS_IDENTIFICATION_MARKS').val(),
+    //         p_VETERINARY_DISPENSARY: $('#P95_VETERINARY_DISPENSARY').val(),
+    //         p_FWD: $('#P95_FWD').val(),
+    //         p_BULLS_MEDICAL_CERTIFICATE: medicalCertificate?.fileBase64 || null,
+    //         p_BULLS_MEDICAL_CERTIFICATE_MIME_TYPE: medicalCertificate?.mimetype || null,
+    //         p_BULLS_MEDICAL_CERTIFICATE_FILENAME: medicalCertificate?.filename || null,
+    //         p_BULLS_OWNER: bullsOwnerFile?.fileBase64 || null,
+    //         p_BULLS_OWNER_MIME_TYPE: bullsOwnerFile?.mimetype || null,
+    //         p_BULLS_OWNER_FILENAME: bullsOwnerFile?.filename || null,
+    //         p_ASSISTANT_NAME: $('#P95_ASSISTANT_NAME').val(),
+    //         p_ASSISTANT_MOBILE: $('#P95_ASSISTANT_MOBILE').val(),
+    //         p_HOST_DISTRICT: $('#P95_DISTRICT').val(),
+    //         p_HOST_VILLAGE: $('#P95_REVENUE_VILLAGE').val(),
+    //         p_OWNERS_NAME: $('#P95_OWNERS_NAME').val(),
+    //         p_OWNERS_MAIL: $('#P95_OWNERS_MAIL').val(),
+    //         p_OWNERS_MOBILE: $('#PARTICIPANTS_NAME').val(),
+    //         p_OWNERS_AADHAR_NUMBER: $('#P95_OWNERS_AADHAR_NUMBER').val(),
+    //         p_AADHAR_FILE: aadharFile?.fileBase64 || null,
+    //         p_AADHAR_FILENAME: aadharFile?.filename || null,
+    //         p_AADHAR_FILE_MIMETYPE: aadharFile?.mimetype || null,
+    //         p_STREET_NO: $('#P95_STREET_NO').val(),
+    //         p_REVENUE_VILLAGE: $('#P95_REVENUE_VILLAGE').val(),
+    //         p_TALUK: $('#P95_TALUK').val(),
+    //         p_DISTRICT: $('#P95_DISTRICT').val(),
+    //         p_PINCODE: $('#P95_PINCODE').val(),
+    //         p_BULL_LEFT_HORN_LENGTH: 20, // Match the expected value
+    //         p_EVENT_ID: 'EVT123',        // Match the expected value
+    //         p_PLACE_OF_EVENT: $('#P95_PLACE_OF_EVENT').val(),
+    //         p_CREATED_BY: 'User1',       // Ensure this is included
+    //     };
+
+    //     console.log(payload);
+    //     // AJAX request to submit the registration
+    //     $.ajax({
+    //         url: '${BASE_API_URL}/bull_registration/bull_registration',
+    //         type: 'POST',
+    //         headers: {
+    //             'X-App-Key': 'j6ll!k@ttu',
+    //             'X-App-Name': 'tn jallikattu',
+    //         },
+    //         // contentType: 'application/json',
+    //         data: (payload),
+    //         success: function (response) {
+    //             console.log('Response:', response);
+    //             // Handle the success response here
+    //             showSuccessToast("Registration Successful");
+    //             setTimeout(function () {
+    //                 const district = $('#P95_DISTRICT').val();
+    //                 const event_place = $('#P95_PLACE_OF_EVENT').val();
+    //                 const event_date = $('#P95_EVENT_DATE').val();
+    //                 const event_id = '789'; // Example value, replace as needed
+    //                 const mobile_no = $('#P95_MOBILE_OF_PRESIDENT').val();
+
+    //                 // Create the query string with the parameters
+    //                 const queryString = `?district=${encodeURIComponent(district)}&event_place=${encodeURIComponent(event_place)}&mobile_no=${encodeURIComponent(mobile_no)}&event_date=${encodeURIComponent(event_date)}&event_id=${encodeURIComponent(event_id)}`;
+
+    //                 // Redirect to the register page with the query parameters
+    //                 window.location.href = 'register.html' + queryString;
+
+    //             }, 1000);
+    //         },
+    //         error: function (xhr, status, error) {
+    //             console.error('Error:', error);
+    //             showErrorToast("An error occurred during registration.");
+    //         }
+    //     });
+    // }
+    // registerBull();
+
+
+    // Function to validate a field and display error message
+
+    // Helper function to process file inputs (returns null if no file is selected)
+
+
+    async function registerParticipant() {
+      debugger;
+      try {
+        // Collect form data
+        var participantName = $('#PARTICIPANTS_NAME').val();
+        var age = $('#P95_AGE').val();
+        var gender = $('#P95_GENDER').val();
+        var mobile = $('#P95_MOBILE_NUMBER').val();
+        var address = $('#P95_ADDRESS').val();
+        var dateOfBirth = $('#P95_DATE_OF_BIRTH').val();
+        var email = $('#P95_EMAIL_ADDRESS').val();
+        var bloodGroup = $('#P95_BLOOD_GROUP').val();
+        var emergencyMobile = $('#P95_EMERGENCY_MOBILE').val();
+        var ownerPledgeCheck = document.getElementById('OWNER_PLEGE_FORM');
+
+        var age = $('#P95_AGE').val();
+        const ageValue = parseInt(age, 10);
+        if (isNaN(ageValue) || ageValue < 18) {
+          showErrorToast("Participant must be at least 18 years old.");
+          return;
+        }
+
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email)) {
+          showErrorToast("Please enter a valid email address.");
+          $('#P95_EMAIL_ADDRESS_error_placeholder').text("Invalid email format").css('color', 'red');
+          return;
+        } else {
+          $('#P95_EMAIL_ADDRESS_error_placeholder').text("");
+        }
+
+        // Function to validate and update the payload for each file input
+        function validateFile(selector, errorMessage) {
+          var fileInput = $(selector).find('input[type="file"]');
+          const validTypes = ['application/pdf', 'image/jpeg', 'image/jpg'];
+          const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+          var file = fileInput[0].files[0];
+
+          // Check if a file has been selected
+          if (!file) {
+            errors = true;
+            $('#' + selector.replace('#', '') + '_error_placeholder').text(errorMessage).css('color', 'red');
+            showErrorToast(errorMessage)
+            return;
+          } else {
+            // Check file type
+            if (!validTypes.includes(file.type)) {
+              errors = true;
+              $('#' + selector.replace('#', '') + '_error_placeholder').text('Invalid file type. Supported types are .pdf, .jpg, .jpeg.').css('color', 'red');
+              showErrorToast("Invalid file type. Supported types are .pdf, .jpg, .jpeg.");
+              return;
+            }
+
+            // Check file size
+            if (file.size > maxSize) {
+              errors = true;
+              $('#' + selector.replace('#', '') + '_error_placeholder').text("File size exceeds the 2MB limit.").css('color', 'red');
+              showErrorToast("File size exceeds the 2MB limit.");
+              return;
+            }
+          }
+        }
+
+        // Function to validate and update the payload for each file input
+        function checkFile(selector) {
+          var fileInput = $(selector).find('input[type="file"]');
+          const validTypes = ['application/pdf', 'image/jpeg', 'image/jpg'];
+          const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+          var file = fileInput[0].files[0];
+
+          // Check if a file has been selected
+          if (file) {
+            // Check file type
+            if (!validTypes.includes(file.type)) {
+              errors = true;
+              $('#' + selector.replace('#', '') + '_error_placeholder').text('Invalid file type. Supported types are .pdf, .jpg, .jpeg.').css('color', 'red');
+              showErrorToast("Invalid file type. Supported types are .pdf, .jpg, .jpeg.");
+              return;
+            }
+
+            // Check file size
+            if (file.size > maxSize) {
+              errors = true;
+              $('#' + selector.replace('#', '') + '_error_placeholder').text("File size exceeds the 2MB limit.").css('color', 'red');
+              showErrorToast("File size exceeds the 2MB limit.");
+              return;
+            }
+          }
+        }
+        async function processFile(selector) {
+          const fileInput = $(selector)[0];
+
+          if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+            showErrorToast("Please Upload File")
+            return null; // Return null if no file is selected
+          }
+
+          const file = fileInput.files[0];
+          const reader = new FileReader();
+
+          return new Promise((resolve, reject) => {
+            reader.onload = function (event) {
+              const fileData = {
+                fileBase64: event.target.result.split(',')[1], // Remove "data:image/jpeg;base64,"
+                mimetype: file.type,
+                filename: file.name,
+              };
+              resolve(fileData); // Resolve the promise with file data
+            };
+
+            reader.onerror = function (error) {
+              reject(error); // Reject in case of an error while reading the file
+            };
+
+            reader.readAsDataURL(file); // Read file as base64 data URL
+          });
+        }
+
+
+        const physicalCertificate = await processFile('#P95_PHYSICAL_CERTIFICATE_input');
+        const ageProofFile = await processFile('#P95_AGE_PROOF_input');
+        if (participantName === "" || age === "" || gender === "" || address === "" || dateOfBirth === "" || email === "" || bloodGroup === "" || emergencyMobile === "") {
+          showErrorToast("Please fill in all required fields.");
+          return;
+        }
+
+        if (!ownerPledgeCheck.checked) {
+          showErrorToast("Please check the pledge.");
+          return; // Exit early if pledge is not checked
+        }
+
+        const mobileNumberInput = document.getElementById('P95_MOBILE_NUMBER');
+        const errorPlaceholder = document.getElementById('P95_MOBILE_NUMBER_error_placeholder');
+        const mobileNumber = mobileNumberInput.value.trim();
+        // Check if the mobile number is empty
+        if (mobileNumber === "") {
+          errorPlaceholder.textContent = "Mobile number is required.";
+          mobileNumberInput.setCustomValidity("Mobile number is required.");
+          showErrorToast("Mobile number is required.");
+          return;
+        }
+
+        // Check if the mobile number contains exactly 10 digits
+        if (!/^[0-9]{10}$/.test(mobileNumber)) {
+          errorPlaceholder.textContent = "Please enter a valid 10-digit mobile number.";
+          mobileNumberInput.setCustomValidity("Please enter a valid 10-digit mobile number.");
+          showErrorToast("Please enter a valid 10-digit mobile number.");
+          return;
+        } else {
+          // If valid, clear the error
+          errorPlaceholder.textContent = "";
+          mobileNumberInput.setCustomValidity("");
+        }
+
+
+
+        // Prepare the payload if all fields are valid
+        const payload = {
+          p_NAME: participantName,
+          p_AGE: age,
+          p_GENDER: gender,
+          p_MOBILE: mobile,
+          p_ADDRESS: address,
+          p_DATE_OF_BIRTH: dateOfBirth,
+          p_EMAIL_ADDRESS: email,
+          p_BLOOD_GROUP: bloodGroup,
+          p_EMERGENCY_MOBILE: emergencyMobile,
+          p_PHYSICAL_CERTIFICATE: physicalCertificate?.fileBase64 || null,
+          p_ATTACH_MIMETYPE: physicalCertificate?.mimetype || null,
+          p_ATTACH_FILENAME: physicalCertificate?.filename || null,
+          p_AGE_PROOF: "Birth Certificate", // Static value or change if dynamic
+          p_AGE_ATTACH_MIMETYPE: ageProofFile?.mimetype || null,
+          p_AGE_ATTACH_FILENAME: ageProofFile?.filename || null,
+          p_CREATED_BY: userId, // Static value or replace with a dynamic userId
+        };
+
+        console.log(payload); // Further code to process the payload can go here
+
+        const response = await $.ajax({
+          url: `${BASE_API_URL}/participant/participant_registration`,
+          type: 'POST',
+          headers: {
+            'X-App-Key': 'j6ll!k@ttu',
+            'X-App-Name': 'tn jallikattu',
+          },
+          data: JSON.stringify(payload),
+        });
+
+        console.log('Response:', response);
+        localStorage.setItem('participantRegistrationResponse', JSON.stringify(response));
+
+        showSuccessToast('Participant Registration Successful');
+        setTimeout(() => {
+          window.location.href = 'index.html'; // Redirect after success
+        }, 1000);
+
+      } catch (error) {
+        console.error('Error:', error);
+        showErrorToast('An error occurred during participant registration.');
+      }
+    }
+
+
+
+
+
+
+    function formatDate(dateString) {
+      // Create a new Date object from the provided MM/DD/YYYY date string
+      var dateObj = new Date(dateString);
+
+      // Check if the date is valid
+      if (isNaN(dateObj.getTime())) {
+        showErrorToast("Event Date / நிகழ்வு தேதி must be a valid date, for example 01/01/2024.");
+        return null; // Return null if the date is invalid
+      }
+
+      // Return the date in the YYYY-MM-DD format
+      return dateObj.toISOString().split('T')[0]; // Get only the date part (YYYY-MM-DD)
+    }
+  </script>
+  <script>
+    // Function to calculate age based on the Date of Birth
+    function calculateAge() {
+      const dobInput = document.getElementById('P95_DATE_OF_BIRTH');
+      const ageInput = document.getElementById('P95_AGE');
+
+      if (dobInput.value) {
+        const dob = new Date(dobInput.value);
+        const today = new Date();
+
+        let age = today.getFullYear() - dob.getFullYear();
+        const monthDifference = today.getMonth() - dob.getMonth();
+
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
+          age--;  // Adjust if the birthday hasn't occurred yet this year
+        }
+
+        ageInput.value = age;  // Set calculated age to the Age field
+      } else {
+        ageInput.value = '';  // If no DOB is selected, clear the Age field
+      }
+    }
+  </script>
+  <script src="../assets/js/changePassword.js"></script>
+  <link rel="stylesheet" href="../assets/css/popUp.css" type="text/css" />
+</body>
+
+</html>

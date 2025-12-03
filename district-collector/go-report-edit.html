@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html class="no-js  page-8 app-JLIKTU" lang="en">
+
+<head>
+  <div id="preloader"></div>
+  <style>
+    .table-container {
+      max-height: 450px;
+      /* Set the max height for the table container */
+      overflow-y: auto;
+    }
+
+    thead {
+      position: sticky;
+      top: 0;
+      /* Stick to the top of the container */
+      background-color: #f4f4f4;
+      /* Optional: Background color for better visibility */
+      z-index: 1;
+      /* Ensure it stays on top of the body rows */
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+      /* Optional: Add a subtle shadow for effect */
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 9999;
+      overflow: hidden;
+      background: #12121261;
+      /*width: 57%;*/
+      border-radius: 13px 35px;
+    }
+
+    #preloader:before {
+      content: "";
+      position: fixed;
+      top: calc(50% - 30px);
+      left: calc(53% - 30px);
+      border: 6px solid #f92020b8;
+      border-top-color: #e2eefd;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: animate-preloader 1s linear infinite;
+      animation: animate-preloader 1s linear infinite;
+      z-index: 9999;
+    }
+
+    @-webkit-keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>Pending Request</title>
+  <link rel="stylesheet" href="../assets/css/oj-redwood-notag-min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Core.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Theme-Standard.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/font-apex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Coreone.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/aos.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/custom.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/theme.css" type="text/css" />
+  <link rel="apple-touch-icon" href="../assets/img/app-icon-192.png" />
+  <link rel="icon" href="../assets/img/app-icon-32.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="../assets/vendor/datatable/css/dataTables.css" rel="stylesheet">
+  <!-- CSS File -->
+  <link rel="stylesheet" href="../assets/vendor/datatable/dataTables.bootstrap5.min.css">
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/toastr/toastr.min.css" rel="stylesheet">
+  <style type="text/css">
+    #editSection {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    strong {
+      color: #151414;
+      /* Red color for required fields */
+    }
+
+    .row {
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin: 0;
+      padding: 5px 0;
+    }
+
+    span {
+      font-weight: normal;
+    }
+
+    .col-md-6 {
+      padding-right: 15px;
+    }
+
+    .col-md-12 {
+      padding-right: 15px;
+    }
+
+    .toast-container {
+      right: 0.5%;
+    }
+
+    #successToast {
+      background: #198754 !important;
+    }
+
+    #errorToast {
+      background: #ff0000 !important;
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <!-- Toast -->
+  <div class="toast-container position-fixed p-3 custom_toast" x-data="transButtonComponent()">
+    <div id="errorToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="errorMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+    <div id="successToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="successMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <!-- Toast -->
+</head>
+
+<body
+  class="t-PageBody t-PageBody--hideLeft t-PageBody--hideActions no-anim t-PageTemplate--standard   apex-top-nav apex-icons-fontapex apex-theme-vita-copy-1"
+  id="t_PageBody" onload="loadPopup()">
+  <!-- <a href="#main" id="t_Body_skipToContent">Skip to Main Content</a> -->
+  <input type="hidden" name="p_flow_id" value="110" id="pFlowId" /><input type="hidden" name="p_flow_step_id" value="70"
+    id="pFlowStepId" /><input type="hidden" name="p_instance" value="2224570108753" id="pInstance" /><input
+    type="hidden" name="p_page_submission_id" value="270490329034844655939273636227247880316"
+    id="pPageSubmissionId" /><input type="hidden" name="p_request" value="" id="pRequest" /><input type="hidden"
+    name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden"
+    value="jliktu&#x2F;70&#x2F;2224570108753" id="pContext" /><input type="hidden"
+    value="270490329034844655939273636227247880316" id="pSalt" />
+  <header class="t-Header" id="t_Header" role="banner">
+    <div class="t-Header-branding">
+      <div class="t-Header-controls">
+        <button class="t-Button t-Button--icon t-Button--header t-Button--headerTree" aria-label="Main Navigation"
+          title="Main Navigation" id="t_Button_navControl" type="button"><span class="t-Header-controlsIcon"
+            aria-hidden="true"></span></button>
+      </div>
+      <div class="t-Header-logo">
+        <!-- <a href="&#x2F;ords&#x2F;r&#x2F;wsjallikattu&#x2F;jliktu&#x2F;home?session=423514546362" class="t-Header-logo-link"><span class="apex-logo-text">Jallikattu</span></a> -->
+        <div class="gigw">
+          <li><a data-aos="fade-up" data-aos-delay="200" class="linkedin btn-decrease"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="font size Decrease"><i></i> A -</a></li>
+          <li><a data-aos="fade-up" data-aos-delay="300" class="linkedin btn-orig"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="Reset font"><i></i> A <sup></sup></a></li>
+          <li><a data-aos="fade-up" data-aos-delay="400" class="instagram btn-increase"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="font size Increase"><i></i> A +</a></li>
+          <li><a data-aos="fade-up" data-aos-delay="500"><span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                title="Dark Mode"><i class="t-Icon fa fa-moon-o" id="darkmode"></i></a></li>
+          <li><a data-aos="fade-up" data-aos-delay="600" class="form-check form-switch"><label class="form-check-label"
+                for="screenReaderSwitch">
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Screen Reader">
+                  <i id="sound" class="t-Icon fa fa-volume-up"></i></label><input class="form-check-input"
+                type="checkbox" role="switch" id="screenReaderSwitch"
+                onclick="readText(document.getElementsByTagName('body')[0])" /></span></a>
+          </li>
+        </div>
+      </div>
+      <div class="t-Header-navBar">
+        <div class="t-Header-navBar--start"></div>
+        <div class="t-Header-navBar--center">
+          <ul class="t-NavigationBar " id="70091113641892546086">
+            <li class="t-NavigationBar-item ">
+              <button class="t-Button t-Button--icon t-Button t-Button--header t-Button--navBar" type="button"
+                id="L70091125771514546098" data-menu="menu_L70091125771514546098" title="">
+                <span class="t-Icon fa&#x20;fa-user" aria-hidden="true"></span><span
+                  class="t-Button-label">User</span><span class="t-Button-badge"></span><span
+                  class="a-Icon icon-down-arrow" aria-hidden="true"></span>
+              </button>
+              <div class="t-NavigationBar-menu" style="display: none" id="menu_L70091125771514546098">
+                <ul>
+                  <li class="" data-current="false" data-icon=""><a href="separator" title="" target="">---</a></li>
+                  <!-- <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a
+                      href="javascript:apex.theme42.dialog('\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fchange-password?session=423514546362\u0026dialogCs=1zwdNG1gZPek8UUa_bWsFIWuPsREiD45VT6CNSDZ6DMI7oxcWWMnHiNyJRU9XNtN2fp-WSRAcNLrOhlIGpGiKg',{title:'Change Password',h:'auto',w:'720',mxw:'960',modal:true,dialog:null,dlgCls:'t-Dialog-page--standard '+''},'',apex.gPageContext$)"
+                      title="" target="">Change Password</a></li> -->
+                  <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a href="javascript:void();"
+                      title="" target="">Change Password</a></li>
+                  <li class="" data-current="false" data-icon="fa fa-sign-out">
+                    <a href="#" id="globalSignOutBtn" title="Sign Out">Sign Out</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="t-Header-navBar--end"></div>
+      </div>
+    </div>
+    <div class="top">
+      <!-- <img id="leftlogo" data-aos="fade-right" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/TN_logo.png"> -->
+      <h2 data-aos="zoom-in" data-aos-duration="800" class="dept-name text-middle">DIRECTORATE OF ANIMAL HUSBANDRY AND
+        VETERINARY SERVICES</h2>
+      <h3 data-aos="zoom-in" data-aos-duration="800" class="dept-name2 text-middle">JALLIKATTU IN TAMIL NADU</h3>
+      <!-- <img id="rightlogo" data-aos="fade-left" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/right.png"> -->
+    </div>
+    <div class="t-Header-nav">
+      <div class="t-Header-nav-list js-tabLike js-tabLike" id="t_MenuNav">
+        <ul>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="index.html" title="" target="">Home</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="event-pending-requests-district.html" title="" target="">Pending
+              Applications</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="need-more-information-report.html" title="" target="">Need More
+              Information&#x2F;Rejected Applications</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="district-monitoring-commitee-report.html" title="" target="">District
+              Monitoring Reports</a></li>
+          <li class="a-MenuBar-item a-Menu--current" data-current="true" data-id="" data-disabled="" data-hide=""
+            data-shortcut="" data-icon=""><a class="a-MenuBar-label" href="after-go-report.html" title="" target="">GO
+              Issued</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="proceedings-report.html" title="" target="">Proceedings Report</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="all-application-status.html" title="" target="">All Application Status</a>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon="">
+            <a class="a-MenuBar-label" href="" title="" target="">All Reports</a>
+            <ul style="display: none">
+              <li data-id="" data-disabled="" data-hide="" data-shortcut=""
+                data-icon="fa&#x20;fa-arrow-circle-o-right&#x20;fa-anim-flash"><a
+                  href="post-event-inspection-report.html" title="" target="">Post Event Reports</a></li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut=""
+                data-icon="fa&#x20;fa-arrow-circle-o-right&#x20;fa-anim-flash"><a href="bull-report.html" title=""
+                  target="">Registered Bull Reports</a></li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut=""
+                data-icon="fa&#x20;fa-arrow-circle-o-right&#x20;fa-anim-flash"><a href="jallikattu-in-tamilnadu.html"
+                  title="" target="">Registered Participants Reports</a></li>
+            </ul>
+          </li>
+        </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="t-Body">
+    <div class="t-Body-main">
+      <div class="t-Body-title" id="t_Body_title"></div>
+      <div class="t-Body-content" id="t_Body_content">
+        <main id="main" class="t-Body-mainContent">
+          <span id="APEX_SUCCESS_MESSAGE" data-template-id="76689956809586187806_S"
+            class="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE"
+            data-template-id="76689956809586187806_E" class="apex-page-error u-hidden"></span>
+          <div class="t-Body-fullContent"></div>
+          <div class="t-Body-contentInner">
+            <div class="container">
+              <div class="row ">
+                <div class="col col-12 apex-col-auto col-start col-end">
+                  <div class="t-Region t-Region--scrollBody" id="R287658389993143156114" role="region"
+                    aria-label="Need&#x20;More&#x20;Information&#x20;Form">
+                    <div class="t-Region-header">
+                      <div class="t-Region-headerItems t-Region-headerItems--title">
+                        <span class="t-Region-headerIcon"><span class="t-Icon " aria-hidden="true"></span></span>
+                        <h2 class="t-Region-title" id="R287658389993143156114_heading" data-apex-heading>Pending
+                          Requests</h2>
+                      </div>
+                      <div class="t-Region-headerItems t-Region-headerItems--buttons"><span
+                          class="js-maximizeButtonContainer"></span></div>
+                    </div>
+                    <div class="t-Region-bodyWrap">
+                      <div class="t-Region-buttons t-Region-buttons--top">
+                        <div class="t-Region-buttons-left"></div>
+                        <div class="t-Region-buttons-right"></div>
+                      </div>
+                      <div class="t-Region-body">
+                        <div class="t-Region-orderBy"></div>
+                        <input type="hidden" name="P20_EVENT_ID" id="P20_EVENT_ID"
+                          value="VIR&#x2F;240425&#x2F;N&#x2F;JK&#x2F;00325"><input type="hidden" data-for="P20_EVENT_ID"
+                          value="Alu2gNi8Ha0bAZTzqamQcSqjXfAju2gA6rGC3DAq4Vd6EdQphXambv6jFU2ojibHIJgEVHODehNjBIX9iN79gg">
+                        <div class="container">
+                          <div class="row ">
+                            <div class="col col-4 apex-col-auto col-start">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_EVENT_ID_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_EVENT_ID" id="P20_EVENT_ID_LABEL" class="t-Form-label">Event
+                                    Id </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_EVENT_ID"
+                                      name="P20_EVENT_ID" value="5&#x2F;22&#x2F;2024"><input type="hidden"
+                                      data-for="P20_EVENT_ID"
+                                      value="_rdNQD1hM6ykFU-m1jN8E0sUVYRjM-UO8zuzvfN1IsFGDA_9E8qh2xsavsAXi8yt2JP0mdbnUbo0y2HaFlfKXw"><span
+                                      id="P20_EVENT_ID_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_EVENT_ID_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto ">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_EVENT_DATE_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_EVENT_DATE" id="P20_EVENT_DATE_LABEL" class="t-Form-label">Event
+                                    Date </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_EVENT_DATE"
+                                      name="P20_EVENT_DATE" value="5&#x2F;22&#x2F;2024"><input type="hidden"
+                                      data-for="P20_EVENT_DATE"
+                                      value="_rdNQD1hM6ykFU-m1jN8E0sUVYRjM-UO8zuzvfN1IsFGDA_9E8qh2xsavsAXi8yt2JP0mdbnUbo0y2HaFlfKXw"><span
+                                      id="P20_EVENT_DATE_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_EVENT_DATE_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto ">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_EVENT_TYPE_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_EVENT_TYPE" id="P20_EVENT_TYPE_LABEL" class="t-Form-label">Event
+                                    Type </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_EVENT_TYPE"
+                                      name="P20_EVENT_TYPE" value="Jallikattu"><input type="hidden"
+                                      data-for="P20_EVENT_TYPE"
+                                      value="1wRPOznRtBMVJafujPrIYNOPoLoUAdOW57cKakxrfr7oQyKSdK0VD78zVvHuyot95POINRfsndTO3wJMEArhgA"><span
+                                      id="P20_EVENT_TYPE_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_EVENT_TYPE_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_PLACE_OF_EVENT_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_PLACE_OF_EVENT" id="P20_PLACE_OF_EVENT_LABEL"
+                                    class="t-Form-label">Place Of Event </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_PLACE_OF_EVENT"
+                                      name="P20_PLACE_OF_EVENT" value="Nellikulam"><input type="hidden"
+                                      data-for="P20_PLACE_OF_EVENT"
+                                      value="VTjLvaLJ3Sr1PviYpDtd6IZ0hEeB4nvP8vx4fSffN4O87oLnom_FjKtHqpLj2Q_l8v0PEfZtTgJOjZyEbNGelQ"><span
+                                      id="P20_PLACE_OF_EVENT_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_PLACE_OF_EVENT_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="t-Form-inputContainer col col-2">
+                              <div class="t-Form-itemWrapper"> <a-file-upload id="Pre_Event_Inspection_Report_id"
+                                  name="Pre_Event_Inspection_Report" upload-type="FILE" display-style="NATIVE"
+                                  accept=".pdf,.jpg,.jpeg" size="30" max-file-size="2048">
+                                  <input type="file" id="Pre_Event_Inspection_Report_input"
+                                    aria-labelledby="Pre_Event_Inspection_Report_LABEL" />
+                                  <div class="a-FileDrop a-FileDrop--native"></div>
+                                </a-file-upload>
+                              </div>
+                              <div class="t-Form-itemAssistance">
+                                <span id="P20_PLACE_OF_EVENT_error_placeholder" class="a-Form-error"
+                                  data-template-id="70091003340642546032_ET"></span>
+                                <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row ">
+                            <div class="col col-12 apex-col-auto col-start col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                id="P20_ACS_PS_COMENTS_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_ACS_PS_COMENTS" id="P20_ACS_PS_COMENTS_LABEL"
+                                    class="t-Form-label">District Collector Comments
+                                  </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-10">
+                                  <div class="t-Form-itemWrapper"><input type="text" id="P20_ACS_PS_COMENTS"
+                                      name="P20_ACS_PS_COMENTS" required class="text_field&#x20;apex-item-text" value=""
+                                      size="30" />
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_ACS_PS_COMENTS_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="t-Region-buttons t-Region-buttons--bottom">
+                        <div class="t-Region-buttons-left"></div>
+                        <div class="t-Region-buttons-right"><button
+                            class="t-Button t-Button--icon js-ignoreChange&#x20;t-Button--large&#x20;t-Button--iconLeft t-Button--hot"
+                            type="button" id="B73423753900842888149"><span class="t-Button-label">Cancel</span><span
+                              class="t-Icon t-Icon--right fa&#x20;fa-backward" aria-hidden="true"></span></button>
+                          <button
+                            class="t-Button t-Button--icon t-Button--large&#x20;t-Button--success&#x20;t-Button--iconLeft&#x20;t-Button--padLeft&#x20;t-Button--padRight"
+                            id="B73423755176998888150"><span class="t-Button-label">Permitted</span><span
+                              class="t-Icon t-Icon--right fa&#x20;fa-check" aria-hidden="true"></span></button>
+                          <button
+                            class="t-Button t-Button--icon t-Button--large&#x20;t-Button--warning&#x20;t-Button--iconLeft&#x20;t-Button--padLeft&#x20;t-Button--padRight"
+                            id="B73423755176998888151"><span class="t-Button-label">Not Permitted</span><span
+                              class="t-Icon t-Icon--right fa&#x20;fa-check" aria-hidden="true"></span></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <footer class="t-Footer" id="t_Footer" role="contentinfo">
+          <div class="t-Footer-body">
+            <div class="t-Footer-content"></div>
+            <div class="t-Footer-apex">
+              <!-- <div class="t-Footer-version">Release 1.0</div>
+                    <div class="t-Footer-customize"></div>
+                     -->
+              <div class="row">
+                <div class="col-6">
+                  <p class="text-center"><img class="footer-logo" src="../assets/img/right.png"><br>Content owned by
+                    Department of Animal Husbandry and Veterinary Services</p>
+                </div>
+                <div class="col-6">
+                  <p class="text-center"><img class="footer-logo" src="../assets/img/tnegalogo.png"><br>Designed and
+                    Developed by Tamil Nadu e-Governance Agency</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-Footer-top">
+            <a href="#top" class="t-Footer-topButton" id="t_Footer_topButton" title="Start of page"
+              aria-label="Start of page"><span class="a-Icon icon-up-chevron" aria-hidden="true"></span></a>
+          </div>
+
+      </div>
+    </div>
+    <div class="t-Body-inlineDialogs" id="t_Body_inlineDialogs"></div>
+    <input type="hidden" id="pPageFormRegionChecksums"
+      value="&#x5B;&#x7B;&#x22;r&#x22;&#x3A;&#x22;287658389993143156114&#x22;,&#x22;c&#x22;&#x3A;&#x22;062yi8YtY_-N7Ajxgs_JFJ9q0-dRclQPoW3n4treBhC26JxlGT8RSdKEnrhnleqtSzAl75e4-BQSwdM1o6rkjA&#x22;&#x7D;&#x5D;">
+    <input type="hidden" id="pPageItemsRowVersion" value="" /><input type="hidden" id="pPageItemsProtected"
+      value="UDIwX0VWRU5UX0lEOlAyMF9FVkVOVF9EQVRFOlAyMF9FVkVOVF9UWVBFOlAyMF9Q.,TEFDRV9PRl9FVkVOVDpQMjBfTkFNRV9PRl9PUkdBTklaQVRJT046UDIwX0NPTU1J.,VEVFX1JFR0lTVEVSX05VTUJFUjpQMjBfTkFNRV9PRl9QUlNFSURFTlQ6UDIwX0NP.,TlRBQ1RfT0ZfUFJFU0lERU5UOlAyMF9NT0JJTEVfT0ZfUFJFU0lERU5UOlAyMF9O.,QU1FX09GX0RJU1RSSUNUOlAyMF9OQU1FX09GX1RBTFVLOlAyMF9OQU1FX09GX1ZJ.,TExBR0U6UDIwX1BJTkNPREU6UDIwX01IU19DT01NRU5UUzpQMjBfUEFSVElDSVBB.,TlRTOlAyMF9OVU1CRVJfT0ZfQlVMTFM6UDIwX1BSRUVWRU5UX0FSUkFOR0VNRU5U.,UzpQMjBfQVJFTkFfU0laRTpQMjBfQVJFTkFfTEVOR1RIOlAyMF9BUkVOQV9CUkVB.,VEg6UDIwX0xFTkdUSF9BUkVOQTpQMjBfTEVOR1RIX0FSRU5BX0xFTkdUSDpQMjBf.,TEVOR1RIX0FSRU5BX0JSRUFUSDpQMjBfQlVMTF9SVU5fQVJFQTpQMjBfQlVMTF9B.,UkVOQV9MRU5HVEg6UDIwX0JVTExfQVJFTkFfQlJFQVRIOlAyMF9CVUxMX0VYQU1J.,TkFUSU9OX0FSRUFfU0laRTpQMjBfQlVMTF9FWEFNSU5BVElPTl9MRU5HVEg6UDIw.,X0JVTExfRVhBTUlOQVRJT05fQlJFQVRIOlAyMF9EQUhfVlNfQ09NTUVOVFM&#x2F;mXE-tMX9W83OFE_b6zGnaASpLdY271kdyoeNGJoPk5nWtpKNRMJ5NDiFI6ne_crD3asm_xQg3Ao0sNKpjTk-vQ" />
+    <script>
+      var apex_img_dir = "\u002Fi\u002F";
+      var apex = {
+        env: { APP_USER: "9940618706", APP_ID: "110", APP_PAGE_ID: "20", APP_SESSION: "423514546362", APP_FILES: "r\u002Fwsjallikattu\u002F110\u002Ffiles\u002Fstatic\u002Fv1667\u002F", WORKSPACE_FILES: "r\u002Fwsjallikattu\u002Ffiles\u002Fstatic\u002Fv1\u002F", APEX_VERSION: "23.2.1", APEX_BASE_VERSION: "23.2" },
+        libVersions: { ckeditor5: "36.0.0", cropperJs: "1.5.13", domPurify: "3.0.5", fullcalendar: "6.1.8", hammer: "2.0.8", jquery: "3.6.4", jqueryUi: "1.13.2", maplibre: "2.4.0", markedJs: "5.1.2", prismJs: "1.29.0", oraclejet: "15.0.7", tinymce: "6.7.1", turndown: "7.1.1", monacoEditor: "0.32.1", lessJs: "4.1.3" }
+      };
+    </script>
+    <script src="/i/libraries/apex/minified/desktop_all.min.js?v=23.2.1"></script>
+    <script src="wwv_flow.js_messages?p_app_id=110&p_lang=en&p_version=23.2.1-460263366"></script>
+    <script type="text/javascript">
+      apex.da.initDaEventList = function () {
+        apex.da.gEventList = [
+          { "triggeringElementType": "ITEM", "triggeringElement": "P20_RADIO_FIR", "conditionElement": "P20_RADIO_FIR", "triggeringConditionType": "NOT_EQUALS", "triggeringConditionExpression": "Yes", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "change", "anyActionsFireOnInit": true, actionList: [{ "eventResult": false, "conditionElement": "P20_RADIO_FIR", "conditionType": "EQUALS", "conditionExpression": "Yes", "executeOnPageInit": true, "stopExecutionOnError": true, "affectedElementsType": "ITEM", "affectedElements": "P20_FIR", javascriptFunction: apex.da.show, "action": "NATIVE_SHOW" }, { "eventResult": true, "conditionElement": "P20_RADIO_FIR", "conditionType": "NOT_EQUALS", "conditionExpression": "Yes", "executeOnPageInit": true, "stopExecutionOnError": true, "affectedElementsType": "ITEM", "affectedElements": "P20_FIR", javascriptFunction: apex.da.hide, "action": "NATIVE_HIDE" }] },
+          { "triggeringElementType": "ITEM", "triggeringElement": "P20_CCTV_LAYOUT", "conditionElement": "P20_CCTV_LAYOUT", "triggeringConditionType": "NOT_EQUALS", "triggeringConditionExpression": "Yes", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "change", "anyActionsFireOnInit": true, actionList: [{ "eventResult": false, "conditionElement": "P20_CCTV_LAYOUT", "conditionType": "EQUALS", "conditionExpression": "Yes", "executeOnPageInit": true, "stopExecutionOnError": true, "affectedElementsType": "ITEM", "affectedElements": "P20_UPLOAD_PHOTO", javascriptFunction: apex.da.show, "action": "NATIVE_SHOW" }, { "eventResult": true, "conditionElement": "P20_CCTV_LAYOUT", "conditionType": "NOT_EQUALS", "conditionExpression": "Yes", "executeOnPageInit": true, "stopExecutionOnError": true, "affectedElementsType": "ITEM", "affectedElements": "P20_UPLOAD_PHOTO", javascriptFunction: apex.da.hide, "action": "NATIVE_HIDE" }] },
+          {
+            "triggeringElementType": "JQUERY_SELECTOR", "triggeringElement": ".del", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "click", "anyActionsFireOnInit": true, actionList: [{ "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: apex.da.askConfirm, "attribute02": "Are you want to delete the commitee?", "action": "NATIVE_CONFIRM" }, {
+              "eventResult": true, "executeOnPageInit": true, "stopExecutionOnError": true, "waitForResult": true, "affectedElementsType": "ITEM", "affectedElements": "P20_ID", javascriptFunction: apex.da.setValue, "ajaxIdentifier": "REEgVFlQRX5-NzY0MjA1Mjg3OTAyMDAxOTg0MDU\u002F-nVficMuYvxYPzNGUBovyOt78TTDAEbSzm9q38b8R8BbSqy4Cs3Frd9Lzfqz5iW--TuLX_d0Z2Vjt5UbtyYEEw", "attribute01": "JAVASCRIPT_EXPRESSION", attribute05: function () {
+                return ($(this.triggeringElement).parent().data('id')
+                )
+              }, "attribute09": "N", "action": "NATIVE_SET_VALUE"
+            }, { "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, "waitForResult": true, javascriptFunction: apex.da.executePlSqlCode, "ajaxIdentifier": "REEgVFlQRX5-NzY0MjA1Mjg4MjA3MjgxOTg0MDY\u002F35UPMnvy6zaJWKiDyJQ9PSlytX6ufep9uZ0W2fDhiUfsiNhVX1u7TojRVX6aJEGY8Gr-UzBzkcDVk-cV_3sX1A", "attribute01": "#P20_ID", "attribute04": "N", "action": "NATIVE_EXECUTE_PLSQL_CODE" }, { "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, "affectedElementsType": "REGION", "affectedRegionId": "R287658389993143156114", javascriptFunction: apex.da.refresh, "action": "NATIVE_REFRESH" }, { "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, "affectedElementsType": "REGION", "affectedRegionId": "R75056795329564593608", javascriptFunction: apex.da.refresh, "action": "NATIVE_REFRESH" }]
+          }];
+      }
+    </script>
+    <script src="../assets/js/crypto-js.min.js"></script>
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="../assets/js/desktop_all.min.js"></script>
+    <script src="../assets/js/theme42.min.js"></script>
+    <script src="../assets/js/aos.js"></script>
+    <script src="../assets/js/add.min.js"></script>
+    <script src="../assets/js/widget.apexTabs.min.js"></script>
+    <script src="../assets/js/widget.interactiveReport.min.js"></script>
+    <script src="../assets/js/widget.iconList.min.js"></script>
+    <script src="../assets/js/widget.stickyTableHeader.min.js"></script>
+    <script src="../assets/js/widget.stickyWidget.min.js"></script>
+    <script src="../assets/js/item.Colorpicker.min.js"></script>
+    <script src="../assets/js/require.js"></script>
+    <script src="../assets/js/requirejs.jetConfig.min.js"></script>
+    <script src="../assets/js/jetCommonBundle.min.js"></script>
+    <script src="../assets/js/chartBundle.min.js"></script>
+    <script src="../apiConfig.js"></script>
+
+    <script type="text/javascript">
+      apex.session.initTimeouts(900, { "idle_time_ms": 1192000, "life_time_ms": 28364000, "max_idle_time_ms": 1200000 }, '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome', '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome');
+      apex.jQuery(function () {
+        apex.page.init(this, function () {
+          try {
+            (function () {
+              var e = apex.jQuery("#t_MenuNav", apex.gPageContext$);
+              if (e.hasClass("js-addActions")) {
+                apex.actions.addFromMarkup(e);
+              }
+              e.menu({
+                behaveLikeTabs: e.hasClass("js-tabLike"),
+                menubarShowSubMenuIcon: e.hasClass("js-showSubMenuIcons") || null,
+                menubar: true,
+                menubarOverflow: true,
+                callout: e.hasClass("js-menu-callout")
+              });
+            })();
+            (function () { apex.page.configureButtonForConfirmation({ "buttonId": "B73423753542287888149", "okLabel": "Need More Information", "message": "Click to Confirm Need more Information", "callback": () => { apex.submit({ request: 'NMI', validate: true }); } }); })();
+            (function () { apex.widget.report.init("R75056795329564593608", "UkVHSU9OIFRZUEV-fjc1MDU2Nzk1MzI5NTY0NTkzNjA4\u002FzpoW0b4m89SJYYlyi05oLsQtHKCRIbf8OmuNJtvIcHVsIuXr43cChxTQkWO5duOCeZ5fG27DSyCxWTiHD12bGA", { "lazyLoading": false, "internalRegionId": "75056795329564593608" }); })();
+          } catch (e) { apex.debug.error(e) };
+          apex.item.waitForDelayLoadItems().done(function () {
+            try {
+              (function () {
+                apex.da.initDaEventList();
+                apex.da.init();
+              })();
+              apex.theme42.initializePage.noSideCol();
+
+              apex.page.warnOnUnsavedChanges();
+            } finally {
+              apex.event.trigger(apex.gPageContext$, 'apexreadyend');
+            };
+          });
+        });
+      }); apex.pwa.init({ serviceWorkerPath: '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fsw.js?v=23.2.1-460263366\u0026lang=en' });
+    </script>
+
+    <script>
+      let fileInputData;
+      function processFile(selector) {
+        return new Promise((resolve, reject) => {
+          var fileInput = $(selector)[0];
+          var file = fileInput.files[0];
+          fileInputData = file;
+          if (file) {
+            const reader = new FileReader();
+            const fileData = {};
+
+            reader.onload = function (event) {
+              // File processed as Base64 string
+              fileData.fileBase64 = event.target.result.split(',')[1];
+              fileData.mimetype = file.type;
+              fileData.filename = file.name;
+
+              resolve(fileData); // Resolve the promise with fileData
+            };
+
+            reader.onerror = function (error) {
+              reject(error); // Reject the promise in case of error
+            };
+
+            reader.readAsDataURL(file); // Read the file as a data URL (Base64)
+          }
+        });
+      }
+      AOS.init();
+      $('#preloader').hide();
+      $(document).on({
+        ajaxStart: function () {
+          $('#preloader').show();
+          $("body").addClass("user_loading");
+        },
+        ajaxStop: function () {
+          $('#preloader').hide();
+          $("body").removeClass("user_loading");
+        }
+      });
+      // Retrieve the encrypted data from localStorage
+      let encryptedDataFromStorage = localStorage.getItem('userDetails');
+      let decryptedData;
+      if (encryptedDataFromStorage) {
+        const secretKey = 'V7gN4dY8pT2xB3kRz';
+        // Decrypt the data: decrypt the string and convert it to UTF-8
+        const bytes = CryptoJS.AES.decrypt(encryptedDataFromStorage, secretKey);
+        decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+      } else {
+        console.log('No data found in localStorage');
+      }
+      let userDetails = decryptedData;
+      let userId = '';
+      // Find the element where the name should be displayed
+      var userNameElement = document.querySelector('.t-Button-label');
+      // If user is logged in (i.e., user details exist in localStorage)
+      if (userDetails) {
+        // Parse user details
+        const user = JSON.parse(userDetails);
+        // Update the username in the profile button (if available)
+        if (user && user.name) {
+          userId = user.user_id;
+          userNameElement.textContent = user.name; // or userNameElement.innerText
+        }
+      } else {
+        showErrorToast("Something went wrong");
+        localStorage.clear();
+        sessionStorage.clear();
+        setTimeout(function () {
+          window.location.href = "../index.html";
+        }, 1000);
+      }
+
+      var cancelButton = document.getElementById('B73423753900842888149');
+      // Add a click event listener to the button
+      cancelButton.addEventListener('click', function () {
+        // Reload the current page
+        window.location.href = 'after-go-report.html';
+      });
+      // Global variables for current pages
+      //////////////////////////////////
+      let details = '';
+      const urlParams = new URLSearchParams(window.location.search);
+      const encodedDetails = urlParams.get('details');
+      const decodedDetails = atob(encodedDetails);
+      details = JSON.parse(decodedDetails); console.log("details", details);
+      document.getElementById('P20_EVENT_ID_DISPLAY').textContent = details.event_id;
+      document.getElementById('P20_EVENT_DATE_DISPLAY').textContent = details.event_date;
+      document.getElementById('P20_EVENT_TYPE_DISPLAY').textContent = details.event_type;
+      document.getElementById('P20_PLACE_OF_EVENT_DISPLAY').textContent = details.place_of_event;
+      $("#B73423755176998888150").click(async function () {
+        // Capture the comment value from the text field
+        let dcComments = $("#P20_ACS_PS_COMENTS").val();
+        const uploadFileData = await processFile('#Pre_Event_Inspection_Report_input');
+        if (!dcComments) {
+          $('#P20_ACS_PS_COMENTS_error_placeholder').text("Please fill the comments.").css('color', 'red');
+          showErrorToast("Please fill in all fields.");
+          return;  // Prevent form submission
+        }
+        const payload = {
+          comments: dcComments,
+          event_id: details.event_id,
+          user_id: userId,
+          dc_fileupload: fileInputData,
+          mimetype: uploadFileData && uploadFileData.mimetype ? uploadFileData.mimetype : null,
+          filename: uploadFileData && uploadFileData.filename ? uploadFileData.filename : null,
+        };
+        $.ajax({
+          url: `${BASE_API_URL}/dc_user/dc_go_permit`,
+          method: 'POST',
+          headers: {
+            'X-APP-KEY': 'j6ll!k@ttu',
+            'X-APP-NAME': 'tn jallikattu',
+          },
+          data: payload,
+          success: function (response) {
+            if (response.success == 1) {
+              showSuccessToast("Updated Successfully");
+              setTimeout(function () {
+                window.location.href = 'after-go-report.html';
+              }, 1000);
+            }
+          },
+          error: function (xhr, status, error) {
+            $('#preloader').hide();
+            showErrorToast("Something went wrong");
+            console.error('Error fetching data: ', error);
+          }
+        });
+      });
+
+      $("#B73423755176998888151").click(function () {
+        // Capture the comment value from the text field
+        let dcComments = $("#P20_ACS_PS_COMENTS").val();
+        if (!dcComments) {
+          $('#P20_ACS_PS_COMENTS_error_placeholder').text("Please fill the comments.").css('color', 'red');
+          showErrorToast("Please fill in all fields.");
+          return;  // Prevent form submission
+        }
+        const payload = {
+          comments: dcComments,
+          event_id: details.event_id,
+          user_id: userId
+        };
+        $.ajax({
+          url: `${BASE_API_URL}/dc_user/dc_go_not_permit`,
+          method: 'POST',
+          headers: {
+            'X-APP-KEY': 'j6ll!k@ttu',
+            'X-APP-NAME': 'tn jallikattu',
+          },
+          data: payload,
+          success: function (response) {
+            if (response.success == 1) {
+              showSuccessToast("Updated Successfully");
+              setTimeout(function () {
+                window.location.href = 'after-go-report.html';
+              }, 1000);
+            }
+          },
+          error: function (xhr, status, error) {
+            $('#preloader').hide();
+            showErrorToast("Something went wrong");
+            console.error('Error fetching data: ', error);
+          }
+        });
+      });
+
+      // Function to show a success toast with a dynamic message
+      function showSuccessToast(message) {
+        const toastElement = document.getElementById('successToast');
+        const toastBody = document.getElementById('successMessage');
+
+        // Set the dynamic message
+        toastBody.textContent = message;
+
+        // Initialize and show the toast
+        const toast = new bootstrap.Toast(toastElement, {
+          autohide: true,
+          delay: 3000
+        });
+        toast.show();
+      }
+      // Function to show a error toast with a dynamic message
+      function showErrorToast(message) {
+        const toastElement = document.getElementById('errorToast');
+        const toastBody = document.getElementById('errorMessage');
+
+        // Set the dynamic message
+        toastBody.textContent = message;
+
+        // Initialize and show the toast
+        const toast = new bootstrap.Toast(toastElement, {
+          autohide: true,
+          delay: 3000
+        });
+        toast.show();
+      }
+      function escapeHtml(str) {
+        return str.replace(/[&<>"'`=\/]/g, function (match) {
+          const escapeMap = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;',
+            '`': '&#96;',
+            '=': '&#61;',
+            '/': '&#47;'
+          };
+          return escapeMap[match];
+        });
+      }
+      // Function to convert YYYY-MM-DD to MM/DD/YYYY
+      function convertToMMDDYYYY(dateString) {
+        var dateParts = dateString.split('-'); // Split the string by '-'
+
+        if (dateParts.length !== 3) {
+          showErrorToast("Invalid date format. Expected format is YYYY-MM-DD.");
+          return null;
+        }
+
+        // Extract year, month, and day from the split date
+        var year = dateParts[0];
+        var month = dateParts[1];
+        var day = dateParts[2];
+
+        // Return the date in MM/DD/YYYY format
+        return month + '/' + day + '/' + year;
+      }
+    </script>
+    <script src="../assets/js/changePassword.js"></script>
+    <link rel="stylesheet" href="../assets/css/popUp.css" type="text/css" />
+</body>
+
+</html>

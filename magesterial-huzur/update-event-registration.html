@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html class="no-js  page-5 app-JLIKTU" lang="en">
+
+<head>
+  <div id="preloader"></div>
+  <style>
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 9999;
+      overflow: hidden;
+      background: #12121261;
+      /*width: 57%;*/
+      border-radius: 13px 35px;
+    }
+
+    #preloader:before {
+      content: "";
+      position: fixed;
+      top: calc(50% - 30px);
+      left: calc(53% - 30px);
+      border: 6px solid #f92020b8;
+      border-top-color: #e2eefd;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: animate-preloader 1s linear infinite;
+      animation: animate-preloader 1s linear infinite;
+      z-index: 9999;
+    }
+
+    @-webkit-keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>Registration for the Event of Jallikkattu&#x2F;Manjuvirattu&#x2F;Vadamadu&#x2F;EruduVidumVizha</title>
+  <link rel="stylesheet" href="../assets/css/oj-redwood-notag-min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Core.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Theme-Standard.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/font-apex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Coreone.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/aos.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/custom.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/theme.css" type="text/css" />
+  <link rel="apple-touch-icon" href="../assets/img/app-icon-192.png" />
+  <link rel="icon" href="../assets/img/app-icon-32.png" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/toastr/toastr.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    #grievanceTable tbody td:nth-child(5) {
+      display: contents;
+    }
+
+    .toast-container {
+      right: 0.5%;
+    }
+
+    #successToast {
+      background: #198754 !important;
+    }
+
+    #errorToast {
+      background: #ff0000 !important;
+    }
+  </style>
+  <!-- Toast -->
+  <div class="toast-container position-fixed p-3 custom_toast" x-data="transButtonComponent()">
+    <div id="errorToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="errorMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+    <div id="successToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="successMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <!-- Toast -->
+</head>
+
+<body
+  class="t-PageBody t-PageBody--hideLeft t-PageBody--hideActions no-anim t-PageTemplate--standard   apex-top-nav apex-icons-fontapex apex-theme-vita-copy-1"
+  id="t_PageBody" onload="loadPopup()">
+  <!-- <a href="#main" id="t_Body_skipToContent">Skip to Main Content</a> -->
+  <input type="hidden" name="p_flow_id" value="110" id="pFlowId" /><input type="hidden" name="p_flow_step_id" value="5"
+    id="pFlowStepId" /><input type="hidden" name="p_instance" value="6250074273694" id="pInstance" /><input
+    type="hidden" name="p_page_submission_id" value="303573947065778630236450583496583652768"
+    id="pPageSubmissionId" /><input type="hidden" name="p_request" value="" id="pRequest" /><input type="hidden"
+    name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden"
+    value="jliktu&#x2F;5&#x2F;6250074273694" id="pContext" /><input type="hidden"
+    value="303573947065778630236450583496583652768" id="pSalt" />
+  <header class="t-Header" id="t_Header" role="banner">
+    <div class="t-Header-branding">
+      <div class="t-Header-controls">
+        <button class="t-Button t-Button--icon t-Button--header t-Button--headerTree" aria-label="Main Navigation"
+          title="Main Navigation" id="t_Button_navControl" type="button"><span class="t-Header-controlsIcon"
+            aria-hidden="true"></span></button>
+      </div>
+      <div class="t-Header-logo">
+        <!-- <a href="&#x2F;ords&#x2F;r&#x2F;wsjallikattu&#x2F;jliktu&#x2F;home?session=6250074273694" class="t-Header-logo-link"><span class="apex-logo-text">Jallikattu</span></a> -->
+        <div class="gigw">
+          <li><a data-aos="fade-up" data-aos-delay="200" class="linkedin btn-decrease"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="font size Decrease"><i></i> A -</a></li>
+          <li><a data-aos="fade-up" data-aos-delay="300" class="linkedin btn-orig"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="Reset font"><i></i> A <sup></sup></a></li>
+          <li><a data-aos="fade-up" data-aos-delay="400" class="instagram btn-increase"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="font size Increase"><i></i> A +</a></li>
+          <li><a data-aos="fade-up" data-aos-delay="500"><span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                title="Dark Mode"><i class="t-Icon fa fa-moon-o" id="darkmode"></i></a></li>
+          <li><a data-aos="fade-up" data-aos-delay="600" class="form-check form-switch"><label class="form-check-label"
+                for="screenReaderSwitch">
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Screen Reader">
+                  <i id="sound" class="t-Icon fa fa-volume-up"></i></label><input class="form-check-input"
+                type="checkbox" role="switch" id="screenReaderSwitch"
+                onclick="readText(document.getElementsByTagName('body')[0])" /></span></a>
+          </li>
+        </div>
+      </div>
+      <div class="t-Header-navBar">
+        <div class="t-Header-navBar--start"></div>
+        <div class="t-Header-navBar--center">
+          <ul class="t-NavigationBar " id="70091113641892546086">
+            <li class="t-NavigationBar-item ">
+              <button class="t-Button t-Button--icon t-Button t-Button--header t-Button--navBar" type="button"
+                id="L70091125771514546098" data-menu="menu_L70091125771514546098" title="">
+                <span class="t-Icon fa&#x20;fa-user" aria-hidden="true"></span><span
+                  class="t-Button-label">User</span><span class="t-Button-badge"></span><span
+                  class="a-Icon icon-down-arrow" aria-hidden="true"></span>
+              </button>
+              <div class="t-NavigationBar-menu" style="display: none" id="menu_L70091125771514546098">
+                <ul>
+                  <li class="" data-current="false" data-icon=""><a href="separator" title="" target="">---</a></li>
+                  <!-- <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a
+                      href="javascript:apex.theme42.dialog('\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fchange-password?session=6250074273694\u0026dialogCs=ky-aQ6mqjPicYGY1pqrqgoZJaqbXEDFnIX-8iaDpsJEAe_MitNUk2PJsaTFEblhqKFprfnaT03Ghgl8gVGXzJw',{title:'Change Password',h:'auto',w:'720',mxw:'960',modal:true,dialog:null,dlgCls:'t-Dialog-page--standard '+''},'',apex.gPageContext$)"
+                      title="" target="">Change Password</a></li> -->
+                  <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a href="javascript:void();"
+                      title="" target="">Change Password</a></li>
+                  <li class="" data-current="false" data-icon="fa fa-sign-out">
+                    <a href="#" id="globalSignOutBtn" title="Sign Out">Sign Out</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="t-Header-navBar--end"></div>
+      </div>
+    </div>
+    <div class="top">
+      <!-- <img id="leftlogo" data-aos="fade-right" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/TN_logo.png"> -->
+      <h2 data-aos="zoom-in" data-aos-duration="800" class="dept-name text-middle">DIRECTORATE OF ANIMAL HUSBANDRY AND
+        VETERINARY SERVICES</h2>
+      <h3 data-aos="zoom-in" data-aos-duration="800" class="dept-name2 text-middle">JALLIKATTU IN TAMIL NADU</h3>
+      <!-- <img id="rightlogo" data-aos="fade-left" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/right.png"> -->
+    </div>
+    <div class="t-Header-nav">
+      <div class="t-Header-nav-list js-tabLike js-tabLike" id="t_MenuNav">
+        <ul>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="index.html" title="" target="">Home</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="pending-applications.html" title="" target="">Pending
+              Applications</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="need-more-information.html" title="" target="">Need More
+              Information&#x2F;Rejected Applications</a></li>
+          <li class="a-MenuBar-item a-Menu--current" data-current="true" data-id="" data-disabled="" data-hide=""
+            data-shortcut="" data-icon=""><a class="a-MenuBar-label" href="district-monitoring-report.html" title=""
+              target="">District
+              Monitoring
+              Reports</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="go-issued.html" title="" target="">GO Issued</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="final-inspection-report.html" title="" target="">Final&#x2F;Pre-Event
+              Inspection Reports</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="event-completion-form.html" title="" target="">Event
+              Completion Form</a>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="all-application-status.html" title="" target="">All Application Status</a>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="" title="" target="">All Reports</a>
+            <ul style="display: none">
+              <li data-id="" data-disabled="" data-hide="" data-shortcut=""
+                data-icon="fa&#x20;fa-arrow-circle-o-right&#x20;fa-anim-flash"><a
+                  href="post-event-inspection-report.html" title="" target="">Post Event Reports</a></li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a href="bull-report.html"
+                  title="" target="">Registration of Bulls Report</a></li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+                  href="participant-report.html" title="" target="">Registration of participants report</a></li>
+            </ul>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="approved-bull-report.html" title="" target="">Approved Bull
+              report</a>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="approved-participant-report.html" title="" target="">Approved Participant
+              Report</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="t-Body">
+    <div class="t-Body-main">
+      <div class="t-Body-title" id="t_Body_title"></div>
+      <div class="t-Body-content" id="t_Body_content">
+        <main id="main" class="t-Body-mainContent">
+          <span id="APEX_SUCCESS_MESSAGE" data-template-id="76689956809586187806_S"
+            class="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE"
+            data-template-id="76689956809586187806_E" class="apex-page-error u-hidden"></span>
+          <div class="t-Body-fullContent"></div>
+          <div class="t-Body-contentInner">
+            <div class="container">
+              <div class="row ">
+                <div class="col col-12 apex-col-auto col-start col-end">
+                  <div class="t-Region t-Region--scrollBody" id="R70109375874199761454" role="region"
+                    aria-label="Registration&#x20;for&#x20;the&#x20;Event&#x20;of&#x20;Jallikkattu&#x20;&#x2F;Manjuvirattu&#x20;&#x2F;Vadamadu&#x20;&#x2F;EruduVidumVizha&#x20;">
+                    <div class="t-Region-header">
+                      <div class="t-Region-headerItems t-Region-headerItems--title">
+                        <span class="t-Region-headerIcon"><span class="t-Icon " aria-hidden="true"></span></span>
+                        <h2 class="t-Region-title" id="R70109375874199761454_heading" data-apex-heading>District Level
+                          Monitoring Committee Form </h2>
+                      </div>
+                      <div class="t-Region-headerItems t-Region-headerItems--buttons"><span
+                          class="js-maximizeButtonContainer"></span></div>
+                    </div>
+                    <div class="t-Region-bodyWrap">
+                      <form id="districtmonitoringForm" enctype="multipart/form-data">
+                        <div class="t-Region-buttons t-Region-buttons--top">
+                          <div class="t-Region-buttons-left"></div>
+                          <div class="t-Region-buttons-right"></div>
+                        </div>
+                        <div class="t-Region-body">
+                          <div class="t-Region-orderBy"></div>
+                          <input type="hidden" name="P5_EVENT_ID" id="P5_EVENT_ID" value="">
+                          <div class="container">
+
+                            <div class="row ">
+                              <div class="col col-6 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P5_PARTICIPANTS_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P5_PARTICIPANTS" id="P5_PARTICIPANTS_LABEL"
+                                      class="t-Form-label">Participants</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P5_PARTICIPANTS"
+                                        name="P5_PARTICIPANTS" class="text_field&#x20;apex-item-text" value=""
+                                        maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P5_PARTICIPANTS_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P5_NUMBER_OF_BULLS_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P5_NUMBER_OF_BULLS" id="P5_NUMBER_OF_BULLS_LABEL"
+                                      class="t-Form-label">Number of Bulls</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P5_NUMBER_OF_BULLS"
+                                        name="P5_NUMBER_OF_BULLS" class="text_field&#x20;apex-item-text" value=""
+                                        maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P5_NUMBER_OF_BULLS_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-6 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P5_ARENA_LENGTH_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P5_ARENA_LENGTH" id="P5_ARENA_LENGTH_LABEL" class="t-Form-label">Arena
+                                      Length </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P5_ARENA_LENGTH"
+                                        name="P5_ARENA_LENGTH" class="text_field&#x20;apex-item-text" value=""
+                                        maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P5_ARENA_LENGTH_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P5_ARENA_BREATH_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="#P5_ARENA_BREATH" id="P5_ARENA_BREATH_LABEL" class="t-Form-label">Arena
+                                      Breath</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P5_ARENA_BREATH"
+                                        name="P5_ARENA_BREATH" class="text_field&#x20;apex-item-text" value=""
+                                        maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P5_ARENA_BREATH_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P5_BULL_ARENA_LENGTH_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P5_BULL_ARENA_LENGTH" id="P5_BULL_ARENA_LENGTH_LABEL"
+                                      class="t-Form-label">Bull Arena
+                                      Length </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P5_BULL_ARENA_LENGTH"
+                                        name="P5_BULL_ARENA_LENGTH" class="text_field&#x20;apex-item-text" value=""
+                                        maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P5_BULL_ARENA_LENGTH_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P5_BULL_ARENA_BREATH_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="#P5_BULL_ARENA_BREATH" id="P5_BULL_ARENA_BREATH_LABEL"
+                                      class="t-Form-label">Bull Arena
+                                      Breath</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P5_BULL_ARENA_BREATH"
+                                        name="P5_BULL_ARENA_BREATH" class="text_field&#x20;apex-item-text" value=""
+                                        maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P5_BULL_ARENA_BREATH_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P5_BULL_EXAMINATION_LENGTH_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P5_BULL_EXAMINATION_LENGTH" id="P5_BULL_EXAMINATION_LENGTH_LABEL"
+                                      class="t-Form-label">Bull Examination
+                                      Length </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P5_BULL_EXAMINATION_LENGTH"
+                                        name="P5_BULL_EXAMINATION_LENGTH" class="text_field&#x20;apex-item-text"
+                                        value="" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P5_BULL_EXAMINATION_LENGTH_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P5_BULL_EXAMINATION_BREATH_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="#P5_BULL_EXAMINATION_BREATH" id="P5_BULL_EXAMINATION_BREATH_LABEL"
+                                      class="t-Form-label">Bull Arena
+                                      Breath</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P5_BULL_EXAMINATION_BREATH"
+                                        name="P5_BULL_EXAMINATION_BREATH" class="text_field&#x20;apex-item-text"
+                                        value="" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P5_BULL_EXAMINATION_BREATH_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div class="row ">
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="JOINT_MONITORING_REPORT_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="JOINT_MONITORING_REPORT_LABEL" id="JOINT_MONITORING_REPORT_LABEL"
+                                      class="t-Form-label">Joint Monitoring Report
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper">
+                                      <a-file-upload id="JOINT_MONITORING_REPORT" name="JOINT_MONITORING_REPORT"
+                                        upload-type="FILE" display-style="NATIVE" accept=".pdf,.jpg,.jpeg" size="30"
+                                        max-file-size="2048">
+                                        <input type="file" id="JOINT_MONITORING_REPORT_input"
+                                          name="JOINT_MONITORING_REPORT" class="text_field&#x20;apex-item-text" value=""
+                                          maxlength="1000" />
+                                        <div class="a-FileDrop a-FileDrop--native"></div>
+                                      </a-file-upload>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="JOINT_MONITORING_REPORT_PLACEHOLDER" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-6 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="COMMENTS_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="#COMMENTS_CONTAINER" id="COMMENTS_CONTAINER_LABEL"
+                                      class="t-Form-label">Comments
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-4">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="COMMENTS" name="COMMENTS"
+                                        class="text_field&#x20;apex-item-text" value="" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="COMMENTS_CONTAINER_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                        <div class="t-Region-buttons t-Region-buttons--bottom">
+                          <div class="t-Region-buttons-left"><button
+                              class="t-Button js-ignoreChange&#x20;t-Button--large" type="button"
+                              id="B70109407285484761477"><span class="t-Button-label">Cancel</span></button></div>
+                          <div class="t-Region-buttons-right"><button
+                              class="t-Button t-Button--large&#x20;t-Button--success" type="Submit"><span
+                                class="t-Button-label">Update</span></button></div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <footer class="t-Footer" id="t_Footer" role="contentinfo">
+          <div class="t-Footer-body">
+            <div class="t-Footer-content"></div>
+            <div class="t-Footer-apex">
+              <!-- <div class="t-Footer-version">Release 1.0</div>
+                    <div class="t-Footer-customize"></div>
+                     -->
+              <div class="row">
+                <div class="col-6">
+                  <p class="text-center"><img class="footer-logo" src="../assets/img/right.png"><br>Content owned by
+                    Department of Animal Husbandry and Veterinary Services</p>
+                </div>
+                <div class="col-6">
+                  <p class="text-center"><img class="footer-logo" src="../assets/img/tnegalogo.png"><br>Designed and
+                    Developed by Tamil Nadu e-Governance Agency</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-Footer-top">
+            <a href="#top" class="t-Footer-topButton" id="t_Footer_topButton" title="Start of page"
+              aria-label="Start of page"><span class="a-Icon icon-up-chevron" aria-hidden="true"></span></a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script>
+    var apex_img_dir = "\u002Fi\u002F";
+    var apex = {
+      env: { APP_USER: "9751929455", APP_ID: "110", APP_PAGE_ID: "5", APP_SESSION: "6250074273694", APP_FILES: "r\u002Fwsjallikattu\u002F110\u002Ffiles\u002Fstatic\u002Fv1667\u002F", WORKSPACE_FILES: "r\u002Fwsjallikattu\u002Ffiles\u002Fstatic\u002Fv1\u002F", APEX_VERSION: "23.2.1", APEX_BASE_VERSION: "23.2" },
+      libVersions: { ckeditor5: "36.0.0", cropperJs: "1.5.13", domPurify: "3.0.5", fullcalendar: "6.1.8", hammer: "2.0.8", jquery: "3.6.4", jqueryUi: "1.13.2", maplibre: "2.4.0", markedJs: "5.1.2", prismJs: "1.29.0", oraclejet: "15.0.7", tinymce: "6.7.1", turndown: "7.1.1", monacoEditor: "0.32.1", lessJs: "4.1.3" }
+    };
+  </script>
+
+
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/crypto-js.min.js"></script>
+  <script src="../assets/js/globalLogout.js"></script>
+  <script src="../assets/js/desktop_all.min.js"></script>
+  <script src="../assets/js/theme42.min.js"></script>
+  <script src="../assets/js/aos.js"></script>
+  <script src="../assets/js/add.min.js"></script>
+  <script src="../assets/js/widget.apexTabs.min.js"></script>
+  <script src="../assets/js/widget.interactiveReport.min.js"></script>
+  <script src="../assets/js/widget.iconList.min.js"></script>
+  <script src="../assets/js/widget.stickyTableHeader.min.js"></script>
+  <script src="../assets/js/widget.stickyWidget.min.js"></script>
+  <script src="../assets/js/item.Colorpicker.min.js"></script>
+  <script src="../assets/js/require.js"></script>
+  <script src="../assets/js/requirejs.jetConfig.min.js"></script>
+  <script src="../assets/js/jetCommonBundle.min.js"></script>
+  <script src="../assets/js/chartBundle.min.js"></script>
+  <script src="../apiConfig.js"></script>
+
+  <script type="text/javascript">
+    apex.da.initDaEventList = function () {
+      apex.da.gEventList = [
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_MOBILE_OF_PRESIDENT", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_MOBILE_OF_PRESIDENT');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove non-numeric characters and spaces
+                inputValue = inputValue.replace(/[^0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_PINCODE", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_PINCODE');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove non-numeric characters and spaces
+                inputValue = inputValue.replace(/[^0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_NAME_OF_ORGANIZATION", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_NAME_OF_ORGANIZATION');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove special characters, but allow letters, numbers, and spaces
+                inputValue = inputValue.replace(/[^a-zA-Z0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_COMMITEE_REGISTER_NUMBER", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_COMMITEE_REGISTER_NUMBER');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove special characters, but allow letters, numbers, and spaces
+                inputValue = inputValue.replace(/[^a-zA-Z0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_ARENA_LENGTH", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_ARENA_LENGTH');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove special characters, but allow letters, numbers, and spaces
+                inputValue = inputValue.replace(/[^a-zA-Z0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_CONTACT_OF_PRESIDENT", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_CONTACT_OF_PRESIDENT');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        },
+        {
+          "triggeringElementType": "ITEM", "triggeringElement": "P5_NAME_OF_VILLAGE", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "keypress", "anyActionsFireOnInit": false, actionList: [{
+            "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: function () { // Get the input element
+              var inputField = document.querySelector('#P5_NAME_OF_VILLAGE');
+
+              // Add an input event listener to the input field
+              inputField.addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Remove special characters, but allow letters, numbers, and spaces
+                inputValue = inputValue.replace(/[^a-zA-Z0-9\s]/g, '');
+
+                // Limit input to a maximum of 50 characters
+                inputValue = inputValue.substr(0, 50);
+
+                // Update the input value
+                event.target.value = inputValue;
+              });
+            }, "action": "NATIVE_JAVASCRIPT_CODE"
+          }]
+        }];
+    }
+  </script>
+
+  <script type="text/javascript">
+    apex.session.initTimeouts(900, { "idle_time_ms": 1200000, "life_time_ms": 28496000, "max_idle_time_ms": 1200000 }, '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome', '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome');
+    apex.jQuery(function () {
+      apex.page.init(this, function () {
+        try {
+          (function () {
+            var e = apex.jQuery("#t_MenuNav", apex.gPageContext$);
+            if (e.hasClass("js-addActions")) {
+              apex.actions.addFromMarkup(e);
+            }
+            e.menu({
+              behaveLikeTabs: e.hasClass("js-tabLike"),
+              menubarShowSubMenuIcon: e.hasClass("js-showSubMenuIcons") || null,
+              menubar: true,
+              menubarOverflow: true,
+              callout: e.hasClass("js-menu-callout")
+            });
+          })();
+        } catch (e) { apex.debug.error(e) };
+        apex.item.waitForDelayLoadItems().done(function () {
+          try {
+            (function () {
+              apex.da.initDaEventList();
+              apex.da.init();
+            })();
+            apex.theme42.initializePage.noSideCol();
+
+            apex.page.warnOnUnsavedChanges();
+          } finally {
+            apex.event.trigger(apex.gPageContext$, 'apexreadyend');
+          };
+        });
+      });
+    }); apex.pwa.init({ serviceWorkerPath: '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fsw.js?v=23.2.1-460263366\u0026lang=en' });
+  </script>
+  <script>
+    AOS.init();
+    $(document).on({
+      ajaxStart: function () {
+        $('#preloader').show();
+        $("body").addClass("user_loading");
+      },
+      ajaxStop: function () {
+        $('#preloader').hide();
+        $("body").removeClass("user_loading");
+      }
+    });
+
+    $('#preloader').hide();
+    // Retrieve the encrypted data from localStorage
+    let encryptedDataFromStorage = localStorage.getItem('userDetails');
+    let decryptedData;
+    if (encryptedDataFromStorage) {
+      const secretKey = 'V7gN4dY8pT2xB3kRz';
+      // Decrypt the data: decrypt the string and convert it to UTF-8
+      const bytes = CryptoJS.AES.decrypt(encryptedDataFromStorage, secretKey);
+      decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    } else {
+      console.log('No data found in localStorage');
+    }
+    let userDetails = decryptedData;
+    let userId = '';
+    // Find the element where the name should be displayed
+    var userNameElement = document.querySelector('.t-Button-label');
+    // If user is logged in (i.e., user details exist in localStorage)
+    if (userDetails) {
+      // Parse user details
+      const user = JSON.parse(userDetails);
+      // Update the username in the profile button (if available)
+      if (user && user.name) {
+        userId = user.user_id;
+        userNameElement.textContent = user.name; // or userNameElement.innerText
+      }
+    } else {
+      showErrorToast("Something went wrong");
+
+      sessionStorage.clear();
+      setTimeout(function () {
+        window.location.href = "../index.html";
+      }, 1000);
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const encodedDetails = urlParams.get('details');
+    const decodedDetails = atob(encodedDetails);
+    const details = JSON.parse(decodedDetails);
+    console.log("details", details);
+    let eventId = null;
+    // Function to show a success toast with a dynamic message
+    function showSuccessToast(message) {
+      const toastElement = document.getElementById('successToast');
+      const toastBody = document.getElementById('successMessage');
+
+      // Set the dynamic message
+      toastBody.textContent = message;
+
+      // Initialize and show the toast
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+    // Function to show a error toast with a dynamic message
+    function showErrorToast(message) {
+      const toastElement = document.getElementById('errorToast');
+      const toastBody = document.getElementById('errorMessage');
+
+      // Set the dynamic message
+      toastBody.textContent = message;
+
+      // Initialize and show the toast
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+    var cancelButton = document.getElementById('B70109407285484761477');
+
+    // Add a click event listener to the button
+    cancelButton.addEventListener('click', function () {
+      // Reload the current page
+      window.location.href = 'district-monitoring-report.html';
+    });
+
+
+
+    $(document).ready(function () {
+      $('#P5_PARTICIPANTS').val(details.participants);
+      $('#P5_NUMBER_OF_BULLS').val(details.number_of_bulls);
+      $('#P5_ARENA_LENGTH').val(details.arena_length);
+      $('#P5_ARENA_BREATH').val(details.arena_breath);
+      $('#P5_BULL_ARENA_LENGTH').val(details.bull_arena_length);
+      $('#P5_BULL_ARENA_BREATH').val(details.bull_arena_breath);
+      $('#P5_BULL_ARENA_LENGTH').val(details.bull_arena_length);
+      $('#P5_BULL_EXAMINATION_LENGTH').val(details.bull_examination_length);
+      $('#P5_BULL_EXAMINATION_BREATH').val(details.bull_examination_breath);
+
+      // $('#P5_BULL_ARENA_BREATH').val(details.bull_arena_breath);
+      // $('#P5_EVENT_DATE').val(convertToMMDDYYYY(details.event_date));
+      // $('#P5_COMMITEE_REGISTER_NUMBER').val(details.commitee_register_number);
+      // $('#P5_NAME_OF_ORGANIZATION').val(details.name_of_organization);
+      // $('#P5_ARENA_LENGTH').val(details.name_of_president);
+      // $('#P5_CONTACT_OF_PRESIDENT').val(details.contact_of_president);
+      // $('#P5_MOBILE_OF_PRESIDENT').val(details.mobile_of_president);
+      // $('#P5_NAME_OF_DISTRICT').val(details.name_of_district);
+      // $('#P5_NAME_OF_VILLAGE').val(details.name_of_village);
+      // $('#P5_PINCODE').val(details.pincode);
+
+
+      // $('#requestLetterName').text(details.attach_filename || 'No file chosen');
+      // $('#assuranceBondName').text(details.assurance_bond_attach_filename || 'No file chosen');
+      // $('#insuranceName').text(details.insurance_copy_attach_filename || 'No file chosen');
+      // $('#layoutSketchName').text(details.layout_sketch_attach_filename || 'No file chosen');
+      // $('#previousEventName').text(details.previous_event_attach_filename || 'No file chosen');
+      // $('#panchayatUnionName').text(details.panchayat_union_attach_filename || 'No file chosen');
+      // $('#otherDocsName').text(details.other_docs_attach_filename || 'No file chosen');
+      // $('#uploadPhotoName').text(details.upload_photo_attach_filename || 'No file chosen');
+      // $('#firName').text(details.fir_attach_filename || 'No file chosen');
+
+      $('#districtmonitoringForm').on('submit', async function (e) {
+        debugger
+
+        e.preventDefault();  // Prevent the default form submission behavior
+
+        // Clear previous error messages
+        $('.error-message').remove();
+
+        // Initialize an array to hold validation errors
+        var errors = false;
+
+        // // Validate required fields
+        // validateField('#P5_PARTICIPANTS', 'Please Fill Event Date.');
+        // validateField('#P5_NUMBER_OF_BULLS', 'Please Fill Event Type.');
+        // validateField('#P5_ARENA_LENGTH', 'Please Fill Name Of Organization.');
+        // validateField('#P5_ARENA_BREATH', 'Please Fill Name Of President/Secretary of the Event Organizer.');
+        // validateField('#P5_BULL_ARENA_LENGTH', 'Please Fill Address Of President/Secretary of the Event Organizer.');
+        // validateField('#P5_BULL_ARENA_BREATH', 'Please Fill Mobile Of President/Secretary of the Event Organizer.');
+        // validateField('#P5_BULL_EXAMINATION_LENGTH', 'Please Fill Name Of District.');
+        // validateField('#P5_BULL_EXAMINATION_LENGTH', 'Please Fill Name Of Taluk.');
+
+        // If errors are found, stop form submission
+        if (errors) {
+          showErrorToast("Please fill in all fields.");
+          return;  // Prevent form submission
+        }
+
+        checkFile('#JOINT_MONITORING_REPORT');
+        // Check and process optional file fields
+        let jointMonitoringReportLetter = null;  // Declare insurance variable at the beginning
+
+        if ($('#JOINT_MONITORING_REPORT_input')) {
+          jointMonitoringReportLetter = await processFile('#JOINT_MONITORING_REPORT_input');
+        }
+
+        // Prepare the JSON payload
+        const payload = {
+          EVENT_ID: details.event_id,
+          MONITORING_ID: details.monitoring_id,
+          NAME_OF_PRESIDENT: $('#P5_ARENA_LENGTH').val(),
+          PARTICIPANTS: $('#P5_PARTICIPANTS').val(),
+          NUMBER_OF_BULLS: $('#P5_NUMBER_OF_BULLS').val(),
+          // "PREEVENT_ARRANGEMENTS": "Complete",
+          ARENA_SIZE: $('#P5_ARENA_LENGTH').val(),
+          ARENA_LENGTH: $('#P5_ARENA_LENGTH').val(),
+          ARENA_BREATH: $('#P5_ARENA_BREATH').val(),
+          BULL_RUN_AREA: $('#P5_BULL_ARENA_LENGTH').val(),
+          BULL_ARENA_LENGTH: $('#P5_BULL_ARENA_LENGTH').val(),
+          BULL_ARENA_BREATH: $('#P5_BULL_ARENA_BREATH').val(),
+          BULL_EXAMINATION_AREA_SIZE: $('#P5_BULL_EXAMINATION_LENGTH').val(),
+          BULL_EXAMINATION_LENGTH: $('#P5_BULL_EXAMINATION_LENGTH').val(),
+          BULL_EXAMINATION_BREATH: $('#P5_BULL_EXAMINATION_BREATH').val(),
+          JOIN_MONITORING_COMMITEE_REPORT: jointMonitoringReportLetter && jointMonitoringReportLetter.fileBase64 ? jointMonitoringReportLetter.fileBase64 : null,
+          JOIN_ATTACH_MIMETYPE: jointMonitoringReportLetter && jointMonitoringReportLetter.mimetype ? jointMonitoringReportLetter.mimetype : null,
+          JOIN_ATTACH_FILENAME: jointMonitoringReportLetter && jointMonitoringReportLetter.filename ? jointMonitoringReportLetter.filename : null,
+          JOINT_REPORT_COMMENTS: $('#COMMENTS').val(),
+          USER_ID: 20,
+        };
+        console.log(payload)
+        if (
+          $('#P5_PARTICIPANTS').val() === "" ||
+          $('#P5_NUMBER_OF_BULLS').val() === "" ||
+          $('#P5_ARENA_LENGTH').val() === "" ||
+          $('#P5_ARENA_BREATH').val() === "" ||
+          $('#P5_BULL_ARENA_LENGTH').val() === "" ||
+          $('#P5_BULL_ARENA_BREATH').val() === "" ||
+          $('#P5_BULL_EXAMINATION_LENGTH').val() === "" ||
+          $('#P5_BULL_EXAMINATION_LENGTH').val() === "" ||
+          $('#P5_PARTICIPANTS').val() === "" ||
+          $('#P5_PARTICIPANTS').val() === "" ||
+          $('#COMMENTS').val() === ""
+        ) {
+          showErrorToast('Please Fill All Required Fields');
+        } else {
+          $.ajax({
+            url: `${BASE_API_URL}/mhs_user/mhs_district_monitor_update?user_id=20`,
+            type: 'POST',
+            headers: {
+              'X-App-Key': 'j6ll!k@ttu',
+              'X-App-Name': 'tn jallikattu',
+            },
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function (response) {
+              console.log('Response:', response);
+              showSuccessToast("Updation Successful");
+              setTimeout(function () {
+                window.location.href = 'district-monitoring-report.html';
+              }, 1000);
+            },
+            error: function (xhr, status, error) {
+              console.error('Error:', error);
+              showErrorToast("An error occurred during registration.");
+            }
+          });
+        }
+
+      });
+      // Function to validate a field and display error message
+      function validateField(selector, errorMessage) {
+        if ($(selector).val().trim() === '') {
+          errors = true;
+          // Check if the error message already exists and update it, else append it
+          $(selector + '_error_placeholder').text(errorMessage).css('color', 'red');
+        } else {
+          // Clear the error message if the field is filled
+          $(selector + '_error_placeholder').text('');
+        }
+      }
+      // Function to validate and update the payload for each file input
+      function validateFile(selector, errorMessage) {
+        var fileInput = $(selector).find('input[type="file"]');
+        const validTypes = ['application/pdf', 'image/jpeg', 'image/jpg'];
+        const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+        var file = fileInput[0].files[0];
+
+        // Check if a file has been selected
+        if (!file) {
+          errors = true;
+          $('#' + selector.replace('#', '') + '_error_placeholder').text(errorMessage).css('color', 'red');
+        } else {
+          // Check file type
+          if (!validTypes.includes(file.type)) {
+            errors = true;
+            $('#' + selector.replace('#', '') + '_error_placeholder').text('Invalid file type. Supported types are .pdf, .jpg, .jpeg.').css('color', 'red');
+            return;
+          }
+
+          // Check file size
+          if (file.size > maxSize) {
+            errors = true;
+            $('#' + selector.replace('#', '') + '_error_placeholder').text("File size exceeds the 2MB limit.").css('color', 'red');
+            return;
+          }
+        }
+      }
+
+      // Function to validate and update the payload for each file input
+      function checkFile(selector) {
+        var fileInput = $(selector).find('input[type="file"]');
+        const validTypes = ['application/pdf', 'image/jpeg', 'image/jpg'];
+        const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+        var file = fileInput[0].files[0];
+
+        // Check if a file has been selected
+        if (file) {
+          // Check file type
+          if (!validTypes.includes(file.type)) {
+            errors = true;
+            $('#' + selector.replace('#', '') + '_error_placeholder').text('Invalid file type. Supported types are .pdf, .jpg, .jpeg.').css('color', 'red');
+            return;
+          }
+
+          // Check file size
+          if (file.size > maxSize) {
+            errors = true;
+            $('#' + selector.replace('#', '') + '_error_placeholder').text("File size exceeds the 2MB limit.").css('color', 'red');
+            return;
+          }
+        }
+      }
+      function processFile(selector) {
+        return new Promise((resolve, reject) => {
+          var fileInput = $(selector)[0];
+          var file = fileInput.files[0];
+          if (file === undefined) showErrorToast('Please upload all the required files');
+          if (file) {
+            const reader = new FileReader();
+            const fileData = {};
+
+            reader.onload = function (event) {
+              // File processed as Base64 string
+              fileData.fileBase64 = event.target.result.split(',')[1];
+              fileData.mimetype = file.type;
+              fileData.filename = file.name;
+
+              resolve(fileData); // Resolve the promise with fileData
+            };
+
+            reader.onerror = function (error) {
+              reject(error); // Reject the promise in case of error
+            };
+
+            reader.readAsDataURL(file); // Read the file as a data URL (Base64)
+          }
+        });
+      }
+      // Function to format the date in MM/DD/YYYY to YYYY-MM-DD
+      function formatDate(dateString) {
+        // Create a new Date object from the provided MM/DD/YYYY date string
+        var dateObj = new Date(dateString);
+
+        // Check if the date is valid
+        if (isNaN(dateObj.getTime())) {
+          showErrorToast("Event Date / நிகழ்வு தேதி must be a valid date, for example 01/01/2024.");
+          return null; // Return null if the date is invalid
+        }
+
+        // Return the date in the YYYY-MM-DD format
+        return dateObj.toISOString().split('T')[0]; // Get only the date part (YYYY-MM-DD)
+      }
+      // Function to convert YYYY-MM-DD to MM/DD/YYYY
+      function convertToMMDDYYYY(dateString) {
+        var dateParts = dateString.split('-'); // Split the string by '-'
+
+        if (dateParts.length !== 3) {
+          showErrorToast("Invalid date format. Expected format is YYYY-MM-DD.");
+          return null;
+        }
+
+        // Extract year, month, and day from the split date
+        var year = dateParts[0];
+        var month = dateParts[1];
+        var day = dateParts[2];
+
+        // Return the date in MM/DD/YYYY format
+        return month + '/' + day + '/' + year;
+      }
+    });
+  </script>
+  <script src="../assets/js/changePassword.js"></script>
+  <link rel="stylesheet" href="../assets/css/popUp.css" type="text/css" />
+</body>
+
+</html>

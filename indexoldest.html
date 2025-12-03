@@ -1,0 +1,717 @@
+
+<!DOCTYPE html>
+<html class="no-js  page-9999 app-JLIKTU" lang="en" >
+<head>
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>Jallikattu - Log In</title>
+<link rel="stylesheet" href="https://www.jallikattu.tn.gov.in/i/app_ui/css/Core.min.css?v=23.2.1" type="text/css" />
+<link rel="stylesheet" href="https://www.jallikattu.tn.gov.in/i/app_ui/css/Theme-Standard.min.css?v=23.2.1" type="text/css" />
+
+  <!-- <link rel="stylesheet" href="https://www.jallikattu.tn.gov.in/i/libraries/font-apex/2.2.1/css/font-apex.min.css?v=23.2.1" type="text/css" /> -->
+<link rel="stylesheet" href="https://www.jallikattu.tn.gov.in/i/themes/theme_42/23.1/css/Core.min.css?v=23.2.1" type="text/css" />
+
+  <link rel="stylesheet" href="https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/static/v1667/aos.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/static/v1667/custom.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/static/v1667/custom.css" type="text/css" />
+<link rel="stylesheet" href="assets/css/jquery-ui.css">
+
+  <link rel="stylesheet" href="https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/theme/42/v65/7037368453999675451.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/font-apex.min55fa.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/font-apex.min.css" type="text/css">
+<style>
+  .a-Icon:before {
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block; 
+    font-family: 'FontApex' !important;
+    font-size: var(--a-icon-size, 16px);
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: none;
+    vertical-align: inherit;
+}
+  @font-face {
+       font-family: 'FontApex';
+      src: url('assets/font/apex-5-icon-font.woff2') format('woff2'),
+      url('assets/font/apex-5-icon-font.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;  
+      } 
+      @font-face { 
+      font-family: 'Font-APEX'; 
+      src: url('assets/fonts/Font-APEX-Small.woff2') format('woff2'),
+      url('assets/fonts/Font-APEX-Small.woff') format('woff'),
+      url('assets/fonts/Font-APEX-Large.woff2') format('woff2'),
+      url('assets/fonts/Font-APEX-Large.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      }  
+  .t-Form-fieldContainer.is-required .t-Form-label:after, .t-Form-fieldContainer.is-required .t-Form-label:before {
+    content: "\e058";
+    /*font-family: apex-5-icon-font !important;*/
+    font-family: 'FontApex' !important;
+    color: #cb1100;
+}
+      .cancel-btn {
+      background: #fff;
+      color: #000 !important;
+      }
+      .cancel-btn .t-Button-label {
+      color: #000 !important;
+      }
+      .t-ButtonRegion-wrap {
+      display: flex !important;
+      justify-content: space-between;
+      width: 100%;
+      } 
+      .ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle {
+          background: #fff;
+    border: 0 !important;
+      }
+      #modal label {
+        color: #fff !important;
+      } 
+      .create-btn {
+      background: #056ac8 !important;
+      }
+      /* Modal styles */
+      #modal {
+      display: none; /* Hidden by default */
+      padding: 20px;
+      background: #fff;
+      border: 0;
+      width: 720px;
+      box-shadow: none;
+      border-radius: 30px; 
+          background-color: #002a52;
+    color: #fff !important;
+        margin-top: 0.5rem; 
+      }
+      .close-button {
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+      float: right;
+      }
+    </style>
+    <style type="text/css">
+      /*eye-password*/
+      .field-icon {
+      right : 5px;
+      margin-left: -25px;
+      margin-top: 2px;
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+      font-weight: 700;
+      }
+      #P9999_CAPT_DISPLAY
+      {
+      font-size:25px;
+      }
+      .captchaa
+      {
+      font-size: 22px;
+      font-style: italic;
+      font-family: cursive;
+      color: #ffffff;
+      border-radius: 2px;
+      background: url('r/wswdwwb/118/files/static/v221/Captcha_bg2.png');
+      cursor: not-allowed;
+      opacity: 1;
+      }
+    </style>
+  
+  <style type="text/css">
+.bg{
+        background-image: url(https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/static/v1667/bg2.jpg);
+}
+p{
+        padding: 2% 10%;
+}
+.container{
+        margin-top: 5em;
+}
+
+.t-Login-logo{
+        background-color: rgba(240, 248, 255, 0);
+}
+.t-Region-header{
+        display: none;
+}
+#P9999_CAPTCHA_CONTAINER{
+        margin-top: 10px;
+}
+.t-Form-itemText div{
+        pointer-events: none;
+        user-select: none;
+        text-decoration: none;
+        font-size: xx-small;
+        font-style: italic;
+        color: grey;
+}
+#B75035347995564304347{
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--shade2);
+        transition: all 0.1s ease-in-out;
+}
+#B75035347995564304347:hover{
+        font-weight: 700;
+        text-decoration: underline;
+        color: var(--shade3);
+}
+#B70087189380289908109{
+        transition: all 0.2s ease-in-out;
+}
+
+.ui-dialog, .ui-corner-all, .ui-widget, .ui-widget-content, .ui-front, .ui-dialog--apex, .t-Dialog-page--standard, .ui-draggable{
+border-radius: 20px;
+}
+#B70087189380289908109{
+        margin-top: 20px;
+}
+.foot .t-Region-header{
+        display: none;
+}
+.sub-footer .t-Region-header{
+        display: none;
+}
+.about .t-Region-header{
+        display: none;
+}
+.about{
+        margin-top: 8em;
+}
+.t-Region, .t-Region-header, .t-Tabs, .a-Tabs-panel, .a-IRR-toolbar {
+        background-color: rgba(240, 248, 255, 0);
+}
+#R75780501990131886113{
+        background-image: linear-gradient(rgba(255, 255, 255, 0),rgb(255, 255, 255) 10%, rgb(255, 255, 255)1%)!important;
+        border: none;
+        border-width: 0cm;
+}
+
+.foot p, .foot div {
+        color: var(--background);
+
+}
+/*eye-password*/
+.field-icon {
+    right : 5px;
+    margin-left: -25px;
+    margin-top: 2px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    font-weight: 700;
+    }
+
+/* original sign up btn */
+#B70588027595942648308{
+    display: none;
+}
+
+
+/* about content in log page */
+#R75782202361720498807{
+        background-image: linear-gradient(rgba(255, 255, 255, 0),rgb(255, 255, 255) 10%, rgb(255, 255, 255)1%)!important;
+        border: none;
+        border-width: 0cm;
+}
+</style>
+
+  <link rel="apple-touch-icon" href="r/wsjallikattu/110/files/static/v1667/icons/app-icon-192.png" /><link rel="icon" href="r/wsjallikattu/110/files/static/v1667/icons/app-icon-32.png" />
+  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Expires" content="-1" /><meta http-equiv="Cache-Control" content="no-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body class="t-PageBody t-PageBody--hideLeft t-PageBody--hideActions no-anim t-PageTemplate--standard   apex-top-nav apex-icons-fontapex apex-theme-vita-copy-1"   id="t_PageBody">
+<!-- <a href="#main" id="t_Body_skipToContent">Skip to Main Content</a> -->
+<!-- <div id="ferris-wheel"><img src="r/wsjallikattu/110/files/static/v1667/ferris_wheel.png"></div> -->
+<img src="https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/static/v1667/bg2.jpg" class="bg">
+<!-- data-aos="fade-down" data-aos-delay="2000" -->
+<!-- <img class="stunt" src="r/wsjallikattu/110/files/static/v1667/stunt1"> -->
+<img class="moving-clouds" src="https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/static/v1667/smoke.png">
+<form role="none" action="wwv_flow.accept?p_context=jliktu/login/11328588642162" method="post" name="wwv_flow" id="wwvFlowForm" data-oj-binding-provider="none" novalidate  autocomplete="off">
+<input type="hidden" name="p_flow_id" value="110" id="pFlowId" /><input type="hidden" name="p_flow_step_id" value="9999" id="pFlowStepId" /><input type="hidden" name="p_instance" value="11328588642162" id="pInstance" /><input type="hidden" name="p_page_submission_id" value="124992807692385764262951369092213761438" id="pPageSubmissionId" /><input type="hidden" name="p_request" value="" id="pRequest" /><input type="hidden" name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden" value="jliktu&#x2F;login&#x2F;11328588642162" id="pContext" /><input type="hidden" value="124992807692385764262951369092213761438" id="pSalt" />
+
+<div class="t-Body">
+  
+  <div class="t-Body-main">
+    <div class="t-Body-title" id="t_Body_title"></div>
+    <div class="t-Body-content" id="t_Body_content">
+      <main id="main" class="t-Body-mainContent">
+        <span id="APEX_SUCCESS_MESSAGE" data-template-id="137210702519276482_S" class="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE" data-template-id="137210702519276482_E" class="apex-page-error u-hidden"></span>
+        <div class="t-Body-fullContent"><div class="container">
+<div class="row ">
+<div class="col col-6 apex-col-auto col-start" ><div id="R75678185472250545592" class=""  role="region" aria-label="Department&#x20;name" ><div class="dept-title">
+        <!-- <img id="log-tnlogo" src="r/wsjallikattu/110/files/static/v1667/TN_logo1.png"> -->
+    <h2 data-aos="zoom-in-down" data-aos-duration="500" class="text-middle">Directorate of Animal Husbandry and Veterinary Services</h2>
+<h1 data-aos="fade-down" data-aos-duration="800" data-aos-delay="800">JALLIKATTU IN TAMIL NADU</h1>
+<img class="stunt" src="assets/img/bg3.png">
+</div></div></div><div class="col col-6 apex-col-auto col-end" ><div class="t-Login-region t-Form--stretchInputs t-Form--labelsAbove logbox" data-aos="fade-left" id="R70091118118496546091"  role="region" aria-labelledby="R70091118118496546091_heading" >
+   <div class="sign_option">
+      <a>Sign in</a>
+      <a id="open-modal-btn">Sign up</a>
+      <div class="hover-me"></div>
+  </div>
+
+  <div class="t-Login-header">
+      <img class="t-Login-logo" src="https://www.jallikattu.tn.gov.in/ords/r&#x2F;wsjallikattu&#x2F;110&#x2F;files&#x2F;static&#x2F;v1667&#x2F;right.png" alt="" data-app-icon />
+    <span class="t-Login-logo " aria-hidden="true"></span>
+    <h2 class="t-Login-title" id="R70091118118496546091_heading" data-apex-heading>JALLIKATTU IN TAMIL NADU</h2>
+  </div>
+  <div class="t-Login-body"><div class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-placeholder apex-item-wrapper--number-field apex-item-wrapper--has-icon" id="P9999_USERNAME_CONTAINER"><div class="t-Form-labelContainer col col-null">
+  <label for="P9999_USERNAME" id="P9999_USERNAME_LABEL" class="t-Form-label">Enter Mobile Number  </label>
+</div><div class="t-Form-inputContainer col col-null">
+  <div class="t-Form-itemWrapper"><input type="text"  id="P9999_USERNAME" name="P9999_USERNAME" required placeholder="Moblie&#x20;Number" class="number_field&#x20;apex-item-text&#x20;apex-item-number&#x20;apex-item-has-icon" value="" size="40" maxlength="10" data-min="5" inputmode="decimal" style="text-align:start" /><span class="apex-item-icon fa&#x20;fa-user" aria-hidden="true"></span>
+  </div>
+  <div class="t-Form-itemAssistance">
+    <span id="P9999_USERNAME_error_placeholder" class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+  </div>
+  
+</div></div><div class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--password apex-item-wrapper--has-icon" id="P9999_PASSWORD_CONTAINER"><div class="t-Form-labelContainer col col-null">
+  <label for="P9999_PASSWORD" id="P9999_PASSWORD_LABEL" class="t-Form-label">Password  </label>
+</div><div class="t-Form-inputContainer col col-null">
+  <div class="t-Form-itemWrapper"><input type="password" name="P9999_PASSWORD" size="40" maxlength="100" value=""  id="P9999_PASSWORD" class="password&#x20;apex-item-text&#x20;apex-item-has-icon" onchange="htmldb_item_change(this)"  onkeydown="if (event.keyCode == 13) document.getElementById('LOGIN').focus();"  onkeypress="return apex.submit({request:'P9999_PASSWORD',submitIfEnter:event})"  /><span class="apex-item-icon fa&#x20;fa-key" aria-hidden="true"></span><span class="t-Form-itemText t-Form-itemText--post"><i id="pass-status" class="fa fa-eye field-icon" aria-hidden="true" onclick="viewPassword()"></i></span>
+  </div>
+  <div class="t-Form-itemAssistance">
+    <span id="P9999_PASSWORD_error_placeholder" class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+  </div>
+  
+</div></div><button onclick="javascript:apex.theme42.dialog(&#x27;\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fforget-password?session=11328588642162\u0026dialogCs=eMmcZPxVJ_kUEevdjJYQevuDz1m1Xj5AlXmb9-lHIWsIce6wOUPoZPICXoER8foZEQNSg2RSiKrEXmVqH0nMZg&#x27;,{title:&#x27;Forget Password&#x27;,h:&#x27;auto&#x27;,w:&#x27;720&#x27;,mxw:&#x27;960&#x27;,modal:true,dialog:null,dlgCls:&#x27;t-Dialog-page--standard &#x27;+&#x27;&#x27;},&#x27;&#x27;,&#x27;#B75039278494635942332&#x27;)" class="t-Button t-Button--link" type="button"  id="B75039278494635942332"><span class="t-Button-label">Forget Password?</span></button><div class="t-Form-fieldContainer t-Form-fieldContainer--hiddenLabel rel-col  apex-item-wrapper apex-item-wrapper--single-checkbox" id="P9999_REMEMBER_CONTAINER"><div class="t-Form-labelContainer t-Form-labelContainer--hiddenLabel col col-null">
+<label for="P9999_REMEMBER" id="P9999_REMEMBER_LABEL" class="t-Form-label u-VisuallyHidden">Remember me</label>
+</div><div class="t-Form-inputContainer col col-null"><div class="t-Form-itemWrapper"><div class="apex-item-single-checkbox"><input type="hidden" name="P9999_REMEMBER" id="P9999_REMEMBER_HIDDENVALUE" value="N"><input type="checkbox"  id="P9999_REMEMBER" aria-label="Remember&#x20;me" data-unchecked-value="N" value="Y" /></div></div><span id="P9999_REMEMBER_error_placeholder" class="a-Form-error" data-template-id="70091002976933546032_ET"></span></div></div><div class="t-Form-fieldContainer rel-col text-middle  t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only" id="P9999_CAPT_CONTAINER"><div class="t-Form-labelContainer col col-null">
+<label for="P9999_CAPT" id="P9999_CAPT_LABEL" class="t-Form-label">Enter the number as shown in image:</label>
+</div>
+<div class="t-Form-inputContainer col col-null"><div class="t-Form-itemWrapper"><input type="hidden" id="P9999_CAPT" name="P9999_CAPT" value="616176"><input type="hidden" data-for="P9999_CAPT" value="y0IxQ7No5cA2CJn5To5X0-lqMYdSgT2M2imFA1JFXLMxjumo95Y2xEB6jX3Mm1UOAlxuPuy3NIFSJj1l0P-MQQ"><span id="P9999_CAPT_DISPLAY"  class="display_only&#x20;apex-item-display-only&#x20;capt-cha"  data-escape="true">616176</span></div><span id="P9999_CAPT_error_placeholder" class="a-Form-error" data-template-id="70091003022793546032_ET"></span></div></div><div class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field" id="P9999_CAPTCHA_CONTAINER"><div class="t-Form-labelContainer col col-null">
+  <label for="P9999_CAPTCHA" id="P9999_CAPTCHA_LABEL" class="t-Form-label">Enter Captcha  </label>
+</div><div class="t-Form-inputContainer col col-null">
+  <div class="t-Form-itemWrapper"><input type="text"  id="P9999_CAPTCHA" name="P9999_CAPTCHA" required class="text_field&#x20;apex-item-text" value="" size="30"  />
+  </div>
+  <div class="t-Form-itemAssistance">
+    <span id="P9999_CAPTCHA_error_placeholder" class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+  </div>
+  
+</div></div></div>
+  <div class="t-Login-buttons"><button onclick="apex.submit({request:&#x27;LOGIN&#x27;,validate:true});" class="t-Button t-Button--hot " type="button"  id="signin"><span class="t-Button-label">Sign In</span></button><button onclick="javascript:apex.theme42.dialog(&#x27;\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002F21?clear=21\u0026session=11328588642162\u0026cs=36eTp3F3CGIYYSVTyIp8YIsx1lStD8O-pB79ZtRYRa8DAusV0in8oyQMh85_X-rU5xW6xLrPoUXDMUwIJH4gQOA\u0026dialogCs=Z8RobLyMu2c1WDuCyFL_yWrqh_1oAA2-j6ZBJFtewXiajYuJBL0TA7BJ3bPOOW5tQ74jlVzYcW68qSFd9w_z2Q&#x27;,{title:&#x27;Create your new account for Jallikattu&#x27;,h:&#x27;auto&#x27;,w:&#x27;720&#x27;,mxw:&#x27;960&#x27;,modal:true,dialog:null,dlgCls:&#x27;t-Dialog-page--standard &#x27;+&#x27;&#x27;},&#x27;&#x27;,&#x27;#signup&#x27;)" class="t-Button t-Button--hot t-Button--success" type="button"  id="signup"><span class="t-Button-label">Sign Up</span></button></div>
+  <div class="t-Login-links"></div>
+  <div class="t-Login-subRegions"></div>
+</div></div>
+</div><div class="row ">
+<div class="col col-12 apex-col-auto col-start col-end" ><div class="t-Region t-Region--scrollBody" id="about-login"  role="region" aria-label="New" >
+ <div class="t-Region-header">
+  <div class="t-Region-headerItems t-Region-headerItems--title">
+    <span class="t-Region-headerIcon"><span class="t-Icon " aria-hidden="true"></span></span>
+    <h2 class="t-Region-title" id="about-login_heading" data-apex-heading>New</h2>
+  </div>
+  <div class="t-Region-headerItems t-Region-headerItems--buttons"><span class="js-maximizeButtonContainer"></span></div>
+ </div>
+ <div class="t-Region-bodyWrap">
+   <div class="t-Region-buttons t-Region-buttons--top">
+    <div class="t-Region-buttons-left"></div>
+    <div class="t-Region-buttons-right"></div>
+   </div>
+   <div class="t-Region-body">
+     <div class="t-Region-orderBy"></div>
+     <h3 class="text-middle">About the Department</h3>
+<p data-aos="fade-down" class="text-justify aboutus" > 
+    <!-- Jallikkattu is a traditional and cultural festival and is significant to the people of Tamil Nadu. Conduct of
+    Jallikattu events usually begin during Pongal (Harvest festival) and are subsequently conducted during temple
+    festivals. People of Tamil Nadu without any discrimination to caste, creed celebrate Jallikattu as a traditional
+    festival. -->
+    <!-- Jallikattu, a traditional event of rural people in Tamil Nadu, which is conducted during Pongal festival, has a
+    5,000-year-old tradition and a history associated with the socio-cultural ethos of Tamil Nadu. Jallikattu events are to
+    be conducted only in those places that are notified in the State Gazette. The conduct of each Jallikattu event is
+    subject to the Tamil Nadu Prevention of Cruelty to Animals (Conduct of Jallikattu) Rules, 2017.The Department ensures
+    compliance to the Prevention of Cruelty to Animals (Tamil Nadu amendment) Act, 2017 through adequate precautionary
+    measures. While preserving the cultural sentiments of Tamil Nadu, it is ensured that the bulls are not subjected to
+    unnecessary pain and suffering during the events. -->
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Animal Husbandry Department in Tamil Nadu, is responsible for the implementation of various programs and
+    schemes related to animal husbandry, veterinary services, and dairy development in the state. The department works
+    towards improving the health and productivity of livestock, promoting sustainable farming practices, and supporting the
+    livelihoods of farmers involved in animal husbandry. <br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The Department in Tamil Nadu plays a vital role in livestock management. It focuses on providing
+    veterinary healthcare services to prevent and control diseases. Additionally, the department implements Livestock
+    Development Programs, aiming to enhance productivity through improved breeding, nutrition, and management practices.
+    Ensuring animal welfare is a priority, with the enforcement of relevant laws. Disease control and surveillance measures
+    are employed to monitor and curb the spread of diseases. The department actively supports dairy farming by offering
+    technical assistance, financial aid, and training. Through Livestock Extension Services, it educates farmers on modern
+    and scientific husbandry methods. Lastly, the department implements various government schemes to support the welfare of
+    farmers in animal husbandry.
+    </p>
+
+
+<h3 class="text-middle">Acts and Rules</h3>
+<div class="card-cont">
+<a class="pdf-btn" target="blank" href="r/wsjallikattu/110/files/static/v1667/2009TN27.pdf"><i class="fa fa-file-pdf-o"></i> Tamil Nadu Regulation of Jallikattu Act, 2009</a>
+<a class="pdf-btn" target="blank" href="r/wsjallikattu/110/files/static/v1667/ACT_1_of_2017_TN.pdf"><i class="fa fa-file-pdf-o"></i> The Prevention of Cruelty to Animals (Tamil Nadu Amendment) Act, 2017</a>
+<!-- <a class="pdf-btn" target="blank" href="r/wsjallikattu/110/files/static/v1667/GO_27.pdf">G.O1</a> -->
+<a class="pdf-btn" target="blank" href="r/wsjallikattu/110/files/static/v1667/Jallikattu_G.O.7.pdf"><i class="fa fa-file-pdf-o"></i> Tamil Nadu Prevention of Cruelty to Animals (Conduct of Jallikattu) Rules, 2017</a>   
+<a class="pdf-btn" target="blank" href="r/wsjallikattu/110/files/static/v1667/SOP24.pdf"><i class="fa fa-file-pdf-o"></i> Standard Operating Procedures for Jallikattu, 2024</a>   
+<a class="pdf-btn" target="blank" href="r/wsjallikattu/110/files/static/v1667/insurance.pdf"><i class="fa fa-file-pdf-o"></i> Government letter on Insurance coverage, 2023</a>   
+</div>
+     
+   </div>
+   <div class="t-Region-buttons t-Region-buttons--bottom">
+    <div class="t-Region-buttons-left"></div>
+    <div class="t-Region-buttons-right"></div>
+   </div>
+ </div>
+</div>
+</div>
+</div>
+</div></div>
+        <div class="t-Body-contentInner"></div>
+      </main>
+      <footer class="t-Footer" id="t_Footer" role="contentinfo">
+        <div class="t-Footer-body">
+                        <div class="sub-footer row text-middle">
+                        <div class="col-6">
+                        <h2>Department of Animal Husbandry and Veterinary Services</h2>
+                        <p>No.571, Veterinary Hospital Campus, Anna salai, Fanepet, Nandanam, Chennai, Tamil Nadu 600035</p>
+  <!--<button id="reset">Reset</button>--><br>
+                        </div>
+                        <div class="col-6"><iframe id="Gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.1700933703687!2d80.2324892!3d13.024837999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267aa04cbbadb%3A0x2c6b12093bf36178!2sDirectorate%20of%20Animal%20Husbandry%20and%20Veterinary%20Services!5e0!3m2!1sen!2sin!4v1699275489453!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><br>
+                        </div></div>
+          <div class="t-Footer-content"></div>
+          <div class="t-Footer-apex">
+            <div class="t-Footer-version">Release 1.0</div>
+            <div class="t-Footer-customize"></div>
+            
+            <div class="row">
+    <div class="col-6"><p class="text-center"><img class="footer-logo" src="https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/static/v1667/right.png"><br>Content owned by Department of Animal Husbandry and Veterinary Services</p></div>
+    <div class="col-6"><p class="text-center"><img class="footer-logo" src="https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/static/v1667/tnegalogo.png"><br>Designed and Developed by Tamil Nadu e-Governance Agency</p></div>
+    </div>
+          </div>
+        </div>
+        <div class="t-Footer-top">
+          <a href="#top" class="t-Footer-topButton" id="t_Footer_topButton" title="Start of page" aria-label="Start of page"><span class="a-Icon icon-up-chevron" aria-hidden="true"></span></a>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+<div class="t-Body-inlineDialogs" id="t_Body_inlineDialogs"></div><input type="hidden" id="pPageFormRegionChecksums" value="&#x5B;&#x5D;">
+<input type="hidden" id="pPageItemsRowVersion" value="" /><input type="hidden" id="pPageItemsProtected" value="UDk5OTlfQ0FQVA&#x2F;M-X5o0kgXtRs5uAMD-4-mpQKzBsGxJ1ZZchW575XrAZQd-C-zyIiqCaAKqj3vLV-Zm8UJWnW3oz0f_gPDCWfkA" /></form>
+
+
+<!-- Modal Structure -->
+    <div id="modal" title="Create your new account for Jallikattu">
+    <!-- <span class="close-button">✖</span> -->
+    <div class="container">
+  <div class="row ">
+    <div class="col col-6 apex-col-auto col-start">
+      <div class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field" id="P21_NAME_CONTAINER">
+        <div class="t-Form-labelContainer col col-2">
+          <label for="P21_NAME" id="P21_NAME_LABEL" class="t-Form-label">Name  </label>
+        </div>
+        <div class="t-Form-inputContainer col col-4">
+          <div class="t-Form-itemWrapper"><input type="text" id="P21_NAME" name="P21_NAME" class="text_field apex-item-text" value="" size="60" maxlength="1000">
+          </div>
+          <div class="t-Form-itemAssistance">
+            <span id="P21_NAME_error_placeholder" class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+            <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-6 apex-col-auto col-end">
+      <div class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--select-list" id="P21_ROLE_CONTAINER">
+        <div class="t-Form-labelContainer col col-2">
+          <label for="P21_ROLE" id="P21_ROLE_LABEL" class="t-Form-label">User Type  </label>
+        </div>
+        <div class="t-Form-inputContainer col col-4">
+          <div class="t-Form-itemWrapper">
+            <select id="P21_ROLE" name="P21_ROLE" required="" class="selectlist apex-item-select" data-native-menu="false" size="1">
+              <option value="" selected="selected">- Select -</option>
+              <option value="Event Organizer">Event Organizer</option>
+              <option value="Participants">Participants</option>
+              <option value="Bull Registration">Bull Registration</option>
+            </select>
+          </div>
+          <div class="t-Form-itemAssistance">
+            <span id="P21_ROLE_error_placeholder" class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+            <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col col-6 apex-col-auto col-start">
+      <div class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field" id="P21_EMAIL_CONTAINER">
+        <div class="t-Form-labelContainer col col-2">
+          <label for="P21_EMAIL" id="P21_EMAIL_LABEL" class="t-Form-label">Email  </label>
+        </div>
+        <div class="t-Form-inputContainer col col-4">
+          <div class="t-Form-itemWrapper"><input type="email" id="P21_EMAIL" name="P21_EMAIL" class="text_field apex-item-text" value="" size="60" maxlength="1000" data-text-case="LOWER">
+          </div>
+          <div class="t-Form-itemAssistance">
+            <span id="P21_EMAIL_error_placeholder" class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+            <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" name="P21_GENDER" id="P21_GENDER" value="">
+    </div>
+    <div class="col col-6 apex-col-auto col-end">
+      <div class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--password apex-item-wrapper--has-icon" id="P21_PASSWORD_CONTAINER">
+        <div class="t-Form-labelContainer col col-2">
+          <label for="P21_PASSWORD" id="P21_PASSWORD_LABEL" class="t-Form-label">Password  </label>
+        </div>
+        <div class="t-Form-inputContainer col col-4">
+          <div class="t-Form-itemWrapper"><input type="password" name="P21_PASSWORD" size="60" maxlength="1000" value="" id="P21_PASSWORD" required="" class="password apex-item-text apex-item-has-icon" onchange="htmldb_item_change(this)" onkeydown="if (event.keyCode == 13) document.getElementById('LOGIN').focus();" onkeypress="return apex.submit({request:'P21_PASSWORD',submitIfEnter:event})"><span class="apex-item-icon fa fa-key" aria-hidden="true"></span><span class="t-Form-itemText t-Form-itemText--post"><i id="pass-status" class="fa fa-eye field-icon" aria-hidden="true" onclick="viewPassword()">
+            </i></span>
+          </div>
+          <div class="t-Form-itemAssistance">
+            <span id="P21_PASSWORD_error_placeholder" class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+            <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col col-6 apex-col-auto col-start">
+      <div class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--number-field" id="P21_MOBILE_CONTAINER">
+        <div class="t-Form-labelContainer col col-2">
+          <label for="P21_MOBILE" id="P21_MOBILE_LABEL" class="t-Form-label">Mobile  </label>
+        </div>
+        <div class="t-Form-inputContainer col col-4">
+          <div class="t-Form-itemWrapper"><input type="text" id="P21_MOBILE" name="P21_MOBILE" required="" class="number_field apex-item-text apex-item-number" value="" size="30" maxlength="10" data-min="6000000000" data-max="9999999999" inputmode="decimal" style="text-align:start">
+          </div>
+          <div class="t-Form-itemAssistance">
+            <span id="P21_MOBILE_error_placeholder" class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+            <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-6 apex-col-auto col-end"><button onclick="void(0);" class="t-Button t-Button--warning" type="button" id="B74283066139498621434"><span class="t-Button-label">Send OTP</span></button></div>
+  </div>
+  <div class="row ">
+    <div class="col col-6 apex-col-auto col-start">
+      <div class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field" id="P21_OTP_NUMBER_CONTAINER">
+        <div class="t-Form-labelContainer col col-2">
+          <label for="P21_OTP_NUMBER" id="P21_OTP_NUMBER_LABEL" class="t-Form-label">OTP Number  </label>
+        </div>
+        <div class="t-Form-inputContainer col col-4">
+          <div class="t-Form-itemWrapper"><input type="text" id="P21_OTP_NUMBER" name="P21_OTP_NUMBER" class="text_field apex-item-text send_otp" onkeypress="return isAmountKey(event)" value="" size="30" maxlength="6">
+          </div>
+          <div class="t-Form-itemAssistance">
+            <span id="P21_OTP_NUMBER_error_placeholder" class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+            <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-6 apex-col-auto col-end"><button onclick="void(0);" class="t-Button is-disabled apex_disabled" type="button" id="VO" disabled=""><span class="t-Button-label">Submit OTP</span></button><input type="hidden" name="P21_OTP_FLAG" id="P21_OTP_FLAG" value=""></div>
+  </div>
+</div>
+    </div>
+
+<script>
+var apex_img_dir = "\u002Fi\u002F";
+var apex = {env: {APP_USER: "nobody",APP_ID: "110",APP_PAGE_ID: "9999",APP_SESSION: "11328588642162",APP_FILES: "r\u002Fwsjallikattu\u002F110\u002Ffiles\u002Fstatic\u002Fv1667\u002F",WORKSPACE_FILES: "r\u002Fwsjallikattu\u002Ffiles\u002Fstatic\u002Fv1\u002F",APEX_VERSION: "23.2.1",APEX_BASE_VERSION: "23.2"},
+libVersions:{ckeditor5:"36.0.0",cropperJs:"1.5.13",domPurify:"3.0.5",fullcalendar:"6.1.8",hammer:"2.0.8",jquery:"3.6.4",jqueryUi:"1.13.2",maplibre:"2.4.0",markedJs:"5.1.2",prismJs:"1.29.0",oraclejet:"15.0.7",tinymce:"6.7.1",turndown:"7.1.1",monacoEditor:"0.32.1",lessJs:"4.1.3"}};
+</script>
+<script src="https://www.jallikattu.tn.gov.in/i/libraries/apex/minified/desktop_all.min.js?v=23.2.1"></script>
+<!-- <script src="wwv_flow.js_messages?p_app_id=110&p_lang=en&p_version=23.2.1-460263366"></script> -->
+
+<script type="text/javascript">
+apex.da.initDaEventList = function(){
+apex.da.gEventList = [
+{"triggeringElementType":"BUTTON","triggeringButtonId":"B73583578229039991421","bindType":"bind","executionType":"IMMEDIATE","bindEventType":"click","anyActionsFireOnInit":true,actionList:[{"eventResult":true,"executeOnPageInit":false,"stopExecutionOnError":true,javascriptFunction:function (){ var lv_content;
+  var lv_template_id='1007224235798722296';
+  var lv_entity_id='1301157259712022912';
+  var lv_api_key='bGqBNbIp';
+  var lv_sender_id='TNGOVT';
+  var lv_url;
+  /*var lv_otp_number='72453';*/
+    var lv_otp_number = apex.item( "P9999_PASSWORD" ).getValue();
+  var lv_mobile_number='91'+apex.item( "P9999_USERNAME" ).getValue();
+    if(lv_mobile_number == '0' || null)
+    {
+        apex.message.showErrors("Please Enter your Mobile Number.")
+    }
+  else{
+  lv_content='Your OTP to Verify Your account is: ' +lv_otp_number +' - Tamil Nadu e-Governance Agency.';
+  lv_url='https://tmegov.onex-aura.com/api/sms?key='+lv_api_key+'&to=' +lv_mobile_number +'&from=' +lv_sender_id +'&body=' +lv_content +'&entityid=' +lv_entity_id +'&templateid=' +lv_template_id;
+
+$.ajax({ type: 'GET', url: lv_url, 
+         dataType: "html", 
+         success: function(data, textStatus, jqXHR) 
+         {apex.message.showPageSuccess("OTP has been sent to your Mobile Number."); } });
+    }
+},"action":"NATIVE_JAVASCRIPT_CODE"},{"eventResult":true,"executeOnPageInit":false,"stopExecutionOnError":true,javascriptFunction:function (){ apex.item( "P9999_OTP_FLAG" ).setValue ('Y');
+
+var lv_mobile_number = apex.item( "P9999_USERNAME" ).getValue();
+ if(lv_mobile_number == '0' || null)
+    {
+        apex.message.showErrors("Please Enter your Mobile Number.")
+    }
+    else{
+apex.item( "P9999_USERNAME" ).setValue (lv_mobile_number);
+    }
+},"action":"NATIVE_JAVASCRIPT_CODE"},{"eventResult":true,"executeOnPageInit":false,"stopExecutionOnError":true,javascriptFunction:function (){ apex.submit({request:'GET_OTP'});
+},"action":"NATIVE_JAVASCRIPT_CODE"},{"eventResult":true,"conditionElement":"P9999_USERNAME","conditionType":"NOT_NULL","executeOnPageInit":true,"stopExecutionOnError":true,"affectedElementsType":"ITEM","affectedElements":"P9999_OTP_NUMBER",javascriptFunction:apex.da.enable,"action":"NATIVE_ENABLE"}]},
+{"triggeringElementType":"BUTTON","triggeringButtonId":"B73464664819315642623","bindType":"bind","executionType":"IMMEDIATE","bindEventType":"click","anyActionsFireOnInit":false,actionList:[{"eventResult":true,"executeOnPageInit":false,"stopExecutionOnError":true,"waitForResult":true,javascriptFunction:apex.da.executePlSqlCode,"ajaxIdentifier":"REEgVFlQRX5-NzM0NjQ2NjU1MDE2MjI2NDI2MzA\u002FmPop797JgPyHPfW3E9C0QIJDyscEhx_atb-DNLi5cG4Br8nN8mjmXylihPwo9uVa1mO5T-P86z3uNkjz45idoQ","attribute01":"#P9999_PASSWORD,#P9999_OTP_NUMBER","attribute02":"#P9999_VALIDATION_FLAG","attribute04":"N","action":"NATIVE_EXECUTE_PLSQL_CODE"},{"eventResult":true,"conditionElement":"P9999_VALIDATION_FLAG","conditionType":"EQUALS","conditionExpression":"Valid","executeOnPageInit":false,"stopExecutionOnError":true,javascriptFunction:function (){ apex.message.showPageSuccess("Success! OTP has been Validated.");
+},"action":"NATIVE_JAVASCRIPT_CODE"},{"eventResult":true,"conditionElement":"P9999_VALIDATION_FLAG","conditionType":"EQUALS","conditionExpression":"Invalid","executeOnPageInit":false,"stopExecutionOnError":true,javascriptFunction:function (){ apex.message.showPageSuccess("<p style='color: red;'>Sorry! Invalid OTP entered. Please retry.</p>");
+},"action":"NATIVE_JAVASCRIPT_CODE"}]},
+{"executionType":"IMMEDIATE","bindEventType":"ready","anyActionsFireOnInit":false,actionList:[{"eventResult":true,"executeOnPageInit":false,"stopExecutionOnError":true,"affectedElementsType":"ITEM","affectedElements":"P9999_USERNAME",javascriptFunction:apex.da.clear,"action":"NATIVE_CLEAR"}]},
+{"triggeringElementType":"ITEM","triggeringElement":"P9999_VALIDATION_FLAG","conditionElement":"P9999_VALIDATION_FLAG","triggeringConditionType":"EQUALS","triggeringConditionExpression":"Valid","bindType":"bind","executionType":"IMMEDIATE","bindEventType":"change","anyActionsFireOnInit":true,actionList:[{"eventResult":true,"executeOnPageInit":true,"stopExecutionOnError":true,"affectedElementsType":"ITEM","affectedElements":"P9999_VALIDATION_FLAG",javascriptFunction:apex.da.disable,"action":"NATIVE_DISABLE"},{"eventResult":false,"executeOnPageInit":true,"stopExecutionOnError":true,"affectedElementsType":"BUTTON","affectedButtonId":"signin",javascriptFunction:apex.da.disable,"action":"NATIVE_DISABLE"},{"eventResult":false,"executeOnPageInit":true,"stopExecutionOnError":true,"affectedElementsType":"ITEM","affectedElements":"P9999_USERNAME",javascriptFunction:apex.da.enable,"action":"NATIVE_ENABLE"},{"eventResult":true,"executeOnPageInit":true,"stopExecutionOnError":true,"affectedElementsType":"BUTTON","affectedButtonId":"signin",javascriptFunction:apex.da.enable,"action":"NATIVE_ENABLE"}]},
+{"triggeringElementType":"ITEM","triggeringElement":"P9999_OTP_FLAG","conditionElement":"P9999_OTP_FLAG","triggeringConditionType":"EQUALS","triggeringConditionExpression":"Y","bindType":"bind","executionType":"IMMEDIATE","bindEventType":"change","anyActionsFireOnInit":true,actionList:[{"eventResult":false,"executeOnPageInit":true,"stopExecutionOnError":true,"affectedElementsType":"BUTTON","affectedButtonId":"B73464664819315642623",javascriptFunction:apex.da.disable,"action":"NATIVE_DISABLE"},{"eventResult":true,"executeOnPageInit":true,"stopExecutionOnError":true,"affectedElementsType":"ITEM","affectedElements":"P9999_OTP_FLAG",javascriptFunction:apex.da.enable,"action":"NATIVE_ENABLE"},{"eventResult":false,"executeOnPageInit":true,"stopExecutionOnError":true,"affectedElementsType":"ITEM","affectedElements":"P9999_OTP_NUMBER",javascriptFunction:apex.da.disable,"action":"NATIVE_DISABLE"},{"eventResult":true,"executeOnPageInit":true,"stopExecutionOnError":true,"affectedElementsType":"BUTTON","affectedButtonId":"B73464664819315642623",javascriptFunction:apex.da.enable,"action":"NATIVE_ENABLE"}]},
+{"triggeringElementType":"ITEM","triggeringElement":"P9999_USERNAME","bindType":"bind","executionType":"IMMEDIATE","bindEventType":"keypress","anyActionsFireOnInit":false,actionList:[{"eventResult":true,"executeOnPageInit":false,"stopExecutionOnError":true,javascriptFunction:function (){ // Get the input element
+var inputField = document.querySelector('#P9999_USERNAME');
+
+// Add an input event listener to the input field
+inputField.addEventListener('input', function (event) {
+    var inputValue = event.target.value;
+
+    // Remove non-numeric characters and spaces
+    inputValue = inputValue.replace(/[^0-9\s]/g, '');
+
+    // Limit input to a maximum of 50 characters
+    inputValue = inputValue.substr(0, 50);
+
+    // Update the input value
+    event.target.value = inputValue;
+});
+},"action":"NATIVE_JAVASCRIPT_CODE"}]}];
+}
+</script>
+
+
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+
+<script src="https://www.jallikattu.tn.gov.in/i/libraries/apex/minified/widget.stickyWidget.min.js?v=23.2.1"></script>
+<script src="https://www.jallikattu.tn.gov.in/i/themes/theme_42/23.1/js/theme42.min.js?v=23.2.1"></script>
+
+<script src="https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/static/v1667/aos.min.js"></script>
+<script src="https://www.jallikattu.tn.gov.in/ords/r/wsjallikattu/110/files/static/v1667/add.min.js"></script>
+
+
+<script type="text/javascript">
+function viewPassword()
+{  var passwordInput = document.getElementById('P9999_PASSWORD');
+  var passStatus = document.getElementById('pass-status');
+  if (passwordInput.type == 'password'){
+    passwordInput.type='text';
+    passStatus.className='fa fa-eye-slash field-icon';    
+  }
+  else{
+    passwordInput.type='password';
+    passStatus.className='fa fa-eye field-icon';
+  }}
+  
+
+
+</script>  
+
+
+
+
+
+
+<script type="text/javascript">
+apex.jQuery( function() {
+apex.page.init( this, function() {
+try {
+(function(){
+var lTimeoutField = document.getElementById("apex_login_throttle_sec"),
+    lTimeout      = lTimeoutField ? +lTimeoutField.innerHTML : 0;
+if (lTimeout) {
+    var lTimer = window.setInterval (
+        function() {
+            if (lTimeout > 0) {
+                lTimeoutField.innerHTML = lTimeout;
+                lTimeout--;
+            } else {
+                window.clearInterval(lTimer);
+                var lDiv = document.getElementById("apex_login_throttle_div");
+                if (lDiv) {
+                    lDiv.parentNode.removeChild(lDiv);
+                    return true;
+                }
+            }
+        },
+        1000 );
+}})();
+(function(){var e = apex.jQuery("#t_MenuNav", apex.gPageContext$);
+if (e.hasClass("js-addActions")) {
+  apex.actions.addFromMarkup( e );
+}
+e.menu({
+  behaveLikeTabs: e.hasClass("js-tabLike"),
+  menubarShowSubMenuIcon: e.hasClass("js-showSubMenuIcons") || null,
+  menubar: true,
+  menubarOverflow: true,
+  callout: e.hasClass("js-menu-callout")
+});
+})();
+} catch(e) {apex.debug.error(e)};
+apex.item.waitForDelayLoadItems().done(function() {
+try {
+(function(){apex.da.initDaEventList();
+apex.da.init();})();
+apex.theme42.initializePage.noSideCol();
+
+apex.item( 'P9999_USERNAME' ).setFocus();
+} finally {
+apex.event.trigger(apex.gPageContext$,'apexreadyend');
+};
+});
+});
+});apex.pwa.init( { serviceWorkerPath:'\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fsw.js?v=23.2.1-460263366\u0026lang=en' } );
+</script>
+
+<script>
+  AOS.init();
+</script>
+<!-- <script>
+            let count = 0;
+
+        function updateCount() {
+            count++;
+            document.getElementById('visitorCount').innerText = count;
+        }
+
+        // Call updateCount() when the page loads
+        updateCount();
+</script> -->
+<!-- JavaScript function to show the modal -->
+    <script>
+      $(document).ready(function() {
+          // Initialize the modal as draggable
+          $("#modal").dialog({
+              autoOpen: false, // Keep it closed by default
+              modal: true, // Prevent interaction with the background
+              closeOnEscape: true, // Allow closing with escape key
+              draggable: true, // Enable dragging
+              width: 720 // Set the width to 720px
+          });
+      
+          // Show the modal when the button is clicked
+          $("#open-modal-btn").on("click", function() {
+              $("#modal").dialog("open");
+          });
+      
+          // Close the modal when the close button is clicked
+          $(".close-button").on("click", function() {
+              $("#modal").dialog("close");
+          });
+      });
+    </script>
+</body>
+</html>

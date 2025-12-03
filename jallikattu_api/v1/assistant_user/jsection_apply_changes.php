@@ -1,0 +1,96 @@
+<?php
+require_once('../../helper/header.php');
+header("Access-Control-Allow-Methods: POST");
+require_once('../../helper/db/jk_write.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $params = json_decode(file_get_contents('php://input'), true);
+
+    if (empty($params['EVENT_ID'])) {
+        http_response_code(400);
+        echo json_encode(["success" => 0, "message" => "Event ID is missing"]);
+        die();
+    }
+
+    $R_status = 'SN';
+    $fwdTo = 'Magesterial huzur sharishthadhar MHS';
+
+    $sql = "UPDATE TNEA_JALLIKATTU_EVENT_REGISTERATION_T
+        SET EVENT_DATE = :p_EVENT_DATE,
+            NAME_OF_ORGANIZATION = :p_NAME_OF_ORGANIZATION,
+            COMMITEE_REGISTER_NUMBER = :p_COMMITEE_REGISTER_NUMBER,
+            NAME_OF_PRESIDENT = :p_NAME_OF_PRESIDENT,
+            CONTACT_OF_PRESIDENT = :p_CONTACT_OF_PRESIDENT,
+            MOBILE_OF_PRESIDENT = :p_MOBILE_OF_PRESIDENT,
+            NAME_OF_VILLAGE = :p_NAME_OF_VILLAGE,
+            NAME_OF_TALUK = :p_NAME_OF_TALUK,
+            NAME_OF_DISTRICT = :p_NAME_OF_DISTRICT,
+            PINCODE = :p_PINCODE,
+            REQUEST_LETTER = :p_REQUEST_LETTER,
+            ATTACH_MIMETYPE = :p_ATTACH_MIMETYPE,
+            ATTACH_FILENAME = :p_ATTACH_FILENAME,
+            ASSURANCE_BOND = :p_ASSURANCE_BOND,
+            ASSURANCE_BOND_ATTACH_MIMETYPE = :p_ASSURANCE_BOND_ATTACH_MIMETYPE,
+            ASSURANCE_BOND_ATTACH_FILENAME = :p_ASSURANCE_BOND_ATTACH_FILENAME,
+            INSURANCE_COPY = :p_INSURANCE_COPY,
+            INSURANCE_COPY_ATTACH_MIMETYPE = :p_INSURANCE_COPY_ATTACH_MIMETYPE,
+            INSURANCE_COPY_ATTACH_FILENAME = :p_INSURANCE_COPY_ATTACH_FILENAME,
+            LAYOUT_SKETCH = :p_LAYOUT_SKETCH,
+            LAYOUT_SKETCH_ATTACH_MIMETYPE = :p_LAYOUT_SKETCH_ATTACH_MIMETYPE,
+            LAYOUT_SKETCH_ATTACH_FILENAME = :p_LAYOUT_SKETCH_ATTACH_FILENAME,
+            OTHER_DOCS = :p_OTHER_DOCS,
+            OTHER_DOCS_ATTACH_MIMETYPE = :p_OTHER_DOCS_ATTACH_MIMETYPE,
+            OTHER_DOCS_ATTACH_FILENAME = :p_OTHER_DOCS_ATTACH_FILENAME,
+            PREVIOUS_EVENT = :p_PREVIOUS_EVENT,
+            PREVIOUS_EVENT_ATTACH_MIMETYPE = :p_PREVIOUS_EVENT_ATTACH_MIMETYPE,
+            PREVIOUS_EVENT_ATTACH_FILENAME = :p_PREVIOUS_EVENT_ATTACH_FILENAME,
+            PANCHAYAT_UNION = :p_PANCHAYAT_UNION,
+            PANCHAYAT_UNION_ATTACH_MIMETYPE = :p_PANCHAYAT_UNION_ATTACH_MIMETYPE,
+            PANCHAYAT_UNION_ATTACH_FILENAME = :p_PANCHAYAT_UNION_ATTACH_FILENAME,
+            FIR = :p_FIR,
+            FIR_ATTACH_MIMETYPE = :p_FIR_ATTACH_MIMETYPE,
+            FIR_ATTACH_FILENAME = :p_FIR_ATTACH_FILENAME,
+            UPLOAD_PHOTO = :p_UPLOAD_PHOTO,
+            UPLOAD_PHOTO_ATTACH_MIMETYPE = :p_UPLOAD_PHOTO_ATTACH_MIMETYPE,
+            UPLOAD_PHOTO_ATTACH_FILENAME = :p_UPLOAD_PHOTO_ATTACH_FILENAME,
+            EVENT_TYPE = :p_EVENT_TYPE,
+            REQUEST_STATUS = :REQUEST_STATUS,
+            PLACE_OF_EVENT = :p_PLACE_OF_EVENT,
+            FORWARD_TO = :forward
+        WHERE EVENT_ID = :EVENT_ID;";
+
+    // Prepare SQL statement
+    $bind = $jk_write_db->prepare($sql);
+
+    // Bind parameters dynamically
+    foreach ($params as $key => $value) {
+        $bind->bindValue(":$key", $value);
+    }
+
+    // Manually bind additional parameters
+    $bind->bindValue(':REQUEST_STATUS', $R_status);
+    $bind->bindValue(':forward', $fwdTo);
+
+    // Execute the statement
+    if ($bind->execute()) {
+        http_response_code(200);
+        $data = [
+            "success" => 1,
+            "message" => "Data successfully updated."
+        ];
+    } else {
+        http_response_code(500);
+        $data = [
+            "success" => 0,
+            "message" => "Error updating data."
+        ];
+    }
+
+    echo json_encode($data);
+    die();
+} else {
+    http_response_code(405);
+    echo json_encode(["success" => 0, "message" => "Method Not Allowed"]);
+    die();
+}
+?>

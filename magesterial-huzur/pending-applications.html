@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html class="no-js  page-8 app-JLIKTU" lang="en">
+
+<head>
+  <div id="preloader"></div>
+  <style>
+    .table-container {
+      max-height: 450px;
+      /* Set the max height for the table container */
+      overflow-y: auto;
+    }
+
+    thead {
+      position: sticky;
+      top: 0;
+      /* Stick to the top of the container */
+      background-color: #f4f4f4;
+      /* Optional: Background color for better visibility */
+      z-index: 1;
+      /* Ensure it stays on top of the body rows */
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+      /* Optional: Add a subtle shadow for effect */
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 9999;
+      overflow: hidden;
+      background: #12121261;
+      /*width: 57%;*/
+      border-radius: 13px 35px;
+    }
+
+    #preloader:before {
+      content: "";
+      position: fixed;
+      top: calc(50% - 30px);
+      left: calc(53% - 30px);
+      border: 6px solid #f92020b8;
+      border-top-color: #e2eefd;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: animate-preloader 1s linear infinite;
+      animation: animate-preloader 1s linear infinite;
+      z-index: 9999;
+    }
+
+    @-webkit-keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>Pending Request</title>
+  <link rel="stylesheet" href="../assets/css/oj-redwood-notag-min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Core.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Theme-Standard.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/font-apex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Coreone.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/aos.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/custom.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/theme.css" type="text/css" />
+  <link rel="apple-touch-icon" href="../assets/img/app-icon-192.png" />
+  <link rel="icon" href="../assets/img/app-icon-32.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="../assets/vendor/datatable/css/dataTables.css" rel="stylesheet">
+  <!-- CSS File -->
+  <link rel="stylesheet" href="../assets/vendor/datatable/dataTables.bootstrap5.min.css">
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/toastr/toastr.min.css" rel="stylesheet">
+  <style type="text/css">
+    #editSection {
+      background-color: #f9f9f9;
+      /* Light background */
+      padding: 20px;
+      /* Inner spacing */
+      border-radius: 8px;
+      /* Rounded corners */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow */
+      font-family: 'Arial', sans-serif;
+      /* Font style */
+    }
+
+    #editSection h3 {
+      font-size: 1.5rem;
+      color: #003366;
+      /* Header color */
+    }
+
+    #editSection p {
+      margin-bottom: 0.5rem;
+      color: #333;
+      /* Text color */
+    }
+
+    #editSection .form-label {
+      font-weight: bold;
+    }
+
+    #editSection .form-control {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 8px;
+    }
+
+    #editSection .btn-primary {
+      background-color: #ffcc00;
+      /* Yellow background */
+      color: #003366;
+      /* Blue text */
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    #editSection .btn-primary:hover {
+      background-color: #003366;
+      /* Blue hover */
+      color: #fff;
+      /* White text */
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    strong {
+      color: #151414;
+      /* Red color for required fields */
+    }
+
+    .row {
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin: 0;
+      padding: 5px 0;
+    }
+
+    span {
+      font-weight: normal;
+    }
+
+    .col-md-6 {
+      padding-right: 15px;
+    }
+
+    .col-md-12 {
+      padding-right: 15px;
+    }
+
+    .toast-container {
+      right: 0.5%;
+    }
+
+    #successToast {
+      background: #198754 !important;
+    }
+
+    #errorToast {
+      background: #ff0000 !important;
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+  <!-- Toast -->
+  <div class="toast-container position-fixed p-3 custom_toast" x-data="transButtonComponent()">
+    <div id="errorToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="errorMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+    <div id="successToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="successMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <!-- Toast -->
+</head>
+
+<body
+  class="t-PageBody t-PageBody--hideLeft t-PageBody--hideActions no-anim t-PageTemplate--standard   apex-top-nav apex-icons-fontapex apex-theme-vita-copy-1"
+  id="t_PageBody" onload="loadPopup()">
+  <!-- <a href="#main" id="t_Body_skipToContent">Skip to Main Content</a> -->
+  <input type="hidden" name="p_flow_id" value="110" id="pFlowId" /><input type="hidden" name="p_flow_step_id" value="70"
+    id="pFlowStepId" /><input type="hidden" name="p_instance" value="2224570108753" id="pInstance" /><input
+    type="hidden" name="p_page_submission_id" value="270490329034844655939273636227247880316"
+    id="pPageSubmissionId" /><input type="hidden" name="p_request" value="" id="pRequest" /><input type="hidden"
+    name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden"
+    value="jliktu&#x2F;70&#x2F;2224570108753" id="pContext" /><input type="hidden"
+    value="270490329034844655939273636227247880316" id="pSalt" />
+  <header class="t-Header" id="t_Header" role="banner">
+
+    <div class="t-Header-branding">
+      <div class="t-Header-controls">
+        <button class="t-Button t-Button--icon t-Button--header t-Button--headerTree" aria-label="Main Navigation"
+          title="Main Navigation" id="t_Button_navControl" type="button"><span class="t-Header-controlsIcon"
+            aria-hidden="true"></span></button>
+      </div>
+      <div class="t-Header-logo">
+        <!-- <a href="&#x2F;ords&#x2F;r&#x2F;wsjallikattu&#x2F;jliktu&#x2F;home?session=2224570108753" class="t-Header-logo-link"><span class="apex-logo-text">Jallikattu</span></a> -->
+        <div class="gigw">
+          <li><a data-aos="fade-up" data-aos-delay="200" class="linkedin btn-decrease"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="font size Decrease"><i></i> A -</a></li>
+          <li><a data-aos="fade-up" data-aos-delay="300" class="linkedin btn-orig"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="Reset font"><i></i> A <sup></sup></a></li>
+          <li><a data-aos="fade-up" data-aos-delay="400" class="instagram btn-increase"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="font size Increase"><i></i> A +</a></li>
+          <li><a data-aos="fade-up" data-aos-delay="500"><span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                title="Dark Mode"><i class="t-Icon fa fa-moon-o" id="darkmode"></i></a></li>
+          <li><a data-aos="fade-up" data-aos-delay="600" class="form-check form-switch"><label class="form-check-label"
+                for="screenReaderSwitch">
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Screen Reader">
+                  <i id="sound" class="t-Icon fa fa-volume-up"></i></label><input class="form-check-input"
+                type="checkbox" role="switch" id="screenReaderSwitch"
+                onclick="readText(document.getElementsByTagName('body')[0])" /></span></a>
+          </li>
+        </div>
+      </div>
+      <div class="t-Header-navBar">
+        <div class="t-Header-navBar--start"></div>
+        <div class="t-Header-navBar--center">
+          <ul class="t-NavigationBar " id="70091113641892546086">
+            <li class="t-NavigationBar-item ">
+              <button class="t-Button t-Button--icon t-Button t-Button--header t-Button--navBar" type="button"
+                id="L70091125771514546098" data-menu="menu_L70091125771514546098" title="">
+                <span class="t-Icon fa&#x20;fa-user" aria-hidden="true"></span><span
+                  class="t-Button-label">User</span><span class="t-Button-badge"></span><span
+                  class="a-Icon icon-down-arrow" aria-hidden="true"></span>
+              </button>
+              <div class="t-NavigationBar-menu" style="display: none" id="menu_L70091125771514546098">
+                <ul>
+                  <li class="" data-current="false" data-icon=""><a href="separator" title="" target="">---</a></li>
+                  <!-- <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a
+                      href="javascript:apex.theme42.dialog('\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fchange-password?session=2224570108753\u0026dialogCs=nsVVlFac0rvWEd675chF55E_wHVd_xyFq-Met-adIgEcSqFVUVdXXL_7CNsdg1_lhuWkC4Y0O6S1MOvY-TKKSw',{title:'Change Password',h:'auto',w:'720',mxw:'960',modal:true,dialog:null,dlgCls:'t-Dialog-page--standard '+''},'',apex.gPageContext$)"
+                      title="" target="">Change Password</a></li> -->
+                  <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a href="javascript:void();"
+                      title="" target="">Change Password</a></li>
+                  <li class="" data-current="false" data-icon="fa fa-sign-out">
+                    <a href="#" id="globalSignOutBtn" title="Sign Out">Sign Out</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="t-Header-navBar--end"></div>
+      </div>
+    </div>
+    <div class="top">
+      <!-- <img id="leftlogo" data-aos="fade-right" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/TN_logo.png"> -->
+      <h2 data-aos="zoom-in" data-aos-duration="800" class="dept-name text-middle">DIRECTORATE OF ANIMAL HUSBANDRY AND
+        VETERINARY SERVICES</h2>
+      <h3 data-aos="zoom-in" data-aos-duration="800" class="dept-name2 text-middle">JALLIKATTU IN TAMIL NADU</h3>
+      <!-- <img id="rightlogo" data-aos="fade-left" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/right.png"> -->
+    </div>
+    <div class="t-Header-nav">
+      <div class="t-Header-nav-list js-tabLike js-tabLike" id="t_MenuNav">
+        <ul>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="index.html" title="" target="">Home</a></li>
+          <li class="a-MenuBar-item a-Menu--current" data-current="true" data-id="" data-disabled="" data-hide=""
+            data-shortcut="" data-icon=""><a class="a-MenuBar-label" href="pending-applications.html" title=""
+              target="">Pending
+              Applications</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="need-more-information.html" title="" target="">Need More
+              Information&#x2F;Rejected Applications</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="district-monitoring-report.html" title="" target="">District
+              Monitoring
+              Reports</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="go-issued.html" title="" target="">GO Issued</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="final-inspection-report.html" title="" target="">Final&#x2F;Pre-Event
+              Inspection Reports</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="event-completion-form.html" title="" target="">Event
+              Completion Form</a>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="all-application-status.html" title="" target="">All Application Status</a>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="" title="" target="">All Reports</a>
+            <ul style="display: none">
+              <li data-id="" data-disabled="" data-hide="" data-shortcut=""
+                data-icon="fa&#x20;fa-arrow-circle-o-right&#x20;fa-anim-flash"><a
+                  href="post-event-inspection-report.html" title="" target="">Post Event Reports</a></li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a href="bull-report.html"
+                  title="" target="">Registration of Bulls Report</a></li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+                  href="participant-report.html" title="" target="">Registration of participants report</a></li>
+            </ul>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="approved-bull-report.html" title="" target="">Approved Bull
+              report</a>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="approved-participant-report.html" title="" target="">Approved Participant
+              Report</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="t-Body">
+
+    <div class="t-Body-main">
+      <div class="t-Body-title" id="t_Body_title"></div>
+      <div class="t-Body-content" id="t_Body_content">
+        <main id="main" class="t-Body-mainContent">
+          <span id="APEX_SUCCESS_MESSAGE" data-template-id="76689956809586187806_S"
+            class="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE"
+            data-template-id="76689956809586187806_E" class="apex-page-error u-hidden"></span>
+          <div class="t-Body-fullContent"></div>
+          <div class="t-Body-contentInner">
+            <div class="a-IRR-container">
+              <div class="row">
+                <div class="col col-12 apex-col-auto col-start col-end">
+                  <div id="R6259611523089795189" role="region" aria-label="Post&#x20;event&#x20;inspection&#x20;report"
+                    class="t-IRR-region ">
+
+                    <div class="t-Region-orderBy"></div>
+                    <div id="R6259611523089795189_ir" class="a-IRR-container">
+                      <div id="R6259611523089795189_worksheet_region" class="a-IRR" aria-live="polite">
+                        <div id="R6259611523089795189_single_row_view" class="a-IRR-singleRowView"></div>
+                        <div id="R6259611523089795189_full_view" class="a-IRR-fullView">
+                          <div id="R6259611523089795189_actions_menu"></div>
+                          <div id="R6259611523089795189_toolbar" class="a-IRR-toolbar">
+                            <div role="search"
+                              aria-label="Search&#x20;bar&#x20;of&#x20;Post&#x20;event&#x20;inspection&#x20;report"
+                              id="R6259611523089795189_toolbar_controls" class="a-IRR-controls">
+                              <div class="a-IRR-controlGroup a-IRR-controlGroup--search a-IRR-controlGroup--hidden">
+                                <div class="a-IRR-search"><input type="hidden"
+                                    id="R6259611523089795189_column_search_current_column" /><input type="hidden"
+                                    id="R6259611523089795189_search_field" value="" /></div>
+                              </div>
+                              <div class="a-IRR-controlGroup a-IRR-controlGroup--views"></div>
+                              <div class="a-IRR-controlGroup a-IRR-controlGroup--options"><input type="hidden"
+                                  id="R6259611523089795189_row_select" value="50" />
+                                <div class="a-IRR-actions"><button id="R6259611523089795189_actions_button"
+                                    class="a-Button a-IRR-button a-IRR-button--actions" type="button"
+                                    data-menu="R6259611523089795189_actions_menu" onclick="downloadExcel()">Actions<span
+                                      aria-hidden="true" class="a-Icon icon-menu-drop-down"></span></button></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="R6259611523089795189_content" class="a-IRR-content ">
+                            <div id="R6259611523089795189_dialog_js" class="a-IRR-dialogBody" style="display:none">
+                            </div><input type="hidden" id="R6259611523089795189_worksheet_id"
+                              value="6259611665854795189" />
+                            <input type="hidden" id="R6259611523089795189_app_user" value="9677447050" />
+                            <input type="hidden" id="R6259611523089795189_report_id" value="6259740109706555353" />
+                            <input type="hidden" id="R6259611523089795189_view_mode" value="REPORT" />
+                            <style id="R6259611523089795189_worksheet_css" type="text/css">
+                            </style>
+                            <div role="region"
+                              aria-label="Chart&#x20;view&#x20;of&#x20;Post&#x20;event&#x20;inspection&#x20;report"
+                              id="R6259611523089795189_chart" class="a-IRR-chartView"></div>
+                            <div role="region"
+                              aria-label="Group&#x20;by&#x20;view&#x20;of&#x20;Post&#x20;event&#x20;inspection&#x20;report"
+                              id="R6259611523089795189_group_by" class="a-IRR-groupByView"></div>
+                            <div role="region"
+                              aria-label="Pivot&#x20;view&#x20;of&#x20;Post&#x20;event&#x20;inspection&#x20;report"
+                              id="R6259611523089795189_pivot" class="a-IRR-pivotView"></div>
+                            <div role="region"
+                              aria-label="Data&#x20;view&#x20;of&#x20;Post&#x20;event&#x20;inspection&#x20;report"
+                              id="R6259611523089795189_data_panel" class="a-IRR-reportView">
+                              <div role="region" aria-label="Data&#x20;view&#x20;of&#x20;Submitted&#x20;application"
+                                id="R76545791867591768911_data_panel" class="a-IRR-reportView">
+                                <div class="a-IRR-tableContainer  scroll_Hidden">
+                                  <table
+                                    aria-label="Widow and Destitute Women Report, Report = Primary Default, View = Report"
+                                    class="a-IRR-table" id="submittedApplicationsTable">
+                                    <thead>
+                                      <tr>
+                                        <th class="a-IRR-header u-tC" id="actions">
+                                          <span class="a-IRR-headerLabel">Actions</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367170415434503">
+                                          <span class="a-IRR-headerLabel">Event ID</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367271215434504">
+                                          <span class="a-IRR-headerLabel">Event Date</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367302778434505">
+                                          <span class="a-IRR-headerLabel">Place of Event</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367480645434506">
+                                          <span class="a-IRR-headerLabel">Name of District</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367579286434507">
+                                          <span class="a-IRR-headerLabel">Name of Village</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367600941434508">
+                                          <span class="a-IRR-headerLabel">Name of Taluk</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Name of Organizing Committee</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Name of President</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Contact Of President</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Mobile Number</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Request Letter</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Assurance Bond</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Insurance Copy</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Layout Sketch</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Panchayat Union</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Fir</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Upload Photo Attach Filename</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Other Docs</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Previous Event</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Arena Upload</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Length Arena Upload</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66367735819434509">
+                                          <span class="a-IRR-headerLabel">Bull Examination Upload</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+                                        <th class="a-IRR-header u-tC" id="C66368176835434513">
+                                          <span class="a-IRR-headerLabel">Request Status</span>
+                                          <div class="t-fht-cell"></div>
+                                        </th>
+
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <!-- Data will be dynamically inserted here -->
+                                    </tbody>
+                                  </table>
+                                  <div id="editSection" class="d-none">
+                                    <h3 class="mb-4">Event Details</h3>
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Event ID:</strong> <span id="editEventId">N/A</span></p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Event Type:</strong> <span id="editEventType">N/A</span></p>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Event Date:</strong> <span id="editEventDate">N/A</span></p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Place of Event:</strong> <span id="editPlaceOfEvent">N/A</span>
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Name of Organization:</strong> <span
+                                            id="editNameOfOrganization">N/A</span></p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Name of President:</strong> <span id="editNameOfPresident">N/A</span>
+                                        </p>
+                                      </div>
+                                    </div>
+
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Pincode:</strong> <span id="editPincode">N/A</span>
+                                        </p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Area Size:</strong> <span id="editArenaSize">N/A</span></p>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Arena Length:</strong> <span id="editArenaLength">N/A</span>
+                                        </p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Area Breath:</strong> <span id="editArenaBreath">N/A</span></p>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Bull Run Area:</strong> <span id="editBullRunArea">N/A</span>
+                                        </p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Bull Arena Length:</strong> <span id="editBullArenaLength">N/A</span>
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Bull Arena Breath:</strong> <span id="editBullArenaBreath">N/A</span>
+                                        </p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Bull Examination Area Size:</strong> <span
+                                            id="editBullExaminationAreaSize">N/A</span></p>
+                                      </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Bull Examination Length:</strong> <span
+                                            id="editBullExaminationLength">N/A</span>
+                                        </p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Bull Examinatin Area Size:</strong> <span
+                                            id="editBullExaminationBreath">N/A</span></p>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Mobile of President:</strong> <span
+                                            id="editMobileOfPresident">N/A</span></p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Name of Village:</strong> <span id="editNameOfVillage">N/A</span>
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Name of Taluk:</strong> <span id="editNameOfTaluk">N/A</span>
+                                        </p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Name of District:</strong> <span id="editNameOfDistrict">N/A</span>
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-6">
+                                        <p><strong>Participants:</strong> <span id="editParticipants">N/A</span>
+                                        </p>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p><strong>Number of Bulls:</strong> <span id="editNumberOfBulls">N/A</span>
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <div class="col-md-12">
+                                        <p><strong>Pre-event Arrangements:</strong> <span
+                                            id="editPreEventArrangements">N/A</span></p>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <label for="comments">Comments:</label>
+                                      <input type="text" id="comments" name="comments"
+                                        placeholder="Please Enter comments" required><br><br>
+                                    </div>
+
+                                    <div class="row mt-4">
+                                      <div class="col-md-12 text-center">
+                                        <button class="btn btn-secondary mr-2" id="backButton">Back</button>
+                                        <button class="btn btn-primary mr-2" id="addCommitteeButton">Click Here To
+                                          Add
+                                          Committee</button>
+                                        <button class="btn btn-success mr-2" id="forwardToDistrictButton">Forward To
+                                          District Collector</button>
+                                        <button class="btn btn-danger btn-delete mr-2" id="rejectButton">Reject</button>
+                                        <button class="btn btn-info" id="needMoreInfoButton">Need More
+                                          Information</button>
+                                      </div>
+
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Add Committee Member Form Section -->
+                        <div id="addCommitteeMemberSection" class="d-none">
+                          <form id="committeeForm">
+                            <label for="inspectionDate">Inspection Date:</label>
+                            <input type="date" id="inspectionDate" name="inspectionDate" required><br><br>
+
+                            <label for="committeeDepartment">Committee Member Department:</label>
+                            <input type="text" id="committeeDepartment" name="committeeDepartment" required><br><br>
+
+                            <label for="committeeMail">Committee Member Mail:</label>
+                            <input type="email" id="committeeMail" name="committeeMail" required><br><br>
+
+                            <label for="committeeName">Committee Member Name:</label>
+                            <input type="text" id="committeeName" name="committeeName" placeholder="Name of the person"
+                              required><br><br>
+
+                            <label for="committeeDesignation">Committee Member Designation:</label>
+                            <input type="text" id="committeeDesignation" name="committeeDesignation"
+                              placeholder="Designation" required><br><br>
+
+                            <label for="committeeMobile">Committee Member Mobile:</label>
+                            <input type="tel" id="committeeMobile" name="committeeMobile" required><br><br>
+
+                            <button type="button" id="addMemberButton">Add Member</button>
+                          </form>
+                        </div>
+                        <div id="addedCommitteeMembersList" class="d-none">
+                          <h3>Added Committee Members</h3>
+                          <table id="committeeMembersTable">
+                            <!-- Table content will be dynamically updated -->
+                          </table>
+                        </div>
+
+                        <div role="dialog" aria-label="Column&#x20;Actions" aria-modal="true" class="a-IRR-sortWidget"
+                          id="R6259611523089795189_sort_widget" style="display:none;">
+                          <h1 class="u-vh" aria-roledescription="Visually&#x20;hidden&#x20;dialog&#x20;title">Column
+                            Actions</h1>
+                          <ul role="toolbar" class="a-IRR-sortWidget-actions"
+                            id="R6259611523089795189_sort_widget_actions">
+                            <li role="none" class="a-IRR-sortWidget-actions-item"
+                              id="R6259611523089795189_sort_widget_action_up"><button
+                                class="a-Button a-IRR-button a-IRR-sortWidget-button" type="button"
+                                title="Sort&#x20;Ascending" aria-label="Sort&#x20;Ascending" data-option="up"><span
+                                  aria-hidden="true" class="a-Icon icon-irr-sort-asc"></span></button></li>
+                            <li role="none" class="a-IRR-sortWidget-actions-item"
+                              id="R6259611523089795189_sort_widget_action_down"><button
+                                class="a-Button a-IRR-button a-IRR-sortWidget-button" type="button"
+                                title="Sort&#x20;Descending" aria-label="Sort&#x20;Descending" data-option="down"><span
+                                  aria-hidden="true" class="a-Icon icon-irr-sort-desc"></span></button></li>
+                            <li role="none" class="a-IRR-sortWidget-actions-item"
+                              id="R6259611523089795189_sort_widget_action_hide"><button
+                                class="a-Button a-IRR-button a-IRR-sortWidget-button" type="button"
+                                title="Hide&#x20;Column" aria-label="Hide&#x20;Column" data-option="hide"><span
+                                  aria-hidden="true" class="a-Icon icon-irr-remove-col"></span></button></li>
+                            <li role="none" class="a-IRR-sortWidget-actions-item"
+                              id="R6259611523089795189_sort_widget_action_break"><button
+                                class="a-Button a-IRR-button a-IRR-sortWidget-button" type="button"
+                                title="Control&#x20;Break" aria-label="Control&#x20;Break" data-option="break"><span
+                                  aria-hidden="true" class="a-Icon icon-irr-control-break"></span></button></li>
+                            <li role="none" class="a-IRR-sortWidget-actions-item"
+                              id="R6259611523089795189_sort_widget_action_help"><button
+                                class="a-Button a-IRR-button a-IRR-sortWidget-button" type="button" title="Help"
+                                aria-label="Help" data-option="help" aria-pressed="false"><span aria-hidden="true"
+                                  class="a-Icon icon-irr-help"></span></button></li>
+                            <li role="none" class="a-IRR-sortWidget-actions-item"
+                              id="R6259611523089795189_sort_widget_action_computation"><button
+                                class="a-Button a-IRR-button a-IRR-sortWidget-button" type="button" title="Compute"
+                                aria-label="Compute" data-option="computation"><span aria-hidden="true"
+                                  class="a-Icon icon-irr-calculator"></span></button></li>
+                          </ul>
+                          <div role="region" aria-label="Help" class="a-IRR-sortWidget-help"
+                            id="R6259611523089795189_sort_widget_help"></div>
+                          <div role="search" class="a-IRR-sortWidget-search"
+                            id="R6259611523089795189_sort_widget_search"><label
+                              for="R6259611523089795189_sort_widget_search_field"
+                              class="a-IRR-sortWidget-searchLabel"><span class="u-vh">Search</span></label><input
+                              id="R6259611523089795189_sort_widget_search_field" class="a-IRR-sortWidget-searchField"
+                              type="text" placeholder="Filter..." />
+                            <div role="group" aria-label="Filter&#x20;suggestions" class="a-IRR-sortWidget-rows"
+                              id="R6259611523089795189_sort_widget_rows"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </main>
+        <footer class="t-Footer" id="t_Footer" role="contentinfo">
+          <div class="t-Footer-body">
+            <div class="t-Footer-content"></div>
+            <div class="t-Footer-apex">
+              <!-- <div class="t-Footer-version">Release 1.0</div>
+            <div class="t-Footer-customize"></div>
+             -->
+              <div class="row">
+                <div class="col-6">
+                  <p class="text-center"><img class="footer-logo" src="../assets/img/right.png"><br>Content owned by
+                    Department of Animal Husbandry and Veterinary Services</p>
+                </div>
+                <div class="col-6">
+                  <p class="text-center"><img class="footer-logo" src="../assets/img/tnegalogo.png"><br>Designed and
+                    Developed by Tamil Nadu e-Governance Agency</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-Footer-top">
+            <a href="#top" class="t-Footer-topButton" id="t_Footer_topButton" title="Start of page"
+              aria-label="Start of page"><span class="a-Icon icon-up-chevron" aria-hidden="true"></span></a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <div class="t-Body-inlineDialogs" id="t_Body_inlineDialogs"></div><input type="hidden" id="pPageFormRegionChecksums"
+    value="&#x5B;&#x5D;">
+  <input type="hidden" id="pPageItemsRowVersion" value="" /><input type="hidden" id="pPageItemsProtected"
+    value="&#x2F;YvsUbJDds8LMdx1ZEGLpJHrK-y69QM29hF9biC2qDbkgtIM6c2N1BgDAuaBpy0TTThl0jnDz8DwdzgOjHhRtTg" />
+  </form>
+
+
+  <script>
+    var apex_img_dir = "\u002Fi\u002F";
+    var apex = {
+      env: { APP_USER: "9677447050", APP_ID: "110", APP_PAGE_ID: "8", APP_SESSION: "2224570108753", APP_FILES: "r\u002Fwsjallikattu\u002F110\u002Ffiles\u002Fstatic\u002Fv1667\u002F", WORKSPACE_FILES: "r\u002Fwsjallikattu\u002Ffiles\u002Fstatic\u002Fv1\u002F", APEX_VERSION: "23.2.1", APEX_BASE_VERSION: "23.2" },
+      libVersions: { ckeditor5: "36.0.0", cropperJs: "1.5.13", domPurify: "3.0.5", fullcalendar: "6.1.8", hammer: "2.0.8", jquery: "3.6.4", jqueryUi: "1.13.2", maplibre: "2.4.0", markedJs: "5.1.2", prismJs: "1.29.0", oraclejet: "15.0.7", tinymce: "6.7.1", turndown: "7.1.1", monacoEditor: "0.32.1", lessJs: "4.1.3" }
+    };
+  </script>
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/crypto-js.min.js"></script>
+  <script src="../assets/js/globalLogout.js"></script>
+  <script src="../assets/js/desktop_all.min.js"></script>
+  <script src="../assets/js/theme42.min.js"></script>
+  <script src="../assets/js/aos.js"></script>
+  <script src="../assets/js/add.min.js"></script>
+  <script type="text/javascript" src="../assets/js/aos.js"></script>
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <!-- Include DataTables and Buttons JS -->
+  <script src="../assets/vendor/datatable/jquery.dataTables.min.js"></script>
+  <script src="../assets/vendor/datatable/dataTables.bootstrap5.min.js"></script>
+  <script src="../assets/vendor/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../assets/vendor/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="../assets/vendor/datatables-buttons/js/jszip.min.js"></script>
+  <script src="../assets/vendor/datatables-buttons/js/pdfmake.min.js"></script>
+  <script src="../assets/vendor/datatables-buttons/js/vfs_fonts.js"></script>
+  <script src="../assets/vendor/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="../assets/vendor/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="../assets/vendor/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="../assets/js/widget.apexTabs.min.js"></script>
+  <script src="../assets/js/widget.interactiveReport.min.js"></script>
+  <script src="../assets/js/widget.iconList.min.js"></script>
+  <script src="../assets/js/widget.stickyTableHeader.min.js"></script>
+  <script src="../assets/js/widget.stickyWidget.min.js"></script>
+  <script src="../assets/js/item.Colorpicker.min.js"></script>
+  <script src="../assets/js/require.js"></script>
+  <script src="../assets/js/requirejs.jetConfig.min.js"></script>
+  <script src="../assets/js/jetCommonBundle.min.js"></script>
+  <script src="../assets/js/chartBundle.min.js"></script>
+  <script src="../apiConfig.js"></script>
+  <script type="text/javascript">
+    apex.session.initTimeouts(900, { "idle_time_ms": 1187000, "life_time_ms": 27997000, "max_idle_time_ms": 1200000 }, '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome', '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome');
+    apex.jQuery(function () {
+      apex.page.init(this, function () {
+        try {
+          (function () {
+            var e = apex.jQuery("#t_MenuNav", apex.gPageContext$);
+            if (e.hasClass("js-addActions")) {
+              apex.actions.addFromMarkup(e);
+            }
+            e.menu({
+              behaveLikeTabs: e.hasClass("js-tabLike"),
+              menubarShowSubMenuIcon: e.hasClass("js-showSubMenuIcons") || null,
+              menubar: true,
+              menubarOverflow: true,
+              callout: e.hasClass("js-menu-callout")
+            });
+          })();
+          (function () { apex.widget.selectList("#P70_DISTRICT", { "nullValue": "", "ajaxIdentifier": "SVRFTSBUWVBFfjUxMjB-ODI0NTI0MjcyMTQxNjc0MzAxMw\u002F9uqGSE5rB-QCWPIqhVt7_BMxH--Wgjr_js-1tnJiu5be3sG-Abua4ZcGr0_Ya8KrHEC9Lbf9SrQQEL3CZBCsXQ" }); })();
+          (function () { apex.widget.selectList("#P70_TALUK", { "nullValue": "", "dependingOnSelector": "#P70_DISTRICT", "optimizeRefresh": true, "pageItemsToSubmit": "#P70_DISTRICT", "ajaxIdentifier": "SVRFTSBUWVBFfjUxMjB-ODI0NTI0MjgwMjYzMDc0MzAxNA\u002FMXViLS33nKlrnFzdKPeOS2vObqCONqOa8hBb4BiEO6QNlWj0ujjp7TmKSGdXJkyUvTr_ve0m8AkOLltUBF4uQg" }); })();
+          (function () { apex.widget.selectList("#P70_EVENT_PLACE", { "nullValue": "", "dependingOnSelector": "#P70_DISTRICT,#P70_TALUK", "optimizeRefresh": true, "pageItemsToSubmit": "#P70_DISTRICT,#P70_TALUK", "ajaxIdentifier": "SVRFTSBUWVBFfjUxMjB-ODI0NTI0Mjk3Njc2Mzc0MzAxNQ\u002Fs_JsBh0q4YYXerGuuKnxBEiug14uXQx5MteUbgtSlDKloVR1YiZ16Xtssr4tFl2_znutc3XrYODxr6a6-kA_Xw" }); })();
+          (function () { apex.widget.selectList("#P70_EVENT_ID", { "nullValue": "", "dependingOnSelector": "#P70_DISTRICT,#P70_TALUK", "optimizeRefresh": true, "pageItemsToSubmit": "#P70_DISTRICT,#P70_TALUK", "ajaxIdentifier": "SVRFTSBUWVBFfjUxMjB-ODI0NTI0MjYzNjc3NTc0MzAxMg\u002FireqItMBIQFVsTrJkroLwLPcDEVsBcK9GiU6ZVpHdxGidWx2sEgI5mES5P8X6BOfW_o9SB5ZoTkQHgwgx13HLg" }); })();
+          (function () { apex.widget.selectList("#P70_TYPE_OF_EVENT", { "nullValue": "", "ajaxIdentifier": "SVRFTSBUWVBFfjUxMjB-ODI0NTI0MzQ3NjY5OTc0MzAyMA\u002FUgL1UM8mgWmHHkzG_2Z8jZAYYZkkTBzoLEcaXdj2xWIY_NKjY1broKu9dQcdFwhU8e1p9_YMsI1NaBrywDupfA" }); })();
+        } catch (e) { apex.debug.error(e) };
+        apex.item.waitForDelayLoadItems().done(function () {
+          try {
+            apex.theme42.initializePage.noSideCol();
+
+            apex.page.warnOnUnsavedChanges();
+          } finally {
+            apex.event.trigger(apex.gPageContext$, 'apexreadyend');
+          };
+        });
+      });
+    }); apex.pwa.init({ serviceWorkerPath: '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fsw.js?v=23.2.1-460263366\u0026lang=en' });
+  </script>
+  <script>
+    AOS.init();
+    $(document).on({
+      ajaxStart: function () {
+        $('#preloader').show();
+        $("body").addClass("user_loading");
+      },
+      ajaxStop: function () {
+        $('#preloader').hide();
+        $("body").removeClass("user_loading");
+      }
+    });
+
+    $('#preloader').hide();
+    // Retrieve the encrypted data from localStorage
+    let encryptedDataFromStorage = localStorage.getItem('userDetails');
+    let decryptedData;
+    if (encryptedDataFromStorage) {
+      const secretKey = 'V7gN4dY8pT2xB3kRz';
+      // Decrypt the data: decrypt the string and convert it to UTF-8
+      const bytes = CryptoJS.AES.decrypt(encryptedDataFromStorage, secretKey);
+      decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    } else {
+      console.log('No data found in localStorage');
+    }
+    let userDetails = decryptedData;
+    let userId = '';
+    // Find the element where the name should be displayed
+    var userNameElement = document.querySelector('.t-Button-label');
+    // If user is logged in (i.e., user details exist in localStorage)
+    if (userDetails) {
+      // Parse user details
+      const user = JSON.parse(userDetails);
+      // Update the username in the profile button (if available)
+      if (user && user.name) {
+        userId = user.user_id;
+        userNameElement.textContent = user.name; // or userNameElement.innerText
+      }
+    } else {
+      showErrorToast("Something went wrong");
+
+      sessionStorage.clear();
+      setTimeout(function () {
+        window.location.href = "../index.html";
+      }, 1000);
+    }
+    function showSuccessToast(message) {
+      const toastElement = document.getElementById('successToast');
+      const toastBody = document.getElementById('successMessage');
+
+      toastBody.textContent = message;
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+    function showErrorToast(message) {
+      const toastElement = document.getElementById('errorToast');
+      const toastBody = document.getElementById('errorMessage');
+      toastBody.textContent = message;
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+
+
+    // Function to download table data as Excel
+    function downloadExcel() {
+      const table = $('#submittedApplicationsTable').DataTable();
+
+      // If no data in table
+      if (table.rows().count() === 0) {
+        alert("No data available to download.");
+        return;
+      }
+
+      // Create a new workbook
+      const wb = XLSX.utils.book_new();
+
+      // Get all rows (not just visible ones) using DataTable API
+      const rows = table.rows().data(); // Get data for all rows
+
+      // Convert table data into a 2D array (for XLSX)
+      const dataRows = [];
+      rows.each(function (rowData) {
+        const row = [];
+        rowData.forEach(function (cellData) {
+          // Check if the cell contains an anchor tag
+          if (typeof cellData === 'string' && cellData.includes('<a') || typeof cellData === 'string' && cellData.includes('<span')) {
+            row.push('-'); // Exclude the data inside anchor tags (set to empty string)
+          } else {
+            row.push(cellData); // Include the data if it's not inside anchor tags
+          }
+        });
+        dataRows.push(row);
+      });
+
+      // Add the static header (you can create this based on your table headers)
+      const headers = [
+        'Event ID', 'Event Date', 'Place of Event',
+        'Name of District', 'Name of Village', 'Name of Taluk',
+        'Name of Organizing Committee', 'Name of President', 'Contact of President',
+        'Mobile Number', 'Request Letter',
+        'Assurance Bond', 'Insurance Copy', 'Layout Sketch', 'Panchayat Union',
+        'Previous Year FIR',
+        'Upload Photo', 'Other Documents', 'Previous Event', 'Arena Upload',
+        'Bull Arena Upload', 'Length Arena Upload', 'Bull Examination Upload', 'Reason', 'Actions'
+      ];
+
+      dataRows.unshift(headers);  // Prepend headers to the data
+
+      // Create the worksheet from the data rows
+      const ws = XLSX.utils.aoa_to_sheet(dataRows);
+
+      // Add the worksheet to the workbook
+      XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+      // Download the Excel file with the name 'need_more_information_report.xlsx'
+      XLSX.writeFile(wb, "pending_applications.xlsx");
+    }
+
+
+    $(document).ready(function () {
+      const apiUrl = `${BASE_API_URL}/mhs_user/pending_application?user_id=${encodeURIComponent(userId)}`;
+
+      $.ajax({
+        url: apiUrl,
+        method: "GET",
+        headers: {
+          "X-APP-KEY": "j6ll!k@ttu",
+          "X-APP-NAME": "tn jallikattu"
+        },
+        success: function (response) {
+          const tableData = response.data;
+          const tableBody = $("#submittedApplicationsTable tbody");
+
+          tableBody.empty();
+
+          if (!tableData || tableData.length === 0) {
+            tableBody.append('<tr><td colspan="12" class="text-center">No Data Found</td></tr>');
+            return;
+          }
+
+          tableData.forEach(item => {
+            var applicationInfo = btoa(JSON.stringify(item.event_id));
+            var eventPlace = btoa(JSON.stringify(item.place_of_event));
+            const createDownloadLink = (content, mimeType, filename) => {
+              if (!content) return "N/A";
+
+              try {
+                const base64Pattern = /^[A-Za-z0-9+/=]+$/;
+                if (base64Pattern.test(content.replace(/\s/g, ""))) {
+                  const blob = new Blob([new Uint8Array(atob(content).split("").map(c => c.charCodeAt(0)))], { type: mimeType });
+                  const url = URL.createObjectURL(blob);
+                  return `<a href="${url}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+                }
+
+                return `<a href="${content}" target="_blank" class="btn btn-sm btn-link">Download</a>`;
+              } catch (error) {
+                console.error("Error creating download link:", error);
+                return "Invalid content";
+              }
+            };
+            const newRow = `
+                            <tr>
+                              <td class="u-tL"><a href="update-pending-applications.html?details=${applicationInfo}&place=${eventPlace}"><i class="bi bi-pencil-square"></i></a></td>
+                                <td>${(item.event_id) || 'N/A'}</td>
+                                <td>${(item.event_date) || 'N/A'}</td>
+                                <td>${(item.place_of_event) || 'N/A'}</td>
+                                <td>${(item.name_of_district) || 'N/A'}</td>
+                                <td>${(item.name_of_village) || 'N/A'}</td>
+                                <td>${(item.name_of_taluk) || 'N/A'}</td>
+                                <td>${(item.name_of_organization) || 'N/A'}</td>
+                                <td>${(item.name_of_president) || 'N/A'}</td>
+                                <td>${(item.contact_of_president) || 'N/A'}</td>
+                                <td>${(item.mobile_of_president) || 'N/A'}</td>
+                                <td>${createDownloadLink(item.request_letter, item.attach_mimetype, item.attach_filename)}</td>
+                                <td>${createDownloadLink(item.assurance_bond, item.assurance_bond_attach_mimetype, item.assurance_bond_attach_filename)}</td>
+                                <td>${createDownloadLink(item.insurance_copy, item.insurance_copy_attach_mimetype, item.insurance_copy_attach_filename)}</td>
+                                <td>${createDownloadLink(item.layout_sketch, item.layout_sketch_attach_mimetype, item.layout_sketch_attach_filename)}</td>
+                                <td>${createDownloadLink(item.panchayat_union, item.panchayat_union_attach_mimetype, item.panchayat_union_attach_filename)}</td>
+                                <td>${createDownloadLink(item.fir, item.fir_attach_mimetype, item.fir_attach_filename)}</td>
+                                <td>${createDownloadLink(item.other_docs, item.other_docs_attach_mimetype, item.other_docs_attach_filename)}</td>
+                                <td>${createDownloadLink(item.previous_event, item.previous_event_attach_mimetype, item.previous_event_attach_filename)}</td>  
+                                <td>${createDownloadLink(item.upload_photo, item.upload_photo_attach_mimetype, item.upload_photo_attach_filename)}</td>
+                                <td>${createDownloadLink(item.arena_upload, item.arena_upload_mime_type, item.arena_upload_filename)}</td>
+                                <td>${createDownloadLink(item.bull_arena_upload, item.bull_arena_upload_mimetype, item.bull_arena_upload_filename)}</td>
+                                <td>${createDownloadLink(item.bull_examination, item.bull_examination_upload_mime_type, item.bull_examination_upload_filename)}</td>                             
+                                <td>
+                                  ${(item.request_status) || 'N/A'}
+                                </td>
+
+                                                     
+                            </tr>`;
+
+            tableBody.append(newRow);
+          });
+          $('#submittedApplicationsTable').DataTable({
+            paging: false,
+            searching: false,
+            ordering: true,
+            order: [[0, 'asc']],
+            responsive: true,
+            scrollX: true,
+            scrollY: 400,
+          });
+        },
+        error: function (xhr, status, error) {
+          console.error("Error fetching data: ", error);
+        }
+      });
+
+      $(document).on("click", ".btn-edit", function () {
+        $("#submittedApplicationsTable").hide();
+        $("#submittedApplicationsTable_info").hide();
+        $("#submittedApplicationsTable_wrapper").hide();
+        const eventId = $(this).data("event-id");
+        const editApiUrl = `${BASE_API_URL}/mhs_user/fetch_edit_category?user_id=${userId}&event_id=${encodeURIComponent(eventId)}`;
+
+        $.ajax({
+          url: editApiUrl,
+          method: "GET",
+          headers: {
+            "X-APP-KEY": "j6ll!k@ttu",
+            "X-APP-NAME": "tn jallikattu"
+          },
+          success: function (response) {
+            if (response.success === 1 && response.data && response.data.length > 0) {
+              const item = response.data[0];
+
+              // Safely insert data into fields
+
+              $("#editEventId").text(item.eventid || "N/A");
+              $("#editEventType").text(item.event_type || "N/A");
+              $("#editEventDate").text(item.event_date || "N/A");
+              $("#editPlaceOfEvent").text(item.place_of_event || "N/A");
+              $("#editNameOfOrganization").text(item.name_of_organization || "N/A");
+              $("#editPincode").text(item.pincode || "N/A");
+              $("#editArenaSize").text(item.arena_size || "N/A");
+              $("#editArenaLength").text(item.arena_length || "N/A");
+              $("#editArenaBreath").text(item.arena_breath || "N/A");
+              $("#editLengthArena").text(item.length_arena || "N/A");
+              $("#editBullRunArea").text(item.bull_run_area || "N/A");
+              $("#editBullArenaLength").text(item.bull_arena_length || "N/A");
+              $("#editBullArenaBreath").text(item.bull_arena_breath || "N/A");
+              $("#editBullExaminationAreaSize").text(item.bull_examination_area_size || "N/A");
+              $("#editBullExaminationLength").text(item.bull_examination_length || "N/A");
+              $("#editBullExaminationBreath").text(item.bull_examination_breath || "N/A");
+              $("#editNameOfPresident").text(item.name_of_president || "N/A");
+              $("#editMobileOfPresident").text(item.mobile_of_president || "N/A");
+              $("#editNameOfVillage").text(item.name_of_village || "N/A");
+              $("#editNameOfTaluk").text(item.name_of_taluk || "N/A");
+              $("#editNameOfDistrict").text(item.name_of_district || "N/A");
+              $("#editParticipants").text(item.participants || "N/A");
+              $("#editNumberOfBulls").text(item.number_of_bulls || "N/A");
+              $("#editPreEventArrangements").text(item.preevent_arrangements || "N/A");
+              $("#editSection").removeClass("d-none");
+            } else {
+              console.error("No data found for the event.");
+            }
+            $('#submittedApplicationsTable').DataTable().ajax.reload();
+          },
+          error: function (xhr, status, error) {
+            console.error("Error fetching edit data: ", error);
+          }
+        });
+      });
+      $(document).on("click", "#rejectButton", function () {
+        const eventId = $("#editEventId").text();
+        const comments = $("#comments").val();
+        const createdBy = userId;
+        $.ajax({
+          url: 'https://tngis.tnega.org/lcap_api/jallikattu/v1/mhs_user/mhs_reject',
+          method: 'POST',
+          headers: {
+            "X-APP-KEY": "j6ll!k@ttu",
+            "X-APP-NAME": "tn jallikattu"
+          },
+          data: {
+            user_id: userId,
+            comments: comments,
+            event_id: eventId,
+            created_by: createdBy
+          },
+          success: function (response) {
+            if (response.success === 1) {
+              alert("Event successfully rejected!");
+              $('#submittedApplicationsTable').DataTable().ajax.reload();
+            } else {
+              alert("Failed to reject the event.");
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error("Error rejecting event: ", error);
+          }
+        });
+      });
+    });
+  </script>
+  <!-- <script>
+    $(document).ready(function () {
+      $(document).on("click", "#addCommitteeButton", function () {
+        $('#submittedApplicationsTable').hide();
+        $('#editSection').hide();
+        $('#addCommitteeMemberSection').removeClass('d-none');
+        $('.a-IRR-tableContainer').hide();
+        $('#R76545791867591768911_worksheet_region').hide()
+      });
+      $(document).on("click", "#addMemberButton", function () {
+        const data = {
+          "p_EVENT_ID": "tnegatngis1957",  // Example event ID
+          "p_INSPECTION_DATE": $('#inspectionDate').val(),
+          "p_COMMITEE_DEPARTMENT": $('#committeeDepartment').val(),
+          "p_COMMITEE_NAME": $('#committeeName').val(),
+          "p_COMMITEE_DESIGNATION": $('#committeeDesignation').val(),
+          "p_COMMITEE_MAIL": $('#committeeMail').val(),
+          "p_COMMITEE_MOBILE": $('#committeeMobile').val()
+        };
+        $.ajax({
+          url: 'https://tngis.tnega.org/lcap_api/jallikattu/v1/mhs_user/mhs_add_member',
+          type: 'POST',
+          contentType: 'application/json',
+          headers: {
+            'X-App-Key': 'j6ll!k@ttu',
+            'X-App-Name': 'tn jallikattu'
+          },
+          data: JSON.stringify(data),
+          success: function (response) {
+            if (response.success === 1) {
+              showSuccessToast('Committee member added successfully!');
+              $('#submittedApplicationsTable').show(); // Show the table again
+              $('#addCommitteeMemberSection').addClass('d-none'); // Hide the form
+            } else {
+              showErrorToast('Failed to add committee member.');
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error("Error adding member: ", error);
+            showErrorToast('Error adding member.');
+          }
+        });
+      });
+    });
+
+  </script> -->
+
+
+  <script>
+    $(document).ready(function () {
+
+      // Show the Add Committee Member section $('#forwardToDistrictButton');
+      $(document).on("click", "#addCommitteeButton", function () {
+        $('#submittedApplicationsTable').hide();
+        $('#editSection').hide();
+        $('#addCommitteeMemberSection').removeClass('d-none');
+        $('.a-IRR-tableContainer').hide();
+        $('#R76545791867591768911_worksheet_region').hide();
+      });
+
+      // Handle Add Member button click
+      $(document).on("click", "#addMemberButton", function () {
+
+        const data = {
+          "p_EVENT_ID": "tnegatngis1957", // Example event ID
+          "p_INSPECTION_DATE": $('#inspectionDate').val(),
+          "p_COMMITEE_DEPARTMENT": $('#committeeDepartment').val(),
+          "p_COMMITEE_NAME": $('#committeeName').val(),
+          "p_COMMITEE_DESIGNATION": $('#committeeDesignation').val(),
+          "p_COMMITEE_MAIL": $('#committeeMail').val(),
+          "p_COMMITEE_MOBILE": $('#committeeMobile').val()
+        };
+
+        // AJAX call to add a new committee member
+        $.ajax({
+          url: 'https://tngis.tnega.org/lcap_api/jallikattu/v1/mhs_user/mhs_add_member',
+          type: 'POST',
+          contentType: 'application/json',
+          headers: {
+            'X-App-Key': 'j6ll!k@ttu',
+            'X-App-Name': 'tn jallikattu'
+          },
+          data: JSON.stringify(data),
+          success: function (response) {
+            const tableData = data;
+            const tableBody = $("#committeeMembersTable tbody")
+            if (response.success === 1) {
+              showSuccessToast('Committee member added successfully!');
+              alert(JSON.stringify(response))
+              const newRow = `
+                <tr>
+                  <td><input type="checkbox" class="row-select" data-committee-id="${data.p_COMMITEE_ID}"></td>
+                  <td>${$('#submittedApplicationsTable tbody tr').length + 1}</td>
+                  <td>${data.p_COMMITEE_ID}</td>
+                  <td>${data.p_INSPECTION_DATE}</td>
+                  <td>${data.p_COMMITEE_DEPARTMENT}</td>
+                  <td>${data.p_COMMITEE_NAME}</td>
+                  <td>${data.p_COMMITEE_DESIGNATION}</td>
+                  <td>${data.p_COMMITEE_MAIL}</td>
+                  <td>${data.p_COMMITEE_MOBILE}</td>
+                  <td>Pending</td>
+                </tr>
+              `;
+              $('#submittedApplicationsTable tbody').append(newRow);
+              $('#submittedApplicationsTable').show();
+              $('#addCommitteeMemberSection').addClass('d-none');
+              $("#addedCommitteeMembersList").show();
+              tableBody.append('<tr><td colspan="12" class="text-center">No Data Found</td></tr>');
+            } else {
+              showErrorToast('Failed to add committee member.');
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error("Error adding member: ", error);
+            showErrorToast('Error adding member.');
+          }
+        });
+      });
+    });
+  </script>
+
+
+  <script>
+    $(document).on("click", "#forwardToDistrictButton", function () {
+
+      const comments = $("#comments").val();
+      if (!comments) {
+        showErrorToast("Please enter the comments")
+      }
+      const eventId = $("#editEventId").text();
+      const createdBy = userId;
+      const payload = {
+        user_id: userId,
+        comments: comments,
+        event_id: eventId,
+        created_by: createdBy
+      }
+      const forwardApiUrl = `${BASE_API_URL}/mhs_user/fwd_district_collector?user_id=${userId}&event_id=${encodeURIComponent(eventId)}&comments=${encodeURIComponent(comments)}`;
+      $.ajax({
+        url: forwardApiUrl,
+        method: 'POST',
+        headers: {
+          "X-APP-KEY": "j6ll!k@ttu",
+          "X-APP-NAME": "tn jallikattu"
+        },
+        data: {
+          payload
+        },
+        success: function (response) {
+          if (response.success === 1) {
+            alert("Event successfully forwarded to District Collector!");
+            $('#submittedApplicationsTable').DataTable().ajax.reload();  // Reload the table data
+          } else {
+            alert("Failed to forward the event to District Collector.");
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error("Error forwarding event: ", error);
+        }
+      });
+    });
+
+  </script>
+  <!-- <script>
+    $(document).ready(function () {
+      // Show the add committee member form
+      $(document).on("click", "#addCommitteeButton", function () {
+        $('#submittedApplicationsTable').hide();  // Hide the applications table
+        $('#editSection').hide();  // Hide the edit section
+        $('#addCommitteeMemberSection').removeClass('d-none');  // Show the add committee form
+      });
+
+      // Handle adding a new committee member
+      $(document).on("click", "#addMemberButton", function () {
+        const data = {
+          "p_EVENT_ID": "tnegatngis1957",  // Example event ID
+          "p_INSPECTION_DATE": $('#inspectionDate').val(),
+          "p_COMMITEE_DEPARTMENT": $('#committeeDepartment').val(),
+          "p_COMMITEE_NAME": $('#committeeName').val(),
+          "p_COMMITEE_DESIGNATION": $('#committeeDesignation').val(),
+          "p_COMMITEE_MAIL": $('#committeeMail').val(),
+          "p_COMMITEE_MOBILE": $('#committeeMobile').val()
+        };
+
+        $.ajax({
+          url: 'https://tngis.tnega.org/lcap_api/jallikattu/v1/mhs_user/mhs_add_member',
+          type: 'POST',
+          contentType: 'application/json',
+          headers: {
+            'X-App-Key': 'j6ll!k@ttu',
+            'X-App-Name': 'tn jallikattu'
+          },
+          data: JSON.stringify(data),
+          success: function (response) {
+            if (response.success === 1) {
+              showSuccessToast('Committee member added successfully!');
+              const newMember = `
+            <li>
+              ${$('#committeeName').val()} - ${$('#committeeDesignation').val()}
+            </li>
+          `;
+              $('#committeeMembersList').append(newMember);
+
+              // Hide the add member form and show the table
+              $('#submittedApplicationsTable').show();
+              $('#addCommitteeMemberSection').addClass('d-none');
+            } else {
+              showErrorToast('Failed to add committee member.');
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error("Error adding member: ", error);
+            showErrorToast('Error adding member.');
+          }
+        });
+      });
+
+      $(document).on("click", "#backButton", function () {
+        $('#submittedApplicationsTable').show();
+        $('#editSection').show();
+        $('#addCommitteeMemberSection').addClass('d-none');
+      });
+    });
+
+  </script> -->
+
+  <script>
+    $(document).on("click", "#needMoreInfoButton", function () {
+      const eventId = $("#editEventId").text();
+      const comments = $("#comments").val();
+      console.log(comments)
+      const createdBy = userId;
+      $.ajax({
+        url: 'https://tngis.tnega.org/lcap_api/jallikattu/v1/mhs_user/mhs_request_more_info',
+        method: 'POST',
+        headers: {
+          "X-APP-KEY": "j6ll!k@ttu",
+          "X-APP-NAME": "tn jallikattu"
+        },
+        data: {
+          user_id: userId,
+          comments: comments,
+          event_id: eventId,
+          created_by: createdBy
+        },
+        success: function (response) {
+          if (response.success === 1) {
+            alert(response.success);
+            $('#submittedApplicationsTable').DataTable().ajax.reload();
+          } else {
+            alert("Failed to reject the event.");
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error("Error rejecting event: ", error);
+        }
+      });
+    });
+
+
+  </script>
+  <script src="../../assets/js/changePassword.js"></script>
+  <link rel="stylesheet" href="../assets/css/popUp.css" type="text/css" />
+</body>
+
+</html>

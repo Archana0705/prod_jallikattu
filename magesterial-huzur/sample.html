@@ -1,0 +1,71 @@
+$(document).on("click", "#sendSmsBtn", function () {
+    const selectedRows = $(".row-select:checked");
+    if (selectedRows.length === 0) {
+      showErrorToast("Please select at least one committee.");
+      return;
+    }
+  
+    // Fetch dynamic event_id
+    const eventId = $("#eventIdInput").val(); // Assuming an input field with ID 'eventIdInput'
+    if (!eventId) {
+      showErrorToast("Event ID is missing.");
+      return;
+    }
+  
+    // Disable button to prevent multiple submissions
+    const sendSmsBtn = $(this);
+    sendSmsBtn.prop("disabled", true);
+  
+    const requests = [];
+    selectedRows.each(function () {
+      const committeeRow = $(this).closest("tr");
+  
+      const requestData = {
+        user_id: "20",
+        event_id: eventId, // Use dynamic event_id
+        district: committeeRow.find("td").eq(4).text(),
+        event_place: committeeRow.find("td").eq(5).text(),
+        mobile_number: committeeRow.find("td").eq(8).text().split(","), // Array of mobile numbers
+        inspection_date: committeeRow.find("td").eq(3).text(),
+      };
+  
+      requests.push(
+        $.ajax({
+          url: "https://tngis.tnega.org/lcap_api/jallikattu/v1/mhs_user/inspection_schedule_alert.php",
+          method: "POST",
+          headers: {
+            "X-App-Key": "j6ll!k@ttu",
+            "X-App-Name": "tn jallikattu",
+            "Content-Type": "application/json",
+          },
+          data: JSON.stringify(requestData),
+        })
+      );
+    });
+  
+    // Wait for all requests to complete
+    $.when(...requests)
+      .done(function (...responses) {
+        responses.forEach((response) => {
+          if (response[0].success === 1) {
+            showSuccessToast("SMS sent successfully.");
+          } else {
+            showErrorToast("Failed to send SMS.");
+          }
+        });
+      })
+      .fail(function () {
+        showErrorToast("An error occurred while sending SMS.");
+      })
+      .always(function () {
+        sendSmsBtn.prop("disabled", false);
+      });
+  });
+  
+  function showSuccessToast(message) {
+    alert(message); // Replace with a toast library if needed
+  }
+  
+  function showErrorToast(message) {
+    alert(message); // Replace with a toast library if needed
+  }

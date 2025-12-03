@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html class="no-js  page-70 app-JLIKTU" lang="en">
+
+<head>
+  <div id="preloader"></div>
+  <style>
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 9999;
+      overflow: hidden;
+      background: #12121261;
+      /*width: 57%;*/
+      border-radius: 13px 35px;
+    }
+
+    #preloader:before {
+      content: "";
+      position: fixed;
+      top: calc(50% - 30px);
+      left: calc(53% - 30px);
+      border: 6px solid #f92020b8;
+      border-top-color: #e2eefd;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: animate-preloader 1s linear infinite;
+      animation: animate-preloader 1s linear infinite;
+      z-index: 9999;
+    }
+
+    @-webkit-keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>Event Completion form</title>
+  <link rel="stylesheet" href="../assets/css/oj-redwood-notag-min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Core.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Theme-Standard.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/font-apex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Coreone.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/aos.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/custom.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/theme.css" type="text/css" />
+  <link rel="apple-touch-icon" href="../assets/img/app-icon-192.png" />
+  <link rel="icon" href="../assets/img/app-icon-32.png" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/toastr/toastr.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    .toast-container {
+      right: 0.5%;
+    }
+
+    #successToast {
+      background: #198754 !important;
+    }
+
+    #errorToast {
+      background: #ff0000 !important;
+    }
+  </style>
+  <!-- Toast -->
+  <div class="toast-container position-fixed p-3 custom_toast" x-data="transButtonComponent()">
+    <div id="errorToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="errorMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+    <div id="successToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="successMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <!-- Toast -->
+</head>
+
+<body
+  class="t-PageBody t-PageBody--hideLeft t-PageBody--hideActions no-anim t-PageTemplate--standard   apex-top-nav apex-icons-fontapex apex-theme-vita-copy-1"
+  id="t_PageBody" onload="loadPopup()">
+  <!-- <a href="#main" id="t_Body_skipToContent">Skip to Main Content</a> -->
+  <input type="hidden" name="p_flow_id" value="110" id="pFlowId" /><input type="hidden" name="p_flow_step_id" value="70"
+    id="pFlowStepId" /><input type="hidden" name="p_instance" value="2224570108753" id="pInstance" /><input
+    type="hidden" name="p_page_submission_id" value="270490329034844655939273636227247880316"
+    id="pPageSubmissionId" /><input type="hidden" name="p_request" value="" id="pRequest" /><input type="hidden"
+    name="p_reload_on_submit" value="S" id="pReloadOnSubmit" /><input type="hidden"
+    value="jliktu&#x2F;70&#x2F;2224570108753" id="pContext" /><input type="hidden"
+    value="270490329034844655939273636227247880316" id="pSalt" />
+  <header class="t-Header" id="t_Header" role="banner">
+
+    <div class="t-Header-branding">
+      <div class="t-Header-controls">
+        <button class="t-Button t-Button--icon t-Button--header t-Button--headerTree" aria-label="Main Navigation"
+          title="Main Navigation" id="t_Button_navControl" type="button"><span class="t-Header-controlsIcon"
+            aria-hidden="true"></span></button>
+      </div>
+      <div class="t-Header-logo">
+        <!-- <a href="&#x2F;ords&#x2F;r&#x2F;wsjallikattu&#x2F;jliktu&#x2F;home?session=2224570108753" class="t-Header-logo-link"><span class="apex-logo-text">Jallikattu</span></a> -->
+        <div class="gigw">
+          <li><a data-aos="fade-up" data-aos-delay="200" class="linkedin btn-decrease"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="font size Decrease"><i></i> A -</a></li>
+          <li><a data-aos="fade-up" data-aos-delay="300" class="linkedin btn-orig"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="Reset font"><i></i> A <sup></sup></a></li>
+          <li><a data-aos="fade-up" data-aos-delay="400" class="instagram btn-increase"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="font size Increase"><i></i> A +</a></li>
+          <li><a data-aos="fade-up" data-aos-delay="500"><span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                title="Dark Mode"><i class="t-Icon fa fa-moon-o" id="darkmode"></i></a></li>
+          <li><a data-aos="fade-up" data-aos-delay="600" class="form-check form-switch"><label class="form-check-label"
+                for="screenReaderSwitch">
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Screen Reader">
+                  <i id="sound" class="t-Icon fa fa-volume-up"></i></label><input class="form-check-input"
+                type="checkbox" role="switch" id="screenReaderSwitch"
+                onclick="readText(document.getElementsByTagName('body')[0])" /></span></a>
+          </li>
+        </div>
+      </div>
+      <div class="t-Header-navBar">
+        <div class="t-Header-navBar--start"></div>
+        <div class="t-Header-navBar--center">
+          <ul class="t-NavigationBar " id="70091113641892546086">
+            <li class="t-NavigationBar-item ">
+              <button class="t-Button t-Button--icon t-Button t-Button--header t-Button--navBar" type="button"
+                id="L70091125771514546098" data-menu="menu_L70091125771514546098" title="">
+                <span class="t-Icon fa&#x20;fa-user" aria-hidden="true"></span><span
+                  class="t-Button-label">User</span><span class="t-Button-badge"></span><span
+                  class="a-Icon icon-down-arrow" aria-hidden="true"></span>
+              </button>
+              <div class="t-NavigationBar-menu" style="display: none" id="menu_L70091125771514546098">
+                <ul>
+                  <li class="" data-current="false" data-icon=""><a href="separator" title="" target="">---</a></li>
+                  <!--  <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a
+                      href="javascript:apex.theme42.dialog('\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fchange-password?session=2224570108753\u0026dialogCs=nsVVlFac0rvWEd675chF55E_wHVd_xyFq-Met-adIgEcSqFVUVdXXL_7CNsdg1_lhuWkC4Y0O6S1MOvY-TKKSw',{title:'Change Password',h:'auto',w:'720',mxw:'960',modal:true,dialog:null,dlgCls:'t-Dialog-page--standard '+''},'',apex.gPageContext$)"
+                      title="" target="">Change Password</a></li> -->
+                  <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a href="javascript:void();"
+                      title="" target="">Change Password</a></li>
+                  <li class="" data-current="false" data-icon="fa fa-sign-out">
+                    <a href="#" id="globalSignOutBtn" title="Sign Out">Sign Out</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="t-Header-navBar--end"></div>
+      </div>
+    </div>
+    <div class="top">
+      <!-- <img id="leftlogo" data-aos="fade-right" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/TN_logo.png"> -->
+      <h2 data-aos="zoom-in" data-aos-duration="800" class="dept-name text-middle">DIRECTORATE OF ANIMAL HUSBANDRY AND
+        VETERINARY SERVICES</h2>
+      <h3 data-aos="zoom-in" data-aos-duration="800" class="dept-name2 text-middle">JALLIKATTU IN TAMIL NADU</h3>
+      <!-- <img id="rightlogo" data-aos="fade-left" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/right.png"> -->
+    </div>
+    <div class="t-Header-nav">
+      <div class="t-Header-nav-list js-tabLike js-tabLike" id="t_MenuNav">
+        <ul>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="index.html" title="" target="">Home</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="pending-applications.html" title="" target="">Pending
+              Applications</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="need-more-information.html" title="" target="">Need More
+              Information&#x2F;Rejected Applications</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="district-monitoring-report.html" title="" target="">District
+              Monitoring
+              Reports</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="go-issued.html" title="" target="">GO Issued</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="final-inspection-report.html" title="" target="">Final&#x2F;Pre-Event
+              Inspection Reports</a></li>
+          <li class="a-MenuBar-item a-Menu--current" data-current="true" data-id="" data-disabled="" data-hide=""
+            data-shortcut="" data-icon=""><a class="a-MenuBar-label" href="event-completion-form.html" title=""
+              target="">Event
+              Completion Form</a>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="all-application-status.html" title="" target="">All Application Status</a>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="" title="" target="">All Reports</a>
+            <ul style="display: none">
+              <li data-id="" data-disabled="" data-hide="" data-shortcut=""
+                data-icon="fa&#x20;fa-arrow-circle-o-right&#x20;fa-anim-flash"><a
+                  href="post-event-inspection-report.html" title="" target="">Post Event Reports</a></li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a href="bull-report.html"
+                  title="" target="">Registration of Bulls Report</a></li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+                  href="participant-report.html" title="" target="">Registration of participants report</a></li>
+            </ul>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="approved-bull-report.html" title="" target="">Approved Bull
+              report</a>
+          </li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="approved-participant-report.html" title="" target="">Approved Participant
+              Report</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="t-Body">
+
+    <div class="t-Body-main">
+      <div class="t-Body-title" id="t_Body_title"></div>
+      <div class="t-Body-content" id="t_Body_content">
+        <main id="main" class="t-Body-mainContent">
+          <span id="APEX_SUCCESS_MESSAGE" data-template-id="76689956809586187806_S"
+            class="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE"
+            data-template-id="76689956809586187806_E" class="apex-page-error u-hidden"></span>
+          <div class="t-Body-fullContent"></div>
+          <div class="t-Body-contentInner">
+            <div class="container">
+              <div class="row ">
+                <div class="col col-12 apex-col-auto col-start col-end">
+                  <div class="t-Region t-Region--scrollBody" id="R6259587623176795173" role="region"
+                    aria-label="Event&#x20;Completion&#x20;form">
+                    <div class="t-Region-header">
+                      <div class="t-Region-headerItems t-Region-headerItems--title">
+                        <span class="t-Region-headerIcon"><span class="t-Icon " aria-hidden="true"></span></span>
+                        <h2 class="t-Region-title" id="R6259587623176795173_heading" data-apex-heading>Event
+                          Completion form</h2>
+                      </div>
+                      <div class="t-Region-headerItems t-Region-headerItems--buttons"><span
+                          class="js-maximizeButtonContainer"></span></div>
+                    </div>
+                    <div class="t-Region-bodyWrap">
+                      <form id="registrationForm" enctype="multipart/form-data">
+                        <div class="t-Region-buttons t-Region-buttons--top">
+                          <div class="t-Region-buttons-left"></div>
+                          <div class="t-Region-buttons-right"></div>
+                        </div>
+                        <div class="t-Region-body">
+                          <div class="t-Region-orderBy"></div>
+                          <input type="hidden" name="P70_CREATED_BY" id="P70_CREATED_BY" value=""><input type="hidden"
+                            name="P70_UPDATED_BY" id="P70_UPDATED_BY" value=""><input type="hidden" name="P70_S_NUMBER"
+                            id="P70_S_NUMBER" value=""><input type="hidden" data-for="P70_S_NUMBER"
+                            value="D5-WDVZcX1x80npyM8UKAmHvJesVq9EyBvSP2TQV6oP2ncvW9bu2mjFYG_4sFobKm9221D5SirVqAkk4ACbMXg"><input
+                            type="hidden" name="P70_DISTRICT_WISE_S_NO" id="P70_DISTRICT_WISE_S_NO" value=""><input
+                            type="hidden" data-for="P70_DISTRICT_WISE_S_NO"
+                            value="fvtwNyK81fFwMsdKhIF3InFRqnpPJR7M6YD0nmcLBRkY1h76hm5mikPWL4-3fZW2YFpLriHtdEr2S_7qYCPEVw">
+                          <div class="container">
+                            <div class="row ">
+                              <div class="col col-4 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--select-list"
+                                  id="P70_DISTRICT_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_DISTRICT" id="P70_DISTRICT_LABEL" class="t-Form-label">District
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><select id="P70_DISTRICT" name="P70_DISTRICT"
+                                        class="selectlist&#x20;apex-item-select" data-native-menu="false" size="1">
+                                        <option value="" selected="selected">-Select-</option>
+                                      </select>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_DISTRICT_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto ">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--select-list"
+                                  id="P70_TALUK_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_TALUK" id="P70_TALUK_LABEL" class="t-Form-label">Taluk </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><select id="P70_TALUK" name="P70_TALUK"
+                                        class="selectlist&#x20;apex-item-select" data-native-menu="false" size="1">
+                                        <option value="" selected="selected">-Select-</option>
+                                      </select>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_TALUK_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--select-list"
+                                  id="P70_EVENT_PLACE_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_EVENT_PLACE" id="P70_EVENT_PLACE_LABEL" class="t-Form-label">Event
+                                      Place </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><select id="P70_EVENT_PLACE" name="P70_EVENT_PLACE"
+                                        class="selectlist&#x20;apex-item-select" data-native-menu="false" size="1">
+                                        <option value="" selected="selected">-Select-</option>
+                                      </select>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_EVENT_PLACE_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-4 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--select-list"
+                                  id="P70_EVENT_ID_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_EVENT_ID" id="P70_EVENT_ID_LABEL" class="t-Form-label">Event ID
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><select id="P70_EVENT_ID" name="P70_EVENT_ID"
+                                        class="selectlist&#x20;apex-item-select" data-native-menu="false" size="1">
+                                        <option value="" selected="selected">-Select-</option>
+                                      </select>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_EVENT_ID_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto ">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_GO_NUMBER_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_GO_NUMBER" id="P70_GO_NUMBER_LABEL" class="t-Form-label">Go Number
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_GO_NUMBER"
+                                        name="P70_GO_NUMBER" class="text_field&#x20;apex-item-text" value="" size="30"
+                                        maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_GO_NUMBER_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--date-picker-apex apex-item-wrapper--date-picker-apex-popup"
+                                  id="P70_GO_DATE_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_GO_DATE" id="P70_GO_DATE_LABEL" class="t-Form-label">Go Date
+                                    </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><a-date-picker id="P70_GO_DATE"
+                                        aria-labelledby="P70_GO_DATE_LABEL" change-month="true" change-year="true"
+                                        display-as="popup" display-weeks="none" format="DS"
+                                        previous-next-distance="one-month" show-days-outside-month="visible"
+                                        show-on="focus" show-time="false" size="30" time-increment-minute="15"
+                                        today-button="true" valid-example="11&#x2F;10&#x2F;2024"
+                                        year-selection-range="5"><input aria-haspopup="dialog"
+                                          class="apex-item-text&#x20;apex-item-datepicker" name="P70_GO_DATE" size="30"
+                                          type="text"><button aria-haspopup="dialog" aria-label="Select&#x20;Date"
+                                          class="a-Button&#x20;a-Button--calendar" tabindex="-1"
+                                          title="Select&#x20;Date" type="button"><span
+                                            class="a-Icon icon-calendar"></span></button></a-date-picker>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_GO_DATE_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-4 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--date-picker-apex apex-item-wrapper--date-picker-apex-popup"
+                                  id="P70_PERMITTED_DATE_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_PERMITTED_DATE" id="P70_PERMITTED_DATE_LABEL"
+                                      class="t-Form-label">Permitted Date </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><a-date-picker id="P70_PERMITTED_DATE"
+                                        aria-labelledby="P70_PERMITTED_DATE_LABEL" change-month="true"
+                                        change-year="true" display-as="popup" display-weeks="none" format="DS"
+                                        previous-next-distance="one-month" show-days-outside-month="visible"
+                                        show-on="focus" show-time="false" size="30" time-increment-minute="15"
+                                        today-button="true" valid-example="11&#x2F;10&#x2F;2024"
+                                        year-selection-range="5"><input aria-haspopup="dialog"
+                                          class="apex-item-text&#x20;apex-item-datepicker" name="P70_PERMITTED_DATE"
+                                          size="30" type="text"><button aria-haspopup="dialog"
+                                          aria-label="Select&#x20;Date" class="a-Button&#x20;a-Button--calendar"
+                                          tabindex="-1" title="Select&#x20;Date" type="button"><span
+                                            class="a-Icon icon-calendar"></span></button></a-date-picker>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_PERMITTED_DATE_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto ">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--date-picker-apex apex-item-wrapper--date-picker-apex-popup"
+                                  id="P70_ACTUAL_DATE_OF_CONDUCT_EVENT_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_ACTUAL_DATE_OF_CONDUCT_EVENT"
+                                      id="P70_ACTUAL_DATE_OF_CONDUCT_EVENT_LABEL" class="t-Form-label">Actual Date Of
+                                      Conduct Event </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><a-date-picker id="P70_ACTUAL_DATE_OF_CONDUCT_EVENT"
+                                        aria-labelledby="P70_ACTUAL_DATE_OF_CONDUCT_EVENT_LABEL" change-month="true"
+                                        change-year="true" display-as="popup" display-weeks="none" format="DS"
+                                        previous-next-distance="one-month" show-days-outside-month="visible"
+                                        show-on="focus" show-time="false" size="30" time-increment-minute="15"
+                                        today-button="true" valid-example="11&#x2F;10&#x2F;2024"
+                                        year-selection-range="5"><input aria-haspopup="dialog"
+                                          class="apex-item-text&#x20;apex-item-datepicker"
+                                          name="P70_ACTUAL_DATE_OF_CONDUCT_EVENT" size="30" type="text"><button
+                                          aria-haspopup="dialog" aria-label="Select&#x20;Date"
+                                          class="a-Button&#x20;a-Button--calendar" tabindex="-1"
+                                          title="Select&#x20;Date" type="button"><span
+                                            class="a-Icon icon-calendar"></span></button></a-date-picker>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_ACTUAL_DATE_OF_CONDUCT_EVENT_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--select-list"
+                                  id="P70_TYPE_OF_EVENT_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_TYPE_OF_EVENT" id="P70_TYPE_OF_EVENT_LABEL"
+                                      class="t-Form-label">Type Of Event </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><select id="P70_TYPE_OF_EVENT"
+                                        name="P70_TYPE_OF_EVENT" class="selectlist&#x20;apex-item-select"
+                                        data-native-menu="false" size="1">
+                                        <option value="" selected="selected">-Select One-</option>
+                                      </select>
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_TYPE_OF_EVENT_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-4 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_BULLS_REGISTERED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_BULLS_REGISTERED" id="P70_NO_OF_BULLS_REGISTERED_LABEL"
+                                      class="t-Form-label">No Of Bulls Registered </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_NO_OF_BULLS_REGISTERED"
+                                        name="P70_NO_OF_BULLS_REGISTERED" class="text_field&#x20;apex-item-text"
+                                        value="" size="30" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_NO_OF_BULLS_REGISTERED_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto ">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_BULLS_REJECTED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_BULLS_REJECTED" id="P70_NO_OF_BULLS_REJECTED_LABEL"
+                                      class="t-Form-label">No Of Bulls Rejected </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_NO_OF_BULLS_REJECTED"
+                                        name="P70_NO_OF_BULLS_REJECTED" class="text_field&#x20;apex-item-text" value=""
+                                        size="30" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_NO_OF_BULLS_REJECTED_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_REASON_FOR_REJECTION_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_REASON_FOR_REJECTION" id="P70_REASON_FOR_REJECTION_LABEL"
+                                      class="t-Form-label">Reason For Rejection</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_REASON_FOR_REJECTION"
+                                        name="P70_REASON_FOR_REJECTION" class="text_field&#x20;apex-item-text" value=""
+                                        size="30" maxlength="1000" /></div><span
+                                      id="P70_REASON_FOR_REJECTION_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-4 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_BULLS_PARTICIPATED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_BULLS_PARTICIPATED" id="P70_NO_OF_BULLS_PARTICIPATED_LABEL"
+                                      class="t-Form-label">No Of Bulls Participated </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_NO_OF_BULLS_PARTICIPATED"
+                                        name="P70_NO_OF_BULLS_PARTICIPATED" class="text_field&#x20;apex-item-text"
+                                        value="" size="30" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_NO_OF_BULLS_PARTICIPATED_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto ">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_BULLS_INJURED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_BULLS_INJURED" id="P70_NO_OF_BULLS_INJURED_LABEL"
+                                      class="t-Form-label">No Of Bulls Injured </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_NO_OF_BULLS_INJURED"
+                                        name="P70_NO_OF_BULLS_INJURED" class="text_field&#x20;apex-item-text" value=""
+                                        size="30" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_NO_OF_BULLS_INJURED_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_BULLS_DIED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_BULLS_DIED" id="P70_NO_OF_BULLS_DIED_LABEL"
+                                      class="t-Form-label">No Of Bulls Died</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_NO_OF_BULLS_DIED"
+                                        name="P70_NO_OF_BULLS_DIED" class="text_field&#x20;apex-item-text" value=""
+                                        size="30" maxlength="1000" /></div><span
+                                      id="P70_NO_OF_BULLS_DIED_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-4 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_PARTICIPANTS_REGISTERED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_PARTICIPANTS_REGISTERED"
+                                      id="P70_NO_OF_PARTICIPANTS_REGISTERED_LABEL" class="t-Form-label">No Of
+                                      Participants Registered </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text"
+                                        id="P70_NO_OF_PARTICIPANTS_REGISTERED" name="P70_NO_OF_PARTICIPANTS_REGISTERED"
+                                        class="text_field&#x20;apex-item-text" value="" size="30" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_NO_OF_PARTICIPANTS_REGISTERED_error_placeholder"
+                                        class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto ">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_PARTICIPANTS_REJECTED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_PARTICIPANTS_REJECTED"
+                                      id="P70_NO_OF_PARTICIPANTS_REJECTED_LABEL" class="t-Form-label">No Of Participants
+                                      Rejected </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text"
+                                        id="P70_NO_OF_PARTICIPANTS_REJECTED" name="P70_NO_OF_PARTICIPANTS_REJECTED"
+                                        class="text_field&#x20;apex-item-text" value="" size="30" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_NO_OF_PARTICIPANTS_REJECTED_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_PARTICIPANTS_PERMITTED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_PARTICIPANTS_PERMITTED"
+                                      id="P70_NO_OF_PARTICIPANTS_PERMITTED_LABEL" class="t-Form-label">No Of
+                                      Participants Permitted </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text"
+                                        id="P70_NO_OF_PARTICIPANTS_PERMITTED" name="P70_NO_OF_PARTICIPANTS_PERMITTED"
+                                        class="text_field&#x20;apex-item-text" value="" size="30" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_NO_OF_PARTICIPANTS_PERMITTED_error_placeholder" class="a-Form-error"
+                                        data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-4 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_PARTICIPANTS_INJURED_MAJOR_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_PARTICIPANTS_INJURED_MAJOR"
+                                      id="P70_NO_OF_PARTICIPANTS_INJURED_MAJOR_LABEL" class="t-Form-label">No Of
+                                      Participants Injured Major </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text"
+                                        id="P70_NO_OF_PARTICIPANTS_INJURED_MAJOR"
+                                        name="P70_NO_OF_PARTICIPANTS_INJURED_MAJOR"
+                                        class="text_field&#x20;apex-item-text" value="" size="30" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_NO_OF_PARTICIPANTS_INJURED_MAJOR_error_placeholder"
+                                        class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto ">
+                                <div
+                                  class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_PARTICIPANTS_INJURED_MINOR_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_PARTICIPANTS_INJURED_MINOR"
+                                      id="P70_NO_OF_PARTICIPANTS_INJURED_MINOR_LABEL" class="t-Form-label">No Of
+                                      Participants Injured Minor </label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text"
+                                        id="P70_NO_OF_PARTICIPANTS_INJURED_MINOR"
+                                        name="P70_NO_OF_PARTICIPANTS_INJURED_MINOR"
+                                        class="text_field&#x20;apex-item-text" value="" size="30" maxlength="1000" />
+                                    </div>
+                                    <div class="t-Form-itemAssistance">
+                                      <span id="P70_NO_OF_PARTICIPANTS_INJURED_MINOR_error_placeholder"
+                                        class="a-Form-error" data-template-id="70091003340642546032_ET"></span>
+                                      <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NO_OF_PARTICIPANTS_DIED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NO_OF_PARTICIPANTS_DIED" id="P70_NO_OF_PARTICIPANTS_DIED_LABEL"
+                                      class="t-Form-label">No Of Participants Died</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_NO_OF_PARTICIPANTS_DIED"
+                                        name="P70_NO_OF_PARTICIPANTS_DIED" class="text_field&#x20;apex-item-text"
+                                        value="" size="30" maxlength="1000" />
+                                    </div><span id="P70_NO_OF_PARTICIPANTS_DIED_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-4 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_SPECTRATORS_OWNERS_INJURED_MAJOR_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_SPECTRATORS_OWNERS_INJURED_MAJOR"
+                                      id="P70_SPECTRATORS_OWNERS_INJURED_MAJOR_LABEL" class="t-Form-label">Spectrators
+                                      /Owners Injured Major</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text"
+                                        id="P70_SPECTRATORS_OWNERS_INJURED_MAJOR"
+                                        name="P70_SPECTRATORS_OWNERS_INJURED_MAJOR"
+                                        class="text_field&#x20;apex-item-text" value="" size="30" maxlength="1000" />
+                                    </div><span id="P70_SPECTRATORS_OWNERS_INJURED_MAJOR_error_placeholder"
+                                      class="a-Form-error" data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto ">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_SPECTRATORS_OWNERS_INJURED_MINOR_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_SPECTRATORS_OWNERS_INJURED_MINOR"
+                                      id="P70_SPECTRATORS_OWNERS_INJURED_MINOR_LABEL" class="t-Form-label">Spectrators
+                                      Owners Injured Minor</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text"
+                                        id="P70_SPECTRATORS_OWNERS_INJURED_MINOR"
+                                        name="P70_SPECTRATORS_OWNERS_INJURED_MINOR"
+                                        class="text_field&#x20;apex-item-text" value="" size="30" maxlength="1000" />
+                                    </div><span id="P70_SPECTRATORS_OWNERS_INJURED_MINOR_error_placeholder"
+                                      class="a-Form-error" data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_SPECTRATORS_OWNER_DIED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_SPECTRATORS_OWNER_DIED" id="P70_SPECTRATORS_OWNER_DIED_LABEL"
+                                      class="t-Form-label">Spectrators Owner Died</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_SPECTRATORS_OWNER_DIED"
+                                        name="P70_SPECTRATORS_OWNER_DIED" class="text_field&#x20;apex-item-text"
+                                        value="" size="30" maxlength="1000" />
+                                    </div><span id="P70_SPECTRATORS_OWNER_DIED_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-4 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NUMBER_OF_POLICE_PERSONAL_INJURED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NUMBER_OF_POLICE_PERSONAL_INJURED"
+                                      id="P70_NUMBER_OF_POLICE_PERSONAL_INJURED_LABEL" class="t-Form-label">Number Of
+                                      Police Personal Injured</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text"
+                                        id="P70_NUMBER_OF_POLICE_PERSONAL_INJURED"
+                                        name="P70_NUMBER_OF_POLICE_PERSONAL_INJURED"
+                                        class="text_field&#x20;apex-item-text" value="" size="30" maxlength="1000" />
+                                    </div><span id="P70_NUMBER_OF_POLICE_PERSONAL_INJURED_error_placeholder"
+                                      class="a-Form-error" data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto ">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_NUMBER_OF_POLICE_DIED_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_NUMBER_OF_POLICE_DIED" id="P70_NUMBER_OF_POLICE_DIED_LABEL"
+                                      class="t-Form-label">Number Of Police Died</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_NUMBER_OF_POLICE_DIED"
+                                        name="P70_NUMBER_OF_POLICE_DIED" class="text_field&#x20;apex-item-text" value=""
+                                        size="30" maxlength="1000" /></div><span
+                                      id="P70_NUMBER_OF_POLICE_DIED_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--text-field"
+                                  id="P70_FIR_NO_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_FIR_NO" id="P70_FIR_NO_LABEL" class="t-Form-label">FIR No</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper"><input type="text" id="P70_FIR_NO" name="P70_FIR_NO"
+                                        class="text_field&#x20;apex-item-text" value="" size="30" maxlength="1000" />
+                                    </div><span id="P70_FIR_NO_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row ">
+                              <div class="col col-4 apex-col-auto col-start">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--file"
+                                  id="P70_FIR_ATTACHMENT_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_FIR_ATTACHMENT" id="P70_FIR_ATTACHMENT_LABEL"
+                                      class="t-Form-label">FIR Attachment</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper">
+                                      <a-file-upload id="P70_FIR_ATTACHMENT" name="P70_FIR_ATTACHMENT"
+                                        upload-type="FILE" display-style="NATIVE" accept=".pdf,.jpg,.jpeg" size="30"
+                                        max-file-size="2048">
+                                        <input type="file" id="P70_FIR_ATTACHMENT_input"
+                                          aria-labelledby="P70_FIR_ATTACHMENT_LABEL" />
+                                        <div class="a-FileDrop a-FileDrop--native"></div>
+                                      </a-file-upload>
+                                    </div>
+                                    <span id="P70_FIR_ATTACHMENT_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto ">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--file"
+                                  id="P70_DEATH_REPORT_ATTACHMENT_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_DEATH_REPORT_ATTACHMENT" id="P70_DEATH_REPORT_ATTACHMENT_LABEL"
+                                      class="t-Form-label">Death Report Attachment</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper">
+                                      <a-file-upload id="P70_DEATH_REPORT_ATTACHMENT" name="P70_DEATH_REPORT_ATTACHMENT"
+                                        upload-type="FILE" display-style="NATIVE" accept=".pdf,.jpg,.jpeg" size="30"
+                                        max-file-size="2048">
+                                        <input type="file" id="P70_DEATH_REPORT_ATTACHMENT_input"
+                                          aria-labelledby="P70_DEATH_REPORT_ATTACHMENT_LABEL" />
+                                        <div class="a-FileDrop a-FileDrop--native"></div>
+                                      </a-file-upload>
+                                    </div>
+                                    <span id="P70_DEATH_REPORT_ATTACHMENT_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col col-4 apex-col-auto col-end">
+                                <div
+                                  class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs apex-item-wrapper apex-item-wrapper--textarea"
+                                  id="P70_FIR_REMARKS_CONTAINER">
+                                  <div class="t-Form-labelContainer col col-2">
+                                    <label for="P70_FIR_REMARKS" id="P70_FIR_REMARKS_LABEL"
+                                      class="t-Form-label">Remarks</label>
+                                  </div>
+                                  <div class="t-Form-inputContainer col col-2">
+                                    <div class="t-Form-itemWrapper">
+                                      <div class="apex-item-group apex-item-group--textarea"><textarea
+                                          name="P70_FIR_REMARKS" rows="5" cols="30" maxlength="1000"
+                                          id="P70_FIR_REMARKS" class="textarea&#x20;apex-item-textarea"
+                                          data-resizable="true"></textarea></div>
+                                    </div><span id="P70_FIR_REMARKS_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003022793546032_ET"></span>
+                                  </div>
+                                </div><input type="hidden" name="P70_FIR_ATTACH_MIMETYPE" id="P70_FIR_ATTACH_MIMETYPE"
+                                  value=""><input type="hidden" data-for="P70_FIR_ATTACH_MIMETYPE"
+                                  value="a1u2exUhivyetNSjhEYyB7opuU7mQ7CUnNwvyJjTAwc_CaaQ9dBGdPWjKz01nzO0lWLnuTVOf_p2VuWjp2hWzw"><input
+                                  type="hidden" name="P70_FIR_ATTACH_FILENAME" id="P70_FIR_ATTACH_FILENAME"
+                                  value=""><input type="hidden" data-for="P70_FIR_ATTACH_FILENAME"
+                                  value="53ntS6DRjHoitCt-KQ__t19ZWkbHTEovHNsvfYEouU2hJRXchnY4fW9BhgcbDdisBXyLGaZ9Q6kcYAbxBqksmg"><input
+                                  type="hidden" name="P70_FIR_ATTACH_LAST_UPDATE" id="P70_FIR_ATTACH_LAST_UPDATE"
+                                  value=""><input type="hidden" data-for="P70_FIR_ATTACH_LAST_UPDATE"
+                                  value="ba548TVr6wJW43GRiEkI5AWYUmeiSO24HL_l8CZqtb4_0YuXmofyCPNDt6zY7ywLqIIfoeOKF6UP80UzL8-3VA"><input
+                                  type="hidden" name="P70_FIR_ATTACH_CHARSET" id="P70_FIR_ATTACH_CHARSET"
+                                  value=""><input type="hidden" data-for="P70_FIR_ATTACH_CHARSET"
+                                  value="7hb2F30llJnlQ9oCz45dSTQAXsxRDSVYOx3W3ynsCAkGN2th6qRJ6YwInkf7IPkNN57bBEh1pgTUVnES8TU0GA"><input
+                                  type="hidden" name="P70_DEATH_REPORT_ATTACH_MIMETYPE"
+                                  id="P70_DEATH_REPORT_ATTACH_MIMETYPE" value=""><input type="hidden"
+                                  data-for="P70_DEATH_REPORT_ATTACH_MIMETYPE"
+                                  value="trkG3sG5wZNH_72YSjjWLUaAHrK2MTOsMUCa_fB2ulCGYC_CFvpfj_KU_dvDyb63zJeRFLrWih9R3tPvoWePEg"><input
+                                  type="hidden" name="P70_DEATH_REPORT_ATTACH_FILENAME"
+                                  id="P70_DEATH_REPORT_ATTACH_FILENAME" value=""><input type="hidden"
+                                  data-for="P70_DEATH_REPORT_ATTACH_FILENAME"
+                                  value="6o9efkqWvUtOP2tvXKOBLbdMxotTa_mYn27JmNUKaWt_SE4ZEyZ69LPy3DIWpbWXwzJEBFKSYgOQ4_lz4EMuyQ"><input
+                                  type="hidden" name="P70_DEATH_REPORT_ATTACH_LAST_UPDATE"
+                                  id="P70_DEATH_REPORT_ATTACH_LAST_UPDATE" value=""><input type="hidden"
+                                  data-for="P70_DEATH_REPORT_ATTACH_LAST_UPDATE"
+                                  value="eeaMyyNA_VxV9ZjV9k3QDPNpY7zHc_Tt_8cyZyM1eAwP_XZiJW0eSigOSs8UKOcgNPtYuuTluTBOVas_9e9SdA"><input
+                                  type="hidden" name="P70_DEATH_REPORT_ATTACH_CHARSET"
+                                  id="P70_DEATH_REPORT_ATTACH_CHARSET" value=""><input type="hidden"
+                                  data-for="P70_DEATH_REPORT_ATTACH_CHARSET"
+                                  value="cGDX1EG1GjPXlHcm6-Bm_Te7LhB4VnPvts_j3WHNK0pUbXaSSAi5pOycvCh45dgV9-yxEBF-gXWY9YNvQTwH5w"><input
+                                  type="hidden" name="P70_STATUS" id="P70_STATUS" value=""><input type="hidden"
+                                  data-for="P70_STATUS"
+                                  value="wip45bWp-xLoXCwPtFSNO5F7-6KWEPaXAzc0NI40EmKz0YiNcJ_OC9VlW6LRT95nDA83jQ8pLwwAj9RYSdB5ow"><input
+                                  type="hidden" name="P70_CREATED_DATE" id="P70_CREATED_DATE" value=""><input
+                                  type="hidden" data-for="P70_CREATED_DATE"
+                                  value="GXDdR8iFNAiwLSYhy68ArG6R2QPxgawmbXJAVIe6NywcvFMDU_KIlpoNRHB726eKHIpvSGayXtrA1zzHQuS-bg"><input
+                                  type="hidden" name="P70_UPDATED_DATE" id="P70_UPDATED_DATE" value=""><input
+                                  type="hidden" data-for="P70_UPDATED_DATE"
+                                  value="_rGVqTQ8tBaiFtwkZQ7gdn0FMcAe8N7Q_crd_u4QEoObZRZJYCBJqdAYh58SJazGtHCmuZ6sJbaXCUB7Nd2dAw">
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="t-Region-buttons t-Region-buttons--bottom">
+                          <div class="t-Region-buttons-left"><button
+                              class="t-Button t-Button--hot js-ignoreChange&#x20;t-Button--large" type="button"
+                              id="B6259608328691795187"><span class="t-Button-label">Cancel</span></button></div>
+                          <div class="t-Region-buttons-right"><button
+                              class="t-Button t-Button--large&#x20;t-Button--success" type="Submit"
+                              id="B6259609708867795188"><span class="t-Button-label">Create</span></button></div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <footer class="t-Footer" id="t_Footer" role="contentinfo">
+          <div class="t-Footer-body">
+            <div class="t-Footer-content"></div>
+            <div class="t-Footer-apex">
+              <!-- <div class="t-Footer-version">Release 1.0</div>
+            <div class="t-Footer-customize"></div>
+             -->
+              <div class="row">
+                <div class="col-6">
+                  <p class="text-center"><img class="footer-logo" src="../assets/img/right.png"><br>Content owned by
+                    Department of Animal Husbandry and Veterinary Services</p>
+                </div>
+                <div class="col-6">
+                  <p class="text-center"><img class="footer-logo" src="../assets/img/tnegalogo.png"><br>Designed and
+                    Developed by Tamil Nadu e-Governance Agency</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-Footer-top">
+            <a href="#top" class="t-Footer-topButton" id="t_Footer_topButton" title="Start of page"
+              aria-label="Start of page"><span class="a-Icon icon-up-chevron" aria-hidden="true"></span></a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <div class="t-Body-inlineDialogs" id="t_Body_inlineDialogs"></div><input type="hidden" id="pPageFormRegionChecksums"
+    value="&#x5B;&#x5D;">
+  <input type="hidden" id="pPageItemsRowVersion" value="" /><input type="hidden" id="pPageItemsProtected"
+    value="UDcwX1NfTlVNQkVSOlA3MF9ESVNUUklDVF9XSVNFX1NfTk86UDcwX0ZJUl9BVFRB.,Q0hfTUlNRVRZUEU6UDcwX0ZJUl9BVFRBQ0hfRklMRU5BTUU6UDcwX0ZJUl9BVFRB.,Q0hfTEFTVF9VUERBVEU6UDcwX0ZJUl9BVFRBQ0hfQ0hBUlNFVDpQNzBfREVBVEhf.,UkVQT1JUX0FUVEFDSF9NSU1FVFlQRTpQNzBfREVBVEhfUkVQT1JUX0FUVEFDSF9G.,SUxFTkFNRTpQNzBfREVBVEhfUkVQT1JUX0FUVEFDSF9MQVNUX1VQREFURTpQNzBf.,REVBVEhfUkVQT1JUX0FUVEFDSF9DSEFSU0VUOlA3MF9TVEFUVVM6UDcwX0NSRUFU.,RURfREFURTpQNzBfVVBEQVRFRF9EQVRF&#x2F;Iouyx3e6v1_fDRxRcN2vEP95339XcJPtbjEKUIKqwEZqvwrt_2f6r2G1kTz-9wVEwfR3ShxNjTPI4qNud3rBCg" />
+
+
+
+  <script>
+    var apex_img_dir = "\u002Fi\u002F";
+    var apex = {
+      env: { APP_USER: "9677447050", APP_ID: "110", APP_PAGE_ID: "70", APP_SESSION: "2224570108753", APP_FILES: "r\u002Fwsjallikattu\u002F110\u002Ffiles\u002Fstatic\u002Fv1667\u002F", WORKSPACE_FILES: "r\u002Fwsjallikattu\u002Ffiles\u002Fstatic\u002Fv1\u002F", APEX_VERSION: "23.2.1", APEX_BASE_VERSION: "23.2" },
+      libVersions: { ckeditor5: "36.0.0", cropperJs: "1.5.13", domPurify: "3.0.5", fullcalendar: "6.1.8", hammer: "2.0.8", jquery: "3.6.4", jqueryUi: "1.13.2", maplibre: "2.4.0", markedJs: "5.1.2", prismJs: "1.29.0", oraclejet: "15.0.7", tinymce: "6.7.1", turndown: "7.1.1", monacoEditor: "0.32.1", lessJs: "4.1.3" }
+    };
+  </script>
+
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/crypto-js.min.js"></script>
+  <script src="../assets/js/globalLogout.js"></script>
+  <script src="../assets/js/desktop_all.min.js"></script>
+  <script src="../assets/js/theme42.min.js"></script>
+  <script src="../assets/js/aos.js"></script>
+  <script src="../assets/js/add.min.js"></script>
+  <script src="../assets/js/widget.apexTabs.min.js"></script>
+  <script src="../assets/js/widget.interactiveReport.min.js"></script>
+  <script src="../assets/js/widget.iconList.min.js"></script>
+  <script src="../assets/js/widget.stickyTableHeader.min.js"></script>
+  <script src="../assets/js/widget.stickyWidget.min.js"></script>
+  <script src="../assets/js/item.Colorpicker.min.js"></script>
+  <script src="../assets/js/require.js"></script>
+  <script src="../assets/js/requirejs.jetConfig.min.js"></script>
+  <script src="../assets/js/jetCommonBundle.min.js"></script>
+  <script src="../assets/js/chartBundle.min.js"></script>
+  <script src="../apiConfig.js"></script>
+
+
+  <script type="text/javascript">
+    apex.session.initTimeouts(900, { "idle_time_ms": 1187000, "life_time_ms": 27997000, "max_idle_time_ms": 1200000 }, '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome', '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome');
+    apex.jQuery(function () {
+      apex.page.init(this, function () {
+        try {
+          (function () {
+            var e = apex.jQuery("#t_MenuNav", apex.gPageContext$);
+            if (e.hasClass("js-addActions")) {
+              apex.actions.addFromMarkup(e);
+            }
+            e.menu({
+              behaveLikeTabs: e.hasClass("js-tabLike"),
+              menubarShowSubMenuIcon: e.hasClass("js-showSubMenuIcons") || null,
+              menubar: true,
+              menubarOverflow: true,
+              callout: e.hasClass("js-menu-callout")
+            });
+          })();
+          (function () { apex.widget.selectList("#P70_DISTRICT", { "nullValue": "", "ajaxIdentifier": "SVRFTSBUWVBFfjUxMjB-ODI0NTI0MjcyMTQxNjc0MzAxMw\u002F9uqGSE5rB-QCWPIqhVt7_BMxH--Wgjr_js-1tnJiu5be3sG-Abua4ZcGr0_Ya8KrHEC9Lbf9SrQQEL3CZBCsXQ" }); })();
+          (function () { apex.widget.selectList("#P70_TALUK", { "nullValue": "", "dependingOnSelector": "#P70_DISTRICT", "optimizeRefresh": true, "pageItemsToSubmit": "#P70_DISTRICT", "ajaxIdentifier": "SVRFTSBUWVBFfjUxMjB-ODI0NTI0MjgwMjYzMDc0MzAxNA\u002FMXViLS33nKlrnFzdKPeOS2vObqCONqOa8hBb4BiEO6QNlWj0ujjp7TmKSGdXJkyUvTr_ve0m8AkOLltUBF4uQg" }); })();
+          (function () { apex.widget.selectList("#P70_EVENT_PLACE", { "nullValue": "", "dependingOnSelector": "#P70_DISTRICT,#P70_TALUK", "optimizeRefresh": true, "pageItemsToSubmit": "#P70_DISTRICT,#P70_TALUK", "ajaxIdentifier": "SVRFTSBUWVBFfjUxMjB-ODI0NTI0Mjk3Njc2Mzc0MzAxNQ\u002Fs_JsBh0q4YYXerGuuKnxBEiug14uXQx5MteUbgtSlDKloVR1YiZ16Xtssr4tFl2_znutc3XrYODxr6a6-kA_Xw" }); })();
+          (function () { apex.widget.selectList("#P70_EVENT_ID", { "nullValue": "", "dependingOnSelector": "#P70_DISTRICT,#P70_TALUK", "optimizeRefresh": true, "pageItemsToSubmit": "#P70_DISTRICT,#P70_TALUK", "ajaxIdentifier": "SVRFTSBUWVBFfjUxMjB-ODI0NTI0MjYzNjc3NTc0MzAxMg\u002FireqItMBIQFVsTrJkroLwLPcDEVsBcK9GiU6ZVpHdxGidWx2sEgI5mES5P8X6BOfW_o9SB5ZoTkQHgwgx13HLg" }); })();
+          (function () { apex.widget.selectList("#P70_TYPE_OF_EVENT", { "nullValue": "", "ajaxIdentifier": "SVRFTSBUWVBFfjUxMjB-ODI0NTI0MzQ3NjY5OTc0MzAyMA\u002FUgL1UM8mgWmHHkzG_2Z8jZAYYZkkTBzoLEcaXdj2xWIY_NKjY1broKu9dQcdFwhU8e1p9_YMsI1NaBrywDupfA" }); })();
+        } catch (e) { apex.debug.error(e) };
+        apex.item.waitForDelayLoadItems().done(function () {
+          try {
+            apex.theme42.initializePage.noSideCol();
+
+            apex.page.warnOnUnsavedChanges();
+          } finally {
+            apex.event.trigger(apex.gPageContext$, 'apexreadyend');
+          };
+        });
+      });
+    }); apex.pwa.init({ serviceWorkerPath: '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fsw.js?v=23.2.1-460263366\u0026lang=en' });
+  </script>
+
+  <script>
+    AOS.init();
+    $(document).on({
+      ajaxStart: function () {
+        $('#preloader').show();
+        $("body").addClass("user_loading");
+      },
+      ajaxStop: function () {
+        $('#preloader').hide();
+        $("body").removeClass("user_loading");
+      }
+    });
+
+    $('#preloader').hide();
+    // Retrieve the encrypted data from localStorage
+    let encryptedDataFromStorage = localStorage.getItem('userDetails');
+    let decryptedData;
+    if (encryptedDataFromStorage) {
+      const secretKey = 'V7gN4dY8pT2xB3kRz';
+      // Decrypt the data: decrypt the string and convert it to UTF-8
+      const bytes = CryptoJS.AES.decrypt(encryptedDataFromStorage, secretKey);
+      decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    } else {
+      console.log('No data found in localStorage');
+    }
+    let userDetails = decryptedData;
+    let userId = '';
+    // Find the element where the name should be displayed
+    var userNameElement = document.querySelector('.t-Button-label');
+    // If user is logged in (i.e., user details exist in localStorage)
+    if (userDetails) {
+      // Parse user details
+      const user = JSON.parse(userDetails);
+      // Update the username in the profile button (if available)
+      if (user && user.name) {
+        userId = user.user_id;
+        userNameElement.textContent = user.name; // or userNameElement.innerText
+      }
+    } else {
+      showErrorToast("Something went wrong");
+
+      sessionStorage.clear();
+      setTimeout(function () {
+        window.location.href = "../index.html";
+      }, 1000);
+    }
+    // Function to show a success toast with a dynamic message
+    function showSuccessToast(message) {
+      const toastElement = document.getElementById('successToast');
+      const toastBody = document.getElementById('successMessage');
+
+      // Set the dynamic message
+      toastBody.textContent = message;
+
+      // Initialize and show the toast
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+    // Function to show a error toast with a dynamic message
+    function showErrorToast(message) {
+      const toastElement = document.getElementById('errorToast');
+      const toastBody = document.getElementById('errorMessage');
+
+      // Set the dynamic message
+      toastBody.textContent = message;
+
+      // Initialize and show the toast
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+    var cancelButton = document.getElementById('B6259608328691795187');
+    // Add a click event listener to the button
+    cancelButton.addEventListener('click', function () {
+      // Reload the current page
+      location.reload();
+    });
+
+    // Fetch event type options from the API
+    fetch(`${getApiUrl("getDistrict")}?user_id=${encodeURIComponent(20)}`, {
+      method: 'GET',
+      headers: {
+        'X-APP-KEY': 'j6ll!k@ttu',
+        'X-APP-NAME': 'tn jallikattu'
+      }
+    })
+      .then(response => response.json())  // Parse JSON response
+      .then(data => {
+        if (data.success === 1 && data.data) {
+          const selectElement = document.getElementById('P70_DISTRICT');
+
+          // Clear previous options (if any)
+          selectElement.innerHTML = '<option value="" selected="selected">-Select-</option>';
+
+          // Iterate over the data and create option elements dynamically
+          data.data.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.r;  // Set the value of the option (r)
+            option.textContent = item.d;  // Set the display text (d)
+            selectElement.appendChild(option);  // Append option to the select
+          });
+        } else {
+          console.error('Failed to load data or no data found');
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching district:', error);
+      });
+    // Fetch event type options from the API
+    fetch(getApiUrl("eventType"), {
+      method: 'GET',
+      headers: {
+        'X-APP-KEY': 'j6ll!k@ttu',
+        'X-APP-NAME': 'tn jallikattu'
+      }
+    })
+      .then(response => response.json())  // Parse JSON response
+      .then(data => {
+        if (data.success === 1 && data.data) {
+          const selectElement = document.getElementById('P70_TYPE_OF_EVENT');
+
+          // Clear previous options (if any)
+          selectElement.innerHTML = '<option value="" selected="selected">-Select One-</option>';
+
+          // Iterate over the data and create option elements dynamically
+          data.data.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.r;  // Set the value of the option (r)
+            option.textContent = item.d;  // Set the display text (d)
+            selectElement.appendChild(option);  // Append option to the select
+          });
+        } else {
+          console.error('Failed to load data or no data found');
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching event types:', error);
+      });
+    $('#P70_DISTRICT').on('change', function () {
+      const selectedValue = $(this).val();
+
+      // Ensure selectedValue is not empty
+      if (!selectedValue) {
+        return;  // Exit if no district is selected
+      }
+
+      // Fetch taluk options from the API
+      fetch(`${getApiUrl("getTaluk")}?user_id=${encodeURIComponent(20)}&district=${encodeURIComponent(selectedValue)}`, {
+        method: 'GET',
+        headers: {
+          'X-APP-KEY': 'j6ll!k@ttu',
+          'X-APP-NAME': 'tn jallikattu'
+        }
+      })
+        .then(response => response.json())  // Parse JSON response
+        .then(data => {
+          if (data.success === 1 && data.data) {
+            const selectElement = document.getElementById('P70_TALUK');
+
+            // Clear previous options (if any)
+            selectElement.innerHTML = '<option value="" selected="selected">-Select-</option>';
+
+            // Iterate over the data and create option elements dynamically
+            data.data.forEach(item => {
+              const option = document.createElement('option');
+              option.value = item.r;  // Set the value of the option (r)
+              option.textContent = item.d;  // Set the display text (d)
+              selectElement.appendChild(option);  // Append option to the select
+            });
+          } else {
+            console.error('Failed to load data or no data found:', data);
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching taluks:', error);
+        });
+    });
+    $('#P70_TALUK').on('change', function () {
+      const selectedValue = $(this).val();
+      const districtValue = $('#P70_DISTRICT').val(); // Corrected the selector here
+
+      // Ensure selectedValue and districtValue are not empty
+      if (!selectedValue || !districtValue) {
+        return;  // Exit if no district or taluk is selected
+      }
+
+      // Fetch event place options from the API
+      fetch(`${getApiUrl("getEventPlace")}?user_id=${encodeURIComponent(20)}&district=${encodeURIComponent(districtValue)}&taluk=${encodeURIComponent(selectedValue)}`, {
+        method: 'GET',
+        headers: {
+          'X-APP-KEY': 'j6ll!k@ttu',
+          'X-APP-NAME': 'tn jallikattu'
+        }
+      })
+        .then(response => response.json())  // Parse JSON response
+        .then(data => {
+          if (data.success === 1 && data.data) {
+            const selectElement = document.getElementById('P70_EVENT_PLACE');
+
+            // Clear previous options (if any)
+            selectElement.innerHTML = '<option value="" selected="selected">-Select-</option>';
+
+            // Iterate over the data and create option elements dynamically
+            data.data.forEach(item => {
+              const option = document.createElement('option');
+              option.value = item.r;  // Set the value of the option (r)
+              option.textContent = item.d;  // Set the display text (d)
+              selectElement.appendChild(option);  // Append option to the select
+            });
+          } else {
+            console.error('Failed to load data or no data found');
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching event places:', error);
+        });
+    });
+    $('#P70_EVENT_PLACE').on('change', function () {
+      const eventType = $('#P70_TYPE_OF_EVENT').val();
+      const districtValue = $('#P70_DISTRICT').val();
+      const talukValue = $('#P70_TALUK').val();
+      const selectedValue = $(this).val();
+
+      // Ensure selectedValue and districtValue are not empty
+      if (!selectedValue || !districtValue) {
+        return;  // Exit if no district or taluk is selected
+      }
+
+      // Fetch event place options from the API
+      fetch(`${getApiUrl("getEventId")}?user_id=${encodeURIComponent(20)}&district=${encodeURIComponent(districtValue)}&taluk=${encodeURIComponent(talukValue)}`, {
+        method: 'GET',
+        headers: {
+          'X-APP-KEY': 'j6ll!k@ttu',
+          'X-APP-NAME': 'tn jallikattu'
+        }
+      })
+        .then(response => response.json())  // Parse JSON response
+        .then(data => {
+          if (data.success === 1 && data.data) {
+            const selectElement = document.getElementById('P70_EVENT_ID');
+
+            // Clear previous options (if any)
+            selectElement.innerHTML = '<option value="" selected="selected">-Select-</option>';
+
+            // Iterate over the data and create option elements dynamically
+            data.data.forEach(item => {
+              const option = document.createElement('option');
+              option.value = item.r;  // Set the value of the option (r)
+              option.textContent = item.d;  // Set the display text (d)
+              selectElement.appendChild(option);  // Append option to the select
+            });
+          } else {
+            console.error('Failed to load data or no data found');
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching event places:', error);
+        });
+    });
+    $(document).ready(function () {
+      $('#registrationForm').on('submit', async function (e) {
+        e.preventDefault();  // Prevent the default form submission behavior
+
+        // Clear previous error messages
+        $('.error-message').remove();
+
+        // Initialize an array to hold validation errors
+        var errors = false;
+
+        // Validate required fields
+        validateField('#P70_DISTRICT', 'Please Select District.');
+        validateField('#P70_TALUK', 'Please Select Taluk.');
+        validateField('#P70_EVENT_PLACE', 'Please Select Event Place.');
+        validateField('#P70_EVENT_ID', 'Please Select Event Id.');
+        validateField('#P70_GO_NUMBER', 'Please Fill Go Number.');
+        validateField('#P70_GO_DATE', 'Please Select Go Date.');
+        validateField('#P70_PERMITTED_DATE', 'Please Select Permitted Date.');
+        validateField('#P70_ACTUAL_DATE_OF_CONDUCT_EVENT', 'Please Select Actual Date Of Conduct.');
+        validateField('#P70_TYPE_OF_EVENT', 'Please Select Type Of Event.');
+        validateField('#P70_NO_OF_BULLS_REGISTERED', 'Please Fill No Of Bulls Registered.');
+        validateField('#P70_NO_OF_BULLS_REJECTED', 'Please Fill No Of Bulls Rejected.');
+        validateField('#P70_NO_OF_BULLS_PARTICIPATED', 'Please Fill No Of Bulls Participated.');
+        validateField('#P70_REASON_FOR_REJECTION', 'Please Fill Reason For Rejection.');
+        validateField('#P70_NO_OF_BULLS_INJURED', 'Please Fill No Of Bulls Injured.');
+        validateField('#P70_NO_OF_BULLS_DIED', 'Please Fill No Of Bulls Died.');
+        validateField('#P70_NO_OF_PARTICIPANTS_REGISTERED', 'Please Fill No Of Participants Registered.');
+        validateField('#P70_NO_OF_PARTICIPANTS_REJECTED', 'Please Fill No Of Participants Rejected.');
+        validateField('#P70_NO_OF_PARTICIPANTS_PERMITTED', 'Please Fill No Of Participants Permitted.');
+        validateField('#P70_NO_OF_PARTICIPANTS_DIED', 'Please Fill No Of Participants Died.');
+        validateField('#P70_NO_OF_PARTICIPANTS_INJURED_MAJOR', 'Please Fill No Of Participants Injured Major.');
+        validateField('#P70_NO_OF_PARTICIPANTS_INJURED_MINOR', 'Please Fill No Of Participants Injured Minor.');
+        validateField('#P70_SPECTRATORS_OWNERS_INJURED_MAJOR', 'Please Fill Spectrators/Owners Injured Major.');
+        validateField('#P70_SPECTRATORS_OWNERS_INJURED_MINOR', 'Please Fill Spectrators/Owners Injured Minor.');
+        validateField('#P70_SPECTRATORS_OWNER_DIED', 'Please Fill Spectrators Owner Died.');
+        validateField('#P70_NUMBER_OF_POLICE_PERSONAL_INJURED', 'Please Fill Number Of Police Personal Injured.');
+        validateField('#P70_NUMBER_OF_POLICE_DIED', 'Please Fill Number Of Police Died.');
+        // Validate file upload fields
+        checkFile('#P70_FIR_ATTACHMENT', 'Please Choose FIR Attachment.');
+        checkFile('#P70_DEATH_REPORT_ATTACHMENT', 'Please Choose Death Report Attachment.');
+
+        // If errors are found, stop form submission
+        if (errors) {
+          showErrorToast("Please fill in all fields.");
+          return;  // Prevent form submission
+        }
+        // Check and process optional file fields
+        let firAttachment = null;  // Declare otherDocs variable at the beginning
+
+        if ($('#P70_FIR_ATTACHMENT_input')) {
+          firAttachment = await processFile('#P70_FIR_ATTACHMENT_input');
+        }
+
+        let deathReport = null;  // Declare otherDocs variable at the beginning
+
+        if ($('#P70_DEATH_REPORT_ATTACHMENT_input')) {
+          deathReport = await processFile('#P70_DEATH_REPORT_ATTACHMENT_input');
+        }
+        // Prepare the JSON payload
+        const payload = {
+          p_EVENT_ID: $('#P70_EVENT_ID').val(),
+          p_DISTRICT: $('#P70_DISTRICT').val(),
+          p_TALUK: $('#P70_TALUK').val(),
+          p_EVENT_PLACE: $('#P70_EVENT_PLACE').val(),
+          p_GO_NUMBER: $('#P70_GO_NUMBER').val(),
+          p_GO_DATE: formatDate($('#P70_GO_DATE').val()),
+          p_PERMITTED_DATE: formatDate($('#P70_PERMITTED_DATE').val()),
+          p_ACTUAL_DATE_OF_CONDUCT_EVENT: formatDate($('#P70_ACTUAL_DATE_OF_CONDUCT_EVENT').val()),
+          p_TYPE_OF_EVENT: $('#P70_TYPE_OF_EVENT').val(),
+          p_NO_OF_BULLS_REGISTERED: $('#P70_NO_OF_BULLS_REGISTERED').val(),
+          p_NO_OF_BULLS_REJECTED: $('#P70_NO_OF_BULLS_REJECTED').val(),
+          p_REASON_FOR_REJECTION: $('#P70_REASON_FOR_REJECTION').val(),
+          p_NO_OF_BULLS_PARTICIPATED: $('#P70_NO_OF_BULLS_PARTICIPATED').val(),
+          p_NO_OF_BULLS_INJURED: $('#P70_NO_OF_BULLS_INJURED').val(),
+          p_NO_OF_BULLS_DIED: $('#P70_NO_OF_BULLS_DIED').val(),
+          p_NO_OF_PARTICIPANTS_REGISTERED: $('#P70_NO_OF_PARTICIPANTS_REGISTERED').val(),
+          p_NO_OF_PARTICIPANTS_REJECTED: $('#P70_NO_OF_PARTICIPANTS_REJECTED').val(),
+          p_NO_OF_PARTICIPANTS_PERMITTED: $('#P70_NO_OF_PARTICIPANTS_PERMITTED').val(),
+          p_NO_OF_PARTICIPANTS_INJURED_MAJOR: $('#P70_NO_OF_PARTICIPANTS_INJURED_MAJOR').val(),
+          p_NO_OF_PARTICIPANTS_INJURED_MINOR: $('#P70_NO_OF_PARTICIPANTS_INJURED_MINOR').val(),
+          p_NO_OF_PARTICIPANTS_DIED: $('#P70_NO_OF_PARTICIPANTS_DIED').val(),
+          p_SPECTATORS_OWNERS_INJURED_MAJOR: $('#P70_SPECTRATORS_OWNERS_INJURED_MAJOR').val(),
+          p_SPECTATORS_OWNERS_INJURED_MINOR: $('#P70_SPECTRATORS_OWNERS_INJURED_MINOR').val(),
+          p_SPECTATORS_OWNER_DIED: $('#P70_SPECTRATORS_OWNER_DIED').val(),
+          p_NUMBER_OF_POLICE_PERSONAL_INJURED: $('#P70_NUMBER_OF_POLICE_PERSONAL_INJURED').val(),
+          p_NUMBER_OF_POLICE_DIED: $('#P70_NUMBER_OF_POLICE_DIED').val(),
+          p_FIR_No: $('#P70_FIR_NO').val(),
+          p_FIR_REMARKS: $('#P70_FIR_REMARKS').val(),
+          p_FIR_ATTACHMENT: firAttachment && firAttachment.fileBase64 ? firAttachment.fileBase64 : null,
+          p_FIR_ATTACH_MIMETYPE: firAttachment && firAttachment.mimetype ? firAttachment.mimetype : null,
+          p_FIR_ATTACH_FILENAME: firAttachment && firAttachment.filename ? firAttachment.filename : null,
+          p_DEATH_REPORT_ATTACHMENT: deathReport && deathReport.fileBase64 ? deathReport.fileBase64 : null,
+          p_DEATH_REPORT_ATTACH_MIMETYPE: deathReport && deathReport.mimetype ? deathReport.mimetype : null,
+          p_DEATH_REPORT_ATTACH_FILENAME: deathReport && deathReport.filename ? deathReport.filename : null,
+        };
+        $.ajax({
+          url: getApiUrl("mhsFinalEventCompletionForm"),
+          type: 'POST',
+          headers: {
+            'X-App-Key': 'j6ll!k@ttu',
+            'X-App-Name': 'tn jallikattu',
+          },
+          contentType: 'application/json',
+          data: JSON.stringify(payload),
+          success: function (response) {
+            console.log('Response:', response);
+            // Handle the success response here
+            showSuccessToast("Form Submitted Successful");
+            setTimeout(function () {
+              location.reload();
+            }, 1000);
+          },
+          error: function (xhr, status, error) {
+            console.error('Error:', error);
+            showErrorToast("An error occurred during registration.");
+          }
+        });
+      });
+      // Function to validate a field and display error message
+      function validateField(selector, errorMessage) {
+        if ($(selector).val().trim() === '') {
+          errors = true;
+          // Check if the error message already exists and update it, else append it
+          $(selector + '_error_placeholder').text(errorMessage).css('color', 'red');
+        } else {
+          // Clear the error message if the field is filled
+          $(selector + '_error_placeholder').text('');
+        }
+      }
+      // Function to validate and update the payload for each file input
+      function validateFile(selector, errorMessage) {
+        var fileInput = $(selector).find('input[type="file"]');
+        const validTypes = ['application/pdf', 'image/jpeg', 'image/jpg'];
+        const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+        var file = fileInput[0].files[0];
+
+        // Check if a file has been selected
+        if (!file) {
+          errors = true;
+          $('#' + selector.replace('#', '') + '_error_placeholder').text(errorMessage).css('color', 'red');
+        } else {
+          // Check file type
+          if (!validTypes.includes(file.type)) {
+            errors = true;
+            $('#' + selector.replace('#', '') + '_error_placeholder').text('Invalid file type. Supported types are .pdf, .jpg, .jpeg.').css('color', 'red');
+            return;
+          }
+
+          // Check file size
+          if (file.size > maxSize) {
+            errors = true;
+            $('#' + selector.replace('#', '') + '_error_placeholder').text("File size exceeds the 2MB limit.").css('color', 'red');
+            return;
+          }
+        }
+      }
+
+      // Function to validate and update the payload for each file input
+      function checkFile(selector) {
+        var fileInput = $(selector).find('input[type="file"]');
+        const validTypes = ['application/pdf', 'image/jpeg', 'image/jpg'];
+        const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+        var file = fileInput[0].files[0];
+
+        // Check if a file has been selected
+        if (file) {
+          // Check file type
+          if (!validTypes.includes(file.type)) {
+            errors = true;
+            $('#' + selector.replace('#', '') + '_error_placeholder').text('Invalid file type. Supported types are .pdf, .jpg, .jpeg.').css('color', 'red');
+            return;
+          }
+
+          // Check file size
+          if (file.size > maxSize) {
+            errors = true;
+            $('#' + selector.replace('#', '') + '_error_placeholder').text("File size exceeds the 2MB limit.").css('color', 'red');
+            return;
+          }
+        }
+      }
+      function processFile(selector) {
+        return new Promise((resolve, reject) => {
+          var fileInput = $(selector)[0];
+          var file = fileInput.files[0];
+
+          if (file) {
+            const reader = new FileReader();
+            const fileData = {};
+
+            reader.onload = function (event) {
+              // File processed as Base64 string
+              fileData.fileBase64 = event.target.result.split(',')[1];
+              fileData.mimetype = file.type;
+              fileData.filename = file.name;
+
+              resolve(fileData); // Resolve the promise with fileData
+            };
+
+            reader.onerror = function (error) {
+              reject(error); // Reject the promise in case of error
+            };
+
+            reader.readAsDataURL(file); // Read the file as a data URL (Base64)
+          }
+        });
+      }
+      // Function to format the date in MM/DD/YYYY to YYYY-MM-DD
+      function formatDate(dateString) {
+        // Create a new Date object from the provided MM/DD/YYYY date string
+        var dateObj = new Date(dateString);
+
+        // Check if the date is valid
+        if (isNaN(dateObj.getTime())) {
+          showErrorToast("Event Date / நிகழ்வு தேதி must be a valid date, for example 01/01/2024.");
+          return null; // Return null if the date is invalid
+        }
+
+        // Return the date in the YYYY-MM-DD format
+        return dateObj.toISOString().split('T')[0]; // Get only the date part (YYYY-MM-DD)
+      }
+    });
+  </script>
+  <script src="../../assets/js/changePassword.js"></script>
+  <link rel="stylesheet" href="../assets/css/popUp.css" type="text/css" />
+</body>
+
+</html>

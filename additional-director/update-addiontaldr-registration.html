@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html class="no-js  page-20 app-JLIKTU" lang="en">
+
+<head>
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>Need More Information Report</title>
+  <link rel="stylesheet" href="../assets/css/oj-redwood-notag-min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Core.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Theme-Standard.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/font-apex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/Coreone.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/aos.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/custom.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/css/theme.css" type="text/css" />
+  <link rel="apple-touch-icon" href="../assets/img/app-icon-192.png" />
+  <link rel="icon" href="../assets/img/app-icon-32.png" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/toastr/toastr.min.css" rel="stylesheet">
+  <!-- Toast -->
+  <div class="toast-container position-fixed p-3 custom_toast" x-data="transButtonComponent()">
+    <div id="errorToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="errorMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+    <div id="successToast" class="toast align-items-center text-bg-primary border-0 " role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p id="successMessage" class="mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <!-- Toast -->
+  <!-- <div id="preloader"></div> -->
+  <!-- CSS File -->
+  <link rel="stylesheet" href="../assets/vendor/datatable/dataTables.bootstrap5.min.css">
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/toastr/toastr.min.css" rel="stylesheet">
+  <style type="text/css">
+    .toast-container {
+      right: 0.5%;
+    }
+
+    #successToast {
+      background: #198754 !important;
+    }
+
+    #errorToast {
+      background: #ff0000 !important;
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 9999;
+      overflow: hidden;
+      background: #12121261;
+      /*width: 57%;*/
+      border-radius: 13px 35px;
+    }
+
+    #preloader:before {
+      content: "";
+      position: fixed;
+      top: calc(50% - 30px);
+      left: calc(53% - 30px);
+      border: 6px solid #f92020b8;
+      border-top-color: #e2eefd;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: animate-preloader 1s linear infinite;
+      animation: animate-preloader 1s linear infinite;
+      z-index: 9999;
+    }
+
+    @-webkit-keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid hsl(0, 3%, 70%);
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    td {
+      background-color: #fff;
+    }
+
+    .action-column {
+      width: 150px;
+    }
+  </style>
+</head>
+
+<body
+  class="t-PageBody t-PageBody--hideLeft t-PageBody--hideActions no-anim t-PageTemplate--standard   apex-top-nav apex-icons-fontapex apex-theme-vita-copy-1"
+  id="t_PageBody" onload="loadPopup()">
+  <!-- <a href="#main" id="t_Body_skipToContent">Skip to Main Content</a> -->
+  <input type="hidden" name="p_flow_id" value="110" id="pFlowId" /><input type="hidden" name="p_flow_step_id" value="20"
+    id="pFlowStepId" /><input type="hidden" name="p_instance" value="423514546362" id="pInstance" /><input type="hidden"
+    name="p_page_submission_id" value="110546331496416374416926744212580158689" id="pPageSubmissionId" /><input
+    type="hidden" name="p_request" value="" id="pRequest" /><input type="hidden" name="p_reload_on_submit" value="S"
+    id="pReloadOnSubmit" /><input type="hidden" value="jliktu&#x2F;pending-requests5&#x2F;423514546362"
+    id="pContext" /><input type="hidden" value="110546331496416374416926744212580158689" id="pSalt" />
+  <header class="t-Header" id="t_Header" role="banner">
+    <div class="t-Header-branding">
+      <div class="t-Header-controls">
+        <button class="t-Button t-Button--icon t-Button--header t-Button--headerTree" aria-label="Main Navigation"
+          title="Main Navigation" id="t_Button_navControl" type="button"><span class="t-Header-controlsIcon"
+            aria-hidden="true"></span></button>
+      </div>
+      <div class="t-Header-logo">
+        <!-- <a href="&#x2F;ords&#x2F;r&#x2F;wsjallikattu&#x2F;jliktu&#x2F;home?session=423514546362" class="t-Header-logo-link"><span class="apex-logo-text">Jallikattu</span></a> -->
+        <div class="gigw">
+          <li><a data-aos="fade-up" data-aos-delay="200" class="linkedin btn-decrease"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="font size Decrease"><i></i> A -</a></li>
+          <li><a data-aos="fade-up" data-aos-delay="300" class="linkedin btn-orig"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="Reset font"><i></i> A <sup></sup></a></li>
+          <li><a data-aos="fade-up" data-aos-delay="400" class="instagram btn-increase"><span class="d-inline-block"
+                tabindex="0" data-toggle="tooltip" title="font size Increase"><i></i> A +</a></li>
+          <li><a data-aos="fade-up" data-aos-delay="500"><span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                title="Dark Mode"><i class="t-Icon fa fa-moon-o" id="darkmode"></i></a></li>
+          <li><a data-aos="fade-up" data-aos-delay="600" class="form-check form-switch"><label class="form-check-label"
+                for="screenReaderSwitch">
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Screen Reader">
+                  <i id="sound" class="t-Icon fa fa-volume-up"></i></label><input class="form-check-input"
+                type="checkbox" role="switch" id="screenReaderSwitch"
+                onclick="readText(document.getElementsByTagName('body')[0])" /></span></a>
+          </li>
+        </div>
+      </div>
+      <div class="t-Header-navBar">
+        <div class="t-Header-navBar--start"></div>
+        <div class="t-Header-navBar--center">
+          <ul class="t-NavigationBar " id="70091113641892546086">
+            <li class="t-NavigationBar-item ">
+              <button class="t-Button t-Button--icon t-Button t-Button--header t-Button--navBar" type="button"
+                id="L70091125771514546098" data-menu="menu_L70091125771514546098" title="">
+                <span class="t-Icon fa&#x20;fa-user" aria-hidden="true"></span><span
+                  class="t-Button-label">User</span><span class="t-Button-badge"></span><span
+                  class="a-Icon icon-down-arrow" aria-hidden="true"></span>
+              </button>
+              <div class="t-NavigationBar-menu" style="display: none" id="menu_L70091125771514546098">
+                <ul>
+                  <li class="" data-current="false" data-icon=""><a href="separator" title="" target="">---</a></li>
+                  <!-- <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a
+                      href="javascript:apex.theme42.dialog('\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fchange-password?session=423514546362\u0026dialogCs=1zwdNG1gZPek8UUa_bWsFIWuPsREiD45VT6CNSDZ6DMI7oxcWWMnHiNyJRU9XNtN2fp-WSRAcNLrOhlIGpGiKg',{title:'Change Password',h:'auto',w:'720',mxw:'960',modal:true,dialog:null,dlgCls:'t-Dialog-page--standard '+''},'',apex.gPageContext$)"
+                      title="" target="">Change Password</a></li> -->
+                  <li class="" data-current="false" data-icon="fa&#x20;fa-lock-password"><a href="javascript:void();"
+                      title="" target="">Change Password</a></li>
+                  <li class="" data-current="false" data-icon="fa&#x20;fa-sign-out"><a href="../index.html" title=""
+                      target="">Sign Out</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="t-Header-navBar--end"></div>
+      </div>
+    </div>
+    <div class="top">
+      <!-- <img id="leftlogo" data-aos="fade-right" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/TN_logo.png"> -->
+      <h2 data-aos="zoom-in" data-aos-duration="800" class="dept-name text-middle">DIRECTORATE OF ANIMAL HUSBANDRY AND
+        VETERINARY SERVICES</h2>
+      <h3 data-aos="zoom-in" data-aos-duration="800" class="dept-name2 text-middle">JALLIKATTU IN TAMIL NADU</h3>
+      <!-- <img id="rightlogo" data-aos="fade-left" data-aos-duration="800" src="r/wsjallikattu/110/files/static/v1667/right.png"> -->
+    </div>
+    <div class="t-Header-nav">
+      <div class="t-Header-nav-list js-tabLike js-tabLike" id="t_MenuNav">
+        <ul>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="index.html" title="" target="">Home</a></li>
+          <li class="a-MenuBar-item a-Menu--current" data-current="true" data-id="" data-disabled="" data-hide=""
+            data-shortcut="" data-icon=""><a class="a-MenuBar-label" href="pending-requests.html" title=""
+              target="">Pending Applications</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="download-go.html" title="" target="">Download GO</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="districts-wise-all-application-status.html" title="" target="">Districts
+              wise All Application Status</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon=""><a
+              class="a-MenuBar-label" href="post-event-report.html" title="" target="">Event Completion Report</a></li>
+          <li class="a-MenuBar-item" data-id="" data-disabled="" data-hide="" data-shortcut="" data-icon="">
+            <a class="a-MenuBar-label" href="#" title="" target="">All Reports</a>
+            <ul style="display: none">
+              <li data-id="" data-disabled="" data-hide="" data-shortcut=""
+                data-icon="fa&#x20;fa-arrow-circle-o-right&#x20;fa-anim-flash"><a href="overall-bull-registered.html"
+                  title="" target="">Overall Bull Registered</a></li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut=""
+                data-icon="fa&#x20;fa-arrow-circle-o-right&#x20;fa-anim-flash"><a
+                  href="overall-participants-registered.html" title="" target="">Overall Participants Registered</a>
+              </li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut=""
+                data-icon="fa&#x20;fa-arrow-circle-o-right&#x20;fa-anim-flash"><a href="overall-post-event-report.html"
+                  title="" target="">Overall Post Event Report</a></li>
+              <li data-id="" data-disabled="" data-hide="" data-shortcut=""
+                data-icon="fa&#x20;fa-arrow-circle-o-right&#x20;fa-anim-flash"><a href="all-application-status.html"
+                  title="" target="">All Application Status</a></li>
+            </ul>
+          </li>
+        </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="t-Body">
+    <div class="t-Body-main">
+      <div class="t-Body-title" id="t_Body_title"></div>
+      <div class="t-Body-content" id="t_Body_content">
+        <main id="main" class="t-Body-mainContent">
+          <span id="APEX_SUCCESS_MESSAGE" data-template-id="76689956809586187806_S"
+            class="apex-page-success u-hidden"></span><span id="APEX_ERROR_MESSAGE"
+            data-template-id="76689956809586187806_E" class="apex-page-error u-hidden"></span>
+          <div class="t-Body-fullContent"></div>
+          <div class="t-Body-contentInner">
+            <div class="container">
+              <div class="row ">
+                <div class="col col-12 apex-col-auto col-start col-end">
+                  <div class="t-Region t-Region--scrollBody" id="R287658389993143156114" role="region"
+                    aria-label="Need&#x20;More&#x20;Information&#x20;Form">
+                    <div class="t-Region-header">
+                      <div class="t-Region-headerItems t-Region-headerItems--title">
+                        <span class="t-Region-headerIcon"><span class="t-Icon " aria-hidden="true"></span></span>
+                        <h2 class="t-Region-title" id="R287658389993143156114_heading" data-apex-heading>Pending
+                          Requests</h2>
+                      </div>
+                      <div class="t-Region-headerItems t-Region-headerItems--buttons"><span
+                          class="js-maximizeButtonContainer"></span></div>
+                    </div>
+                    <div class="t-Region-bodyWrap">
+                      <div class="t-Region-buttons t-Region-buttons--top">
+                        <div class="t-Region-buttons-left"></div>
+                        <div class="t-Region-buttons-right"></div>
+                      </div>
+                      <div class="t-Region-body">
+                        <div class="t-Region-orderBy"></div>
+                        <input type="hidden" name="P20_EVENT_ID" id="P20_EVENT_ID"
+                          value="VIR&#x2F;240425&#x2F;N&#x2F;JK&#x2F;00325"><input type="hidden" data-for="P20_EVENT_ID"
+                          value="Alu2gNi8Ha0bAZTzqamQcSqjXfAju2gA6rGC3DAq4Vd6EdQphXambv6jFU2ojibHIJgEVHODehNjBIX9iN79gg">
+                        <div class="container">
+                          <div class="row ">
+                            <div class="col col-4 apex-col-auto col-start">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_EVENT_DATE_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_EVENT_DATE" id="P20_EVENT_DATE_LABEL" class="t-Form-label">Event
+                                    Date </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_EVENT_DATE"
+                                      name="P20_EVENT_DATE" value="5&#x2F;22&#x2F;2024"><input type="hidden"
+                                      data-for="P20_EVENT_DATE"
+                                      value="_rdNQD1hM6ykFU-m1jN8E0sUVYRjM-UO8zuzvfN1IsFGDA_9E8qh2xsavsAXi8yt2JP0mdbnUbo0y2HaFlfKXw"><span
+                                      id="P20_EVENT_DATE_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_EVENT_DATE_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto ">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_EVENT_TYPE_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_EVENT_TYPE" id="P20_EVENT_TYPE_LABEL" class="t-Form-label">Event
+                                    Type </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_EVENT_TYPE"
+                                      name="P20_EVENT_TYPE" value="Jallikattu"><input type="hidden"
+                                      data-for="P20_EVENT_TYPE"
+                                      value="1wRPOznRtBMVJafujPrIYNOPoLoUAdOW57cKakxrfr7oQyKSdK0VD78zVvHuyot95POINRfsndTO3wJMEArhgA"><span
+                                      id="P20_EVENT_TYPE_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_EVENT_TYPE_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_PLACE_OF_EVENT_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_PLACE_OF_EVENT" id="P20_PLACE_OF_EVENT_LABEL"
+                                    class="t-Form-label">Place Of Event </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_PLACE_OF_EVENT"
+                                      name="P20_PLACE_OF_EVENT" value="Nellikulam"><input type="hidden"
+                                      data-for="P20_PLACE_OF_EVENT"
+                                      value="VTjLvaLJ3Sr1PviYpDtd6IZ0hEeB4nvP8vx4fSffN4O87oLnom_FjKtHqpLj2Q_l8v0PEfZtTgJOjZyEbNGelQ"><span
+                                      id="P20_PLACE_OF_EVENT_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_PLACE_OF_EVENT_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row ">
+                            <div class="col col-4 apex-col-auto col-start">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_NAME_OF_ORGANIZATION_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_NAME_OF_ORGANIZATION" id="P20_NAME_OF_ORGANIZATION_LABEL"
+                                    class="t-Form-label">Name Of Event Organization </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_NAME_OF_ORGANIZATION"
+                                      name="P20_NAME_OF_ORGANIZATION"
+                                      value="SRI VEERA SOORIYA ARIYA NACHIAPPAN KOVIL"><input type="hidden"
+                                      data-for="P20_NAME_OF_ORGANIZATION"
+                                      value="nEo00BT8cqwbs6CYYYlx7kPMnA1NPybYCZnUe1pEnmS-0u-UQmCR_uguPj6RNneld3MlARdX1kA3jm9Tu-JG7A"><span
+                                      id="P20_NAME_OF_ORGANIZATION_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_NAME_OF_ORGANIZATION_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto ">
+                              <div
+                                class="t-Form-fieldContainer rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--display-only"
+                                id="P20_COMMITEE_REGISTER_NUMBER_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_COMMITEE_REGISTER_NUMBER" id="P20_COMMITEE_REGISTER_NUMBER_LABEL"
+                                    class="t-Form-label">Commitee Register Number</label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_COMMITEE_REGISTER_NUMBER"
+                                      name="P20_COMMITEE_REGISTER_NUMBER" value=""><input type="hidden"
+                                      data-for="P20_COMMITEE_REGISTER_NUMBER"
+                                      value="_To_YaZt4E7E8AE_Jhv6KeC31UkX4JddelLFkWeQOSI_hdQBZZbinUOt04ckWiWGEIyww5fJg8mR_2vky0V9Fg"><span
+                                      id="P20_COMMITEE_REGISTER_NUMBER_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <span id="P20_COMMITEE_REGISTER_NUMBER_error_placeholder" class="a-Form-error"
+                                    data-template-id="70091003022793546032_ET"></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_NAME_OF_PRSEIDENT_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_NAME_OF_PRSEIDENT" id="P20_NAME_OF_PRSEIDENT_LABEL"
+                                    class="t-Form-label">Name Of President/Secretary of the event organizer </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_NAME_OF_PRSEIDENT"
+                                      name="P20_NAME_OF_PRSEIDENT" value="S PICHAIRAMU"><input type="hidden"
+                                      data-for="P20_NAME_OF_PRSEIDENT"
+                                      value="3yJlOKtZ9jCopfvKeU2Zr3bhKANKhprrcmvmOIoWyWABUUpAY3qvhkOq0I8kO90ZmssWxuwDDWYQXRbUZyVshA"><span
+                                      id="P20_NAME_OF_PRSEIDENT_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_NAME_OF_PRSEIDENT_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row ">
+                            <div class="col col-4 apex-col-auto col-start">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_CONTACT_OF_PRESIDENT_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_CONTACT_OF_PRESIDENT" id="P20_CONTACT_OF_PRESIDENT_LABEL"
+                                    class="t-Form-label">Address Of President/Secretary of the event organizer
+                                  </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_CONTACT_OF_PRESIDENT"
+                                      name="P20_CONTACT_OF_PRESIDENT" value="NELLIKULAM"><input type="hidden"
+                                      data-for="P20_CONTACT_OF_PRESIDENT"
+                                      value="8iFdSWR9UULO52716meSFyzMBLm7cdZHqo_NDmWbYbDN2DhCKeU64x8gQq5hLi_pPz4NKz-sDwLfv8ZltGhTAw"><span
+                                      id="P20_CONTACT_OF_PRESIDENT_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_CONTACT_OF_PRESIDENT_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto ">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_MOBILE_OF_PRESIDENT_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_MOBILE_OF_PRESIDENT" id="P20_MOBILE_OF_PRESIDENT_LABEL"
+                                    class="t-Form-label">Mobile Of President/Secretary of the event organizer </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_MOBILE_OF_PRESIDENT"
+                                      name="P20_MOBILE_OF_PRESIDENT" value="9047011539"><input type="hidden"
+                                      data-for="P20_MOBILE_OF_PRESIDENT"
+                                      value="u8S0AAL2DE3XlmV_tk3pc6KseOy5qc9SLqghOghgaUh_fuyM6XllhjM2vy_-X8GTD-qTB2e4N61JRhTLqbQAvA"><span
+                                      id="P20_MOBILE_OF_PRESIDENT_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_MOBILE_OF_PRESIDENT_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_NAME_OF_DISTRICT_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_NAME_OF_DISTRICT" id="P20_NAME_OF_DISTRICT_LABEL"
+                                    class="t-Form-label">Name Of District </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_NAME_OF_DISTRICT"
+                                      name="P20_NAME_OF_DISTRICT" value="Virudhunagar"><input type="hidden"
+                                      data-for="P20_NAME_OF_DISTRICT"
+                                      value="7f5T00fFsNivZd73fppjANu42VTdJM95w_TVUibgWW08ZCWI2k8jlno0c0l5x4JZQN-eiJ54nMnUayOhH6aNiQ"><span
+                                      id="P20_NAME_OF_DISTRICT_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_NAME_OF_DISTRICT_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row ">
+                            <div class="col col-4 apex-col-auto col-start">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_NAME_OF_TALUK_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_NAME_OF_TALUK" id="P20_NAME_OF_TALUK_LABEL" class="t-Form-label">Name
+                                    Of Taluk </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_NAME_OF_TALUK"
+                                      name="P20_NAME_OF_TALUK" value="Tiruchuli"><input type="hidden"
+                                      data-for="P20_NAME_OF_TALUK"
+                                      value="vjGk0EixWvreOLqUAF8gB-bCEWQApCFfQ5eBq-GfpSpkbH5c-sSLV7EvmlLfzfVjWWIH3WVamnfMWo7ebh1avw"><span
+                                      id="P20_NAME_OF_TALUK_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_NAME_OF_TALUK_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto ">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_NAME_OF_VILLAGE_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_NAME_OF_VILLAGE" id="P20_NAME_OF_VILLAGE_LABEL"
+                                    class="t-Form-label">Name Of Village </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_NAME_OF_VILLAGE"
+                                      name="P20_NAME_OF_VILLAGE" value="NELLIKULAM"><input type="hidden"
+                                      data-for="P20_NAME_OF_VILLAGE"
+                                      value="yewQFQqlfLxXunlBwl8zgM_EkuFiysDJ7DKvbwBtZ2GXFYcPuRGOfLWWcCHy4nKHlRYxQ9eRQyXEDvuQI2j-BA"><span
+                                      id="P20_NAME_OF_VILLAGE_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_NAME_OF_VILLAGE_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_PINCODE_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_PINCODE" id="P20_PINCODE_LABEL" class="t-Form-label">Pincode
+                                  </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_PINCODE"
+                                      name="P20_PINCODE" value="626129"><input type="hidden" data-for="P20_PINCODE"
+                                      value="HJJbkiwjMVWmmPP-z-f6H0xWflmzQ2qmdUZMoLDapUcYPMU0YliazzIRAw2YPJCjrTfTu9H-LgDKsd_xwoI62g"><span
+                                      id="P20_PINCODE_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_PINCODE_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row ">
+                            <div class="col col-4 apex-col-auto col-start">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_PARTICIPANTS_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_PARTICIPANTS" id="P20_PARTICIPANTS_LABEL"
+                                    class="t-Form-label">Expected number of participants </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_PARTICIPANTS"
+                                      name="P20_PARTICIPANTS" value="900"><input type="hidden"
+                                      data-for="P20_PARTICIPANTS"
+                                      value="n-7xZ2nsUTLgckqWItXXLDWk0Gk8ifmcppL_GK_d-64UgHrXsredr6cJaAtOp7ZVoloJtOXsORWnSS-hJ89T_w"><span
+                                      id="P20_PARTICIPANTS_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_PARTICIPANTS_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto ">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_NUMBER_OF_BULLS_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_NUMBER_OF_BULLS" id="P20_NUMBER_OF_BULLS_LABEL"
+                                    class="t-Form-label">Expected Number of Bull's </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_NUMBER_OF_BULLS"
+                                      name="P20_NUMBER_OF_BULLS" value="480"><input type="hidden"
+                                      data-for="P20_NUMBER_OF_BULLS"
+                                      value="rb_EIdSXDFfKvSUyzEwKm3spDcDCdUIcCirRZgsXkgRUMgnAg0uvaPNVmgVKN3BHVnZLQQ5oEiEYvlI5-45dBw"><span
+                                      id="P20_NUMBER_OF_BULLS_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_NUMBER_OF_BULLS_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_PREEVENT_ARRANGEMENTS_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_PREEVENT_ARRANGEMENTS" id="P20_PREEVENT_ARRANGEMENTS_LABEL"
+                                    class="t-Form-label">Pre-Event Arrangements </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_PREEVENT_ARRANGEMENTS"
+                                      name="P20_PREEVENT_ARRANGEMENTS" value="Yes"><input type="hidden"
+                                      data-for="P20_PREEVENT_ARRANGEMENTS"
+                                      value="2FcSHF0WiQETWlJV46Z_kW4rlsGelxXDRP961Odd_RBkcn6qQSLegTDV3IZkHIA5lLQoKZxhyZpZ8OJbqW-KSA"><span
+                                      id="P20_PREEVENT_ARRANGEMENTS_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_PREEVENT_ARRANGEMENTS_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row ">
+                            <div class="col col-4 apex-col-auto col-start">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_ARENA_SIZE_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_ARENA_SIZE" id="P20_ARENA_SIZE_LABEL" class="t-Form-label">Arena
+                                    Size </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_ARENA_SIZE"
+                                      name="P20_ARENA_SIZE" value="Yes"><input type="hidden" data-for="P20_ARENA_SIZE"
+                                      value="nRcP6POZZlD-pO0S3N55HKV1K2-QKudpecj7iekgdN6HNLy_InZ7X2Dnu6At5yV6IAFZhEKtsPDftsqzgROizg"><span
+                                      id="P20_ARENA_SIZE_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_ARENA_SIZE_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto ">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_ARENA_LENGTH_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_ARENA_LENGTH" id="P20_ARENA_LENGTH_LABEL" class="t-Form-label">Arena
+                                    Length </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_ARENA_LENGTH"
+                                      name="P20_ARENA_LENGTH" value="15"><input type="hidden"
+                                      data-for="P20_ARENA_LENGTH"
+                                      value="DORwQNvL3NtOtzDlSlYERReHTUyND7BviGTqJCeet7lifq05VHpM-MKRUahEGtIIloR4ZuS5lWM-KKMF6OtSbA"><span
+                                      id="P20_ARENA_LENGTH_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_ARENA_LENGTH_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_ARENA_BREATH_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_ARENA_BREATH" id="P20_ARENA_BREATH_LABEL" class="t-Form-label">Arena
+                                    Breadth </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_ARENA_BREATH"
+                                      name="P20_ARENA_BREATH" value="5"><input type="hidden" data-for="P20_ARENA_BREATH"
+                                      value="TNvocEP9olLSY-9gOUZ28y4oqC0gJo0_jzgVHstiQSEqrFkscbGxmPxE8wJ9kh2mLw5bS8OCjEqOGeTsQuKY9g"><span
+                                      id="P20_ARENA_BREATH_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_ARENA_BREATH_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row ">
+                            <div class="col col-4 apex-col-auto col-start">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_BULL_RUN_AREA_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_BULL_RUN_AREA" id="P20_BULL_RUN_AREA_LABEL"
+                                    class="t-Form-label">Bull's run area size </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_BULL_RUN_AREA"
+                                      name="P20_BULL_RUN_AREA" value="Yes"><input type="hidden"
+                                      data-for="P20_BULL_RUN_AREA"
+                                      value="739IIOtl8h1NDQnaziZgyIvgnrDdrjdLgcvJ_6IQN15hcJ-evy7zL9pMbw2IR9hB_15Bs-5goEQ3iBHZFZtjbw"><span
+                                      id="P20_BULL_RUN_AREA_DISPLAY" class="display_only&#x20;apex-item-display-only"
+                                      data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_BULL_RUN_AREA_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto ">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_BULL_ARENA_LENGTH_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_BULL_ARENA_LENGTH" id="P20_BULL_ARENA_LENGTH_LABEL"
+                                    class="t-Form-label"> Bull's run area length </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_BULL_ARENA_LENGTH"
+                                      name="P20_BULL_ARENA_LENGTH" value="300"><input type="hidden"
+                                      data-for="P20_BULL_ARENA_LENGTH"
+                                      value="mqCGMdrsXn9wixymqAYakJOqS14jsY4daRBRV6pFHReX8RF7QSfOY3sLYx9f3dPXWec7JwnqTvpCAkiCrFsPgA"><span
+                                      id="P20_BULL_ARENA_LENGTH_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_BULL_ARENA_LENGTH_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_BULL_ARENA_BREATH_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_BULL_ARENA_BREATH" id="P20_BULL_ARENA_BREATH_LABEL"
+                                    class="t-Form-label"> Bull's run area breadth </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_BULL_ARENA_BREATH"
+                                      name="P20_BULL_ARENA_BREATH" value="100"><input type="hidden"
+                                      data-for="P20_BULL_ARENA_BREATH"
+                                      value="jtbWNK2UNh1dbcaiVe9pVUDwIztwIfRjyhFR0ZmokovWqqj7ltf-J3LWqfaocGPpmmXrkSVrVnWw-Z_mBlOlrA"><span
+                                      id="P20_BULL_ARENA_BREATH_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_BULL_ARENA_BREATH_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row ">
+                            <div class="col col-4 apex-col-auto col-start">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_BULL_EXAMINATION_AREA_SIZE_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_BULL_EXAMINATION_AREA_SIZE" id="P20_BULL_EXAMINATION_AREA_SIZE_LABEL"
+                                    class="t-Form-label"> Bull's examination
+                                    area size </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden"
+                                      id="P20_BULL_EXAMINATION_AREA_SIZE" name="P20_BULL_EXAMINATION_AREA_SIZE"
+                                      value="Yes"><input type="hidden" data-for="P20_BULL_EXAMINATION_AREA_SIZE"
+                                      value="ckdbnvTVc5I7ZbiMXkdTXpAcZUSJDGO4C5YyrhAKT95S5gGokgm7iz1H_QTkqyXvTziXzXLkUUw6JN7cCERnQQ"><span
+                                      id="P20_BULL_EXAMINATION_AREA_SIZE_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_BULL_EXAMINATION_AREA_SIZE_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto ">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_BULL_EXAMINATION_LENGTH_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_BULL_EXAMINATION_LENGTH" id="P20_BULL_EXAMINATION_LENGTH_LABEL"
+                                    class="t-Form-label"> Bull's examination length </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_BULL_EXAMINATION_LENGTH"
+                                      name="P20_BULL_EXAMINATION_LENGTH" value="300"><input type="hidden"
+                                      data-for="P20_BULL_EXAMINATION_LENGTH"
+                                      value="-1MZ5oMDtYRQDSDMp8DTogg03CNYYMJS-sq1pCRlWwhCu0-Kn5LXDwgtd5tVZu3eFKjHJOgIa4ZQtXUHOjOTEw"><span
+                                      id="P20_BULL_EXAMINATION_LENGTH_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_BULL_EXAMINATION_LENGTH_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col col-4 apex-col-auto col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--has-initial-value apex-item-wrapper--display-only"
+                                id="P20_BULL_EXAMINATION_BREATH_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_BULL_EXAMINATION_BREATH" id="P20_BULL_EXAMINATION_BREATH_LABEL"
+                                    class="t-Form-label"> Bull's examination breadth </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-2">
+                                  <div class="t-Form-itemWrapper"><input type="hidden" id="P20_BULL_EXAMINATION_BREATH"
+                                      name="P20_BULL_EXAMINATION_BREATH" value="80"><input type="hidden"
+                                      data-for="P20_BULL_EXAMINATION_BREATH"
+                                      value="4RKkl_n4bcwqDgYgkN2cQM6Zdw7ei_Y5l6vwH_xH-MhNj1MrjitcnZ2Ny0JtcZSMBTwHsDj5J1pVxL7omMAjTw"><span
+                                      id="P20_BULL_EXAMINATION_BREATH_DISPLAY"
+                                      class="display_only&#x20;apex-item-display-only" data-escape="true">-</span>
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_BULL_EXAMINATION_BREATH_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row ">
+                            <div class="col col-12 apex-col-auto col-start col-end">
+                              <div
+                                class="t-Form-fieldContainer is-required rel-col t-Form-fieldContainer--stretchInputs t-Form-fieldContainer--indicatorAsterisk t-Form-fieldContainer--large apex-item-wrapper apex-item-wrapper--text-field"
+                                id="P20_ACS_PS_COMENTS_CONTAINER">
+                                <div class="t-Form-labelContainer col col-2">
+                                  <label for="P20_ACS_PS_COMENTS" id="P20_ACS_PS_COMENTS_LABEL"
+                                    class="t-Form-label">Director Comments
+                                  </label>
+                                </div>
+                                <div class="t-Form-inputContainer col col-10">
+                                  <div class="t-Form-itemWrapper"><input type="text" id="P20_ACS_PS_COMENTS"
+                                      name="P20_ACS_PS_COMENTS" required class="text_field&#x20;apex-item-text" value=""
+                                      size="30" />
+                                  </div>
+                                  <div class="t-Form-itemAssistance">
+                                    <span id="P20_ACS_PS_COMENTS_error_placeholder" class="a-Form-error"
+                                      data-template-id="70091003340642546032_ET"></span>
+                                    <div class="t-Form-itemRequired" aria-hidden="true">Required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="t-Region-buttons t-Region-buttons--bottom">
+                        <div class="t-Region-buttons-left"></div>
+                        <div class="t-Region-buttons-right">
+                          <button
+                            class="t-Button t-Button--icon js-ignoreChange&#x20;t-Button--large&#x20;t-Button--iconLeft t-Button--hot"
+                            type="button" id="B73423753900842888149"><span class="t-Button-label">Cancel</span><span
+                              class="t-Icon t-Icon--right fa&#x20;fa-backward" aria-hidden="true"></span></button>
+                          <button
+                            class="t-Button t-Button--icon t-Button--large&#x20;t-Button--warning&#x20;t-Button--iconLeft&#x20;t-Button--padLeft&#x20;t-Button--padRight"
+                            id="forwardToDAHVS"><span class="t-Button-label">Forward</span><span
+                              class="t-Icon t-Icon--right fa&#x20;fa-check" aria-hidden="true"></span></button>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div id="committeeTableContainer">
+                      <table class="t-Table" id="committeeTable">
+                        <thead>
+                          <tr>
+                            <th>Inspection Date</th>
+                            <th>Committee Member Department</th>
+                            <th>Committee Member Name</th>
+                            <th>Committee Member Designation</th>
+                            <th>Committee Member Mail</th>
+                            <th>Committee Member Mobile</th>
+                          </tr>
+                        </thead>
+                        <tbody id="committeeTableBody">
+                          <!-- Data will be dynamically loaded here -->
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="addCommitteeModal" tabindex="-1" role="dialog"
+                      aria-labelledby="addCommitteeModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="addCommitteeModalLabel">Add Committee</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- Add your form or content here -->
+                            <form id="addCommitteeForm">
+                              <input type="hidden" id="comitteeId">
+                              <!-- Inspection Date -->
+                              <div class="form-group mb-3">
+                                <label for="inspectionDate">Inspection Date</label>
+                                <input type="date" class="form-control" id="inspectionDate" placeholder="Select Date">
+                                <span id="inspectionDate_error_placeholder" class="a-Form-error"
+                                  data-template-id="70091003340642546032_ET"></span>
+                              </div>
+
+                              <!-- Committee Member Department -->
+                              <div class="form-group mb-3">
+                                <label for="committeeDepartment">Committee Member Department</label>
+                                <input type="text" class="form-control" id="committeeDepartment"
+                                  placeholder="Enter Department">
+                                <span id="committeeDepartment_error_placeholder" class="a-Form-error"
+                                  data-template-id="70091003340642546032_ET"></span>
+                              </div>
+
+                              <!-- Committee Member Name -->
+                              <div class="form-group mb-3">
+                                <label for="committeeMemberName">Committee Member Name</label>
+                                <input type="text" class="form-control" id="committeeMemberName"
+                                  placeholder="Enter Name">
+                                <span id="committeeMemberName_error_placeholder" class="a-Form-error"
+                                  data-template-id="70091003340642546032_ET"></span>
+                              </div>
+
+                              <!-- Committee Member Designation -->
+                              <div class="form-group mb-3">
+                                <label for="committeeMemberDesignation">Committee Member Designation</label>
+                                <input type="text" class="form-control" id="committeeMemberDesignation"
+                                  placeholder="Enter Designation">
+                                <span id="committeeMemberDesignation_error_placeholder" class="a-Form-error"
+                                  data-template-id="70091003340642546032_ET"></span>
+                              </div>
+
+                              <!-- Committee Member Email -->
+                              <div class="form-group mb-3">
+                                <label for="committeeMemberMail">Committee Member Mail</label>
+                                <input type="email" class="form-control" id="committeeMemberMail"
+                                  placeholder="Enter Email">
+                                <span id="committeeMemberMail_error_placeholder" class="a-Form-error"
+                                  data-template-id="70091003340642546032_ET"></span>
+                              </div>
+
+                              <!-- Committee Member Mobile -->
+                              <div class="form-group mb-3">
+                                <label for="committeeMemberMobile">Committee Member Mobile</label>
+                                <input type="tel" class="form-control" id="committeeMemberMobile"
+                                  placeholder="Enter Mobile Number">
+                                <span id="committeeMemberMobile_error_placeholder" class="a-Form-error"
+                                  data-template-id="70091003340642546032_ET"></span>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="submitCommittee">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <footer class="t-Footer" id="t_Footer" role="contentinfo">
+          <div class="t-Footer-body">
+            <div class="t-Footer-content"></div>
+            <div class="t-Footer-apex">
+              <!-- <div class="t-Footer-version">Release 1.0</div>
+                    <div class="t-Footer-customize"></div>
+                     -->
+              <div class="row">
+                <div class="col-6">
+                  <p class="text-center"><img class="footer-logo" src="../assets/img/right.png"><br>Content owned by
+                    Department of Animal Husbandry and Veterinary Services</p>
+                </div>
+                <div class="col-6">
+                  <p class="text-center"><img class="footer-logo" src="../assets/img/tnegalogo.png"><br>Designed and
+                    Developed by Tamil Nadu e-Governance Agency</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-Footer-top">
+            <a href="#top" class="t-Footer-topButton" id="t_Footer_topButton" title="Start of page"
+              aria-label="Start of page"><span class="a-Icon icon-up-chevron" aria-hidden="true"></span></a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <div class="t-Body-inlineDialogs" id="t_Body_inlineDialogs"></div>
+  <input type="hidden" id="pPageFormRegionChecksums"
+    value="&#x5B;&#x7B;&#x22;r&#x22;&#x3A;&#x22;287658389993143156114&#x22;,&#x22;c&#x22;&#x3A;&#x22;062yi8YtY_-N7Ajxgs_JFJ9q0-dRclQPoW3n4treBhC26JxlGT8RSdKEnrhnleqtSzAl75e4-BQSwdM1o6rkjA&#x22;&#x7D;&#x5D;">
+  <input type="hidden" id="pPageItemsRowVersion" value="" /><input type="hidden" id="pPageItemsProtected"
+    value="UDIwX0VWRU5UX0lEOlAyMF9FVkVOVF9EQVRFOlAyMF9FVkVOVF9UWVBFOlAyMF9Q.,TEFDRV9PRl9FVkVOVDpQMjBfTkFNRV9PRl9PUkdBTklaQVRJT046UDIwX0NPTU1J.,VEVFX1JFR0lTVEVSX05VTUJFUjpQMjBfTkFNRV9PRl9QUlNFSURFTlQ6UDIwX0NP.,TlRBQ1RfT0ZfUFJFU0lERU5UOlAyMF9NT0JJTEVfT0ZfUFJFU0lERU5UOlAyMF9O.,QU1FX09GX0RJU1RSSUNUOlAyMF9OQU1FX09GX1RBTFVLOlAyMF9OQU1FX09GX1ZJ.,TExBR0U6UDIwX1BJTkNPREU6UDIwX01IU19DT01NRU5UUzpQMjBfUEFSVElDSVBB.,TlRTOlAyMF9OVU1CRVJfT0ZfQlVMTFM6UDIwX1BSRUVWRU5UX0FSUkFOR0VNRU5U.,UzpQMjBfQVJFTkFfU0laRTpQMjBfQVJFTkFfTEVOR1RIOlAyMF9BUkVOQV9CUkVB.,VEg6UDIwX0xFTkdUSF9BUkVOQTpQMjBfTEVOR1RIX0FSRU5BX0xFTkdUSDpQMjBf.,TEVOR1RIX0FSRU5BX0JSRUFUSDpQMjBfQlVMTF9SVU5fQVJFQTpQMjBfQlVMTF9B.,UkVOQV9MRU5HVEg6UDIwX0JVTExfQVJFTkFfQlJFQVRIOlAyMF9CVUxMX0VYQU1J.,TkFUSU9OX0FSRUFfU0laRTpQMjBfQlVMTF9FWEFNSU5BVElPTl9MRU5HVEg6UDIw.,X0JVTExfRVhBTUlOQVRJT05fQlJFQVRIOlAyMF9EQUhfVlNfQ09NTUVOVFM&#x2F;mXE-tMX9W83OFE_b6zGnaASpLdY271kdyoeNGJoPk5nWtpKNRMJ5NDiFI6ne_crD3asm_xQg3Ao0sNKpjTk-vQ" />
+  <script>
+    var apex_img_dir = "\u002Fi\u002F";
+    var apex = {
+      env: { APP_USER: "9940618706", APP_ID: "110", APP_PAGE_ID: "20", APP_SESSION: "423514546362", APP_FILES: "r\u002Fwsjallikattu\u002F110\u002Ffiles\u002Fstatic\u002Fv1667\u002F", WORKSPACE_FILES: "r\u002Fwsjallikattu\u002Ffiles\u002Fstatic\u002Fv1\u002F", APEX_VERSION: "23.2.1", APEX_BASE_VERSION: "23.2" },
+      libVersions: { ckeditor5: "36.0.0", cropperJs: "1.5.13", domPurify: "3.0.5", fullcalendar: "6.1.8", hammer: "2.0.8", jquery: "3.6.4", jqueryUi: "1.13.2", maplibre: "2.4.0", markedJs: "5.1.2", prismJs: "1.29.0", oraclejet: "15.0.7", tinymce: "6.7.1", turndown: "7.1.1", monacoEditor: "0.32.1", lessJs: "4.1.3" }
+    };
+  </script>
+  <script src="/i/libraries/apex/minified/desktop_all.min.js?v=23.2.1"></script>
+  <script src="wwv_flow.js_messages?p_app_id=110&p_lang=en&p_version=23.2.1-460263366"></script>
+  <script type="text/javascript">
+    apex.da.initDaEventList = function () {
+      apex.da.gEventList = [
+        { "triggeringElementType": "ITEM", "triggeringElement": "P20_RADIO_FIR", "conditionElement": "P20_RADIO_FIR", "triggeringConditionType": "NOT_EQUALS", "triggeringConditionExpression": "Yes", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "change", "anyActionsFireOnInit": true, actionList: [{ "eventResult": false, "conditionElement": "P20_RADIO_FIR", "conditionType": "EQUALS", "conditionExpression": "Yes", "executeOnPageInit": true, "stopExecutionOnError": true, "affectedElementsType": "ITEM", "affectedElements": "P20_FIR", javascriptFunction: apex.da.show, "action": "NATIVE_SHOW" }, { "eventResult": true, "conditionElement": "P20_RADIO_FIR", "conditionType": "NOT_EQUALS", "conditionExpression": "Yes", "executeOnPageInit": true, "stopExecutionOnError": true, "affectedElementsType": "ITEM", "affectedElements": "P20_FIR", javascriptFunction: apex.da.hide, "action": "NATIVE_HIDE" }] },
+        { "triggeringElementType": "ITEM", "triggeringElement": "P20_CCTV_LAYOUT", "conditionElement": "P20_CCTV_LAYOUT", "triggeringConditionType": "NOT_EQUALS", "triggeringConditionExpression": "Yes", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "change", "anyActionsFireOnInit": true, actionList: [{ "eventResult": false, "conditionElement": "P20_CCTV_LAYOUT", "conditionType": "EQUALS", "conditionExpression": "Yes", "executeOnPageInit": true, "stopExecutionOnError": true, "affectedElementsType": "ITEM", "affectedElements": "P20_UPLOAD_PHOTO", javascriptFunction: apex.da.show, "action": "NATIVE_SHOW" }, { "eventResult": true, "conditionElement": "P20_CCTV_LAYOUT", "conditionType": "NOT_EQUALS", "conditionExpression": "Yes", "executeOnPageInit": true, "stopExecutionOnError": true, "affectedElementsType": "ITEM", "affectedElements": "P20_UPLOAD_PHOTO", javascriptFunction: apex.da.hide, "action": "NATIVE_HIDE" }] },
+        {
+          "triggeringElementType": "JQUERY_SELECTOR", "triggeringElement": ".del", "bindType": "bind", "executionType": "IMMEDIATE", "bindEventType": "click", "anyActionsFireOnInit": true, actionList: [{ "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, javascriptFunction: apex.da.askConfirm, "attribute02": "Are you want to delete the commitee?", "action": "NATIVE_CONFIRM" }, {
+            "eventResult": true, "executeOnPageInit": true, "stopExecutionOnError": true, "waitForResult": true, "affectedElementsType": "ITEM", "affectedElements": "P20_ID", javascriptFunction: apex.da.setValue, "ajaxIdentifier": "REEgVFlQRX5-NzY0MjA1Mjg3OTAyMDAxOTg0MDU\u002F-nVficMuYvxYPzNGUBovyOt78TTDAEbSzm9q38b8R8BbSqy4Cs3Frd9Lzfqz5iW--TuLX_d0Z2Vjt5UbtyYEEw", "attribute01": "JAVASCRIPT_EXPRESSION", attribute05: function () {
+              return ($(this.triggeringElement).parent().data('id')
+              )
+            }, "attribute09": "N", "action": "NATIVE_SET_VALUE"
+          }, { "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, "waitForResult": true, javascriptFunction: apex.da.executePlSqlCode, "ajaxIdentifier": "REEgVFlQRX5-NzY0MjA1Mjg4MjA3MjgxOTg0MDY\u002F35UPMnvy6zaJWKiDyJQ9PSlytX6ufep9uZ0W2fDhiUfsiNhVX1u7TojRVX6aJEGY8Gr-UzBzkcDVk-cV_3sX1A", "attribute01": "#P20_ID", "attribute04": "N", "action": "NATIVE_EXECUTE_PLSQL_CODE" }, { "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, "affectedElementsType": "REGION", "affectedRegionId": "R287658389993143156114", javascriptFunction: apex.da.refresh, "action": "NATIVE_REFRESH" }, { "eventResult": true, "executeOnPageInit": false, "stopExecutionOnError": true, "affectedElementsType": "REGION", "affectedRegionId": "R75056795329564593608", javascriptFunction: apex.da.refresh, "action": "NATIVE_REFRESH" }]
+        }];
+    }
+  </script>
+  <script src="../assets/js/crypto-js.min.js"></script>
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../assets/js/jquery-ui.min.js"></script>
+  <script src="../assets/js/desktop_all.min.js"></script>
+  <script src="../assets/js/theme42.min.js"></script>
+  <script src="../assets/js/aos.js"></script>
+  <script src="../assets/js/add.min.js"></script>
+  <script src="../assets/js/widget.apexTabs.min.js"></script>
+  <script src="../assets/js/widget.interactiveReport.min.js"></script>
+  <script src="../assets/js/widget.iconList.min.js"></script>
+  <script src="../assets/js/widget.stickyTableHeader.min.js"></script>
+  <script src="../assets/js/widget.stickyWidget.min.js"></script>
+  <script src="../assets/js/item.Colorpicker.min.js"></script>
+  <script src="../assets/js/require.js"></script>
+  <script src="../assets/js/requirejs.jetConfig.min.js"></script>
+  <script src="../assets/js/jetCommonBundle.min.js"></script>
+  <script src="../assets/js/chartBundle.min.js"></script>
+  <script src="../apiConfig.js"></script>
+
+  <script type="text/javascript">
+    apex.session.initTimeouts(900, { "idle_time_ms": 1192000, "life_time_ms": 28364000, "max_idle_time_ms": 1200000 }, '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome', '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fhome');
+    apex.jQuery(function () {
+      apex.page.init(this, function () {
+        try {
+          (function () {
+            var e = apex.jQuery("#t_MenuNav", apex.gPageContext$);
+            if (e.hasClass("js-addActions")) {
+              apex.actions.addFromMarkup(e);
+            }
+            e.menu({
+              behaveLikeTabs: e.hasClass("js-tabLike"),
+              menubarShowSubMenuIcon: e.hasClass("js-showSubMenuIcons") || null,
+              menubar: true,
+              menubarOverflow: true,
+              callout: e.hasClass("js-menu-callout")
+            });
+          })();
+          (function () { apex.page.configureButtonForConfirmation({ "buttonId": "B73423753542287888149", "okLabel": "Need More Information", "message": "Click to Confirm Need more Information", "callback": () => { apex.submit({ request: 'NMI', validate: true }); } }); })();
+          (function () { apex.widget.report.init("R75056795329564593608", "UkVHSU9OIFRZUEV-fjc1MDU2Nzk1MzI5NTY0NTkzNjA4\u002FzpoW0b4m89SJYYlyi05oLsQtHKCRIbf8OmuNJtvIcHVsIuXr43cChxTQkWO5duOCeZ5fG27DSyCxWTiHD12bGA", { "lazyLoading": false, "internalRegionId": "75056795329564593608" }); })();
+        } catch (e) { apex.debug.error(e) };
+        apex.item.waitForDelayLoadItems().done(function () {
+          try {
+            (function () {
+              apex.da.initDaEventList();
+              apex.da.init();
+            })();
+            apex.theme42.initializePage.noSideCol();
+
+            apex.page.warnOnUnsavedChanges();
+          } finally {
+            apex.event.trigger(apex.gPageContext$, 'apexreadyend');
+          };
+        });
+      });
+    }); apex.pwa.init({ serviceWorkerPath: '\u002Fords\u002Fr\u002Fwsjallikattu\u002Fjliktu\u002Fsw.js?v=23.2.1-460263366\u0026lang=en' });
+  </script>
+
+  <script>
+    AOS.init();
+    // $('#preloader').hide();
+    // $(document).on({
+    //   ajaxStart: function () {
+    //     $('#preloader').show();
+    //     $("body").addClass("user_loading");
+    //   },
+    //   ajaxStop: function () {
+    //     $('#preloader').hide();
+    //     $("body").removeClass("user_loading");
+    //   }
+    // });
+    // Retrieve the encrypted data from localStorage
+
+    // Function to show a success toast with a dynamic message
+    function showSuccessToast(message) {
+      const toastElement = document.getElementById('successToast');
+      const toastBody = document.getElementById('successMessage');
+
+      // Set the dynamic message
+      toastBody.textContent = message;
+
+      // Initialize and show the toast
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+    // Function to show a error toast with a dynamic message
+    function showErrorToast(message) {
+      const toastElement = document.getElementById('errorToast');
+      const toastBody = document.getElementById('errorMessage');
+
+      // Set the dynamic message
+      toastBody.textContent = message;
+
+      // Initialize and show the toast
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+    }
+    function escapeHtml(str) {
+      return str.replace(/[&<>"'`=\/]/g, function (match) {
+        const escapeMap = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;',
+          '`': '&#96;',
+          '=': '&#61;',
+          '/': '&#47;'
+        };
+        return escapeMap[match];
+      });
+    }
+    // Function to convert YYYY-MM-DD to MM/DD/YYYY
+    function convertToMMDDYYYY(dateString) {
+      var dateParts = dateString.split('-'); // Split the string by '-'
+
+      if (dateParts.length !== 3) {
+        showErrorToast("Invalid date format. Expected format is YYYY-MM-DD.");
+        return null;
+      }
+
+      // Extract year, month, and day from the split date
+      var year = dateParts[0];
+      var month = dateParts[1];
+      var day = dateParts[2];
+
+      // Return the date in MM/DD/YYYY format
+      return month + '/' + day + '/' + year;
+    }
+
+    let encryptedDataFromStorage = localStorage.getItem('userDetails');
+    let decryptedData;
+    if (encryptedDataFromStorage) {
+      const secretKey = 'V7gN4dY8pT2xB3kRz';
+      // Decrypt the data: decrypt the string and convert it to UTF-8
+      const bytes = CryptoJS.AES.decrypt(encryptedDataFromStorage, secretKey);
+      decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    } else {
+      console.log('No data found in localStorage');
+    }
+    let userDetails = decryptedData;
+    let userId = '';
+    // Find the element where the name should be displayed
+    var userNameElement = document.querySelector('.t-Button-label');
+    // If user is logged in (i.e., user details exist in localStorage)
+    if (userDetails) {
+      // Parse user details
+      const user = JSON.parse(userDetails);
+      // Update the username in the profile button (if available)
+      if (user && user.name) {
+        userId = user.user_id;
+        userNameElement.textContent = user.name; // or userNameElement.innerText
+      }
+    } else {
+      showErrorToast("Something went wrong");
+      localStorage.clear();
+      sessionStorage.clear();
+      setTimeout(function () {
+        window.location.href = "../index.html";
+      }, 1000);
+    }
+
+    var cancelButton = document.getElementById('B73423753900842888149');
+    // Add a click event listener to the button
+    cancelButton.addEventListener('click', function () {
+      // Reload the current page
+      window.location.href = 'event-pending-requests-district.html';
+    });
+    // Global variables for current pages
+
+    // Get parameters from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const encodedDetails = urlParams.get('details'); // Encoded details passed in URL
+
+    let eventid;
+    let eventCom
+
+    try {
+      // Decode event details
+      let details = '';
+      const decodedDetails = atob(encodedDetails); // Base64 decode
+      const eventIdObject = JSON.parse(decodedDetails);
+      eventid = eventIdObject;
+      console.log("Decoded Event Object:", eventIdObject);
+
+      const decodedEventId = decodeURIComponent(eventIdObject); // Decode URI component
+      console.log('Decoded Event ID:', decodedEventId);
+      eventCom = decodedEventId
+      // Fetch event details
+      $.ajax({
+
+        url: `${BASE_API_URL}/ad/pending_application_report_edit?user_id=${encodeURIComponent(userId)}&event_id=${encodeURIComponent(decodedEventId)}`,
+        method: 'GET',
+        headers: {
+          'X-APP-KEY': 'j6ll!k@ttu',
+          'X-APP-NAME': 'tn jallikattu',
+        },
+        success: function (response) {
+          console.log(response)
+          if (response.success == 1) {
+            details = response.data.find(event => event.eventid === eventIdObject);
+            district = details.name_of_district;
+            document.getElementById('P20_EVENT_DATE_DISPLAY').textContent = convertToMMDDYYYY(details.event_date);
+            document.getElementById('P20_EVENT_TYPE_DISPLAY').textContent = details.event_type;
+            document.getElementById('P20_PLACE_OF_EVENT_DISPLAY').textContent = details.place_of_event;
+            document.getElementById('P20_NAME_OF_ORGANIZATION_DISPLAY').textContent = details.name_of_organization;
+            document.getElementById('P20_COMMITEE_REGISTER_NUMBER_DISPLAY').textContent = details.commitee_register_number;
+            document.getElementById('P20_NAME_OF_PRSEIDENT_DISPLAY').textContent = details.name_of_president;
+            document.getElementById('P20_CONTACT_OF_PRESIDENT_DISPLAY').textContent = details.contact_of_president;
+            document.getElementById('P20_MOBILE_OF_PRESIDENT_DISPLAY').textContent = details.mobile_of_president;
+            document.getElementById('P20_NAME_OF_DISTRICT_DISPLAY').textContent = details.name_of_district;
+            document.getElementById('P20_NAME_OF_TALUK_DISPLAY').textContent = details.name_of_taluk;
+            document.getElementById('P20_NAME_OF_VILLAGE_DISPLAY').textContent = details.name_of_village;
+            document.getElementById('P20_PINCODE_DISPLAY').textContent = details.pincode;
+            document.getElementById('P20_PARTICIPANTS_DISPLAY').textContent = details.participants;
+            document.getElementById('P20_NUMBER_OF_BULLS_DISPLAY').textContent = details.number_of_bulls;
+            document.getElementById('P20_PREEVENT_ARRANGEMENTS_DISPLAY').textContent = details.preevent_arrangements;
+            document.getElementById('P20_ARENA_SIZE_DISPLAY').textContent = details.arena_size;
+            document.getElementById('P20_ARENA_LENGTH_DISPLAY').textContent = details.arena_length;
+            document.getElementById('P20_ARENA_BREATH_DISPLAY').textContent = details.arena_breath;
+            document.getElementById('P20_BULL_RUN_AREA_DISPLAY').textContent = details.bull_run_area;
+            document.getElementById('P20_BULL_ARENA_LENGTH_DISPLAY').textContent = details.bull_arena_length;
+            document.getElementById('P20_BULL_ARENA_BREATH_DISPLAY').textContent = details.bull_arena_breath;
+            document.getElementById('P20_BULL_EXAMINATION_AREA_SIZE_DISPLAY').textContent = details.bull_examination_area_size;
+            document.getElementById('P20_BULL_EXAMINATION_LENGTH_DISPLAY').textContent = details.bull_examination_length;
+            document.getElementById('P20_BULL_EXAMINATION_BREATH_DISPLAY').textContent = details.bull_examination_breath;
+            loadCommitteeData();
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error('Error fetching event data:', status, error);
+          alert("An error occurred while fetching event details. Please try again later.");
+        },
+      });
+    } catch (error) {
+      console.error('Error decoding or parsing event details:', error);
+      alert("Failed to decode event details. Please check the URL and try again.");
+    }
+
+    $("#forwardToDAHVS").click(function () {
+
+      let assntComments = $("#P20_ACS_PS_COMENTS").val();
+      if (!assntComments) {
+        $('#P20_ACS_PS_COMENTS_error_placeholder').text("Please fill the comments.").css('color', 'red');
+        showErrorToast("Please fill in all fields.");
+        return;
+      }
+      // const payload = {
+      //   comments: assntComments,
+      //   event_id: eventid,
+      //   user_id: userId
+      // };
+      const formData = new FormData();
+      formData.append('comments', assntComments);
+      formData.append('event_id', eventid);
+      formData.append('user_id', userId);
+      $.ajax({
+        url: `${BASE_API_URL}/assistant_user/jsection_fwd_animal_husbandary_director`,
+        method: 'POST',
+        headers: {
+          'X-APP-KEY': 'j6ll!k@ttu',
+          'X-APP-NAME': 'tn jallikattu',
+        },
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          if (response.success == 1) {
+            showSuccessToast("Forwarded Successfully");
+            setTimeout(function () {
+              window.location.href = 'pending-requests.html';
+            }, 1000);
+          }
+        },
+        error: function (xhr, status, error) {
+          // $('#preloader').hide();
+          showErrorToast("Something went wrong");
+          console.error('Error fetching data: ', error);
+        }
+      });
+    });
+
+    function loadCommitteeData() {
+
+      $.ajax({
+        url: `${BASE_API_URL}/assistant_user/jsection_pending_application_report_table?user_id=${encodeURIComponent(userId)}&event_id=${encodeURIComponent(eventCom)}`,
+        method: 'GET',
+        headers: {
+          'X-APP-KEY': 'j6ll!k@ttu',
+          'X-APP-NAME': 'tn jallikattu',
+        },
+        success: function (response) {
+          var tbody = $('#committeeTableBody');
+          tbody.empty(); // Clear current table rows
+          // Loop through the data and create new table rows
+          response.data.forEach(function (row) {
+            inspectionDate = row.inspection_date;
+            var tr = $('<tr></tr>');
+            tr.append('<td>' + convertToMMDDYYYY(row.inspection_date) + '</td>');
+            tr.append('<td>' + row.commitee_department + '</td>');
+            tr.append('<td>' + row.commitee_name + '</td>');
+            tr.append('<td>' + row.commitee_designation + '</td>');
+            tr.append('<td>' + row.commitee_mail + '</td>');
+            tr.append('<td>' + row.commitee_mobile + '</td>');
+
+            tbody.append(tr);
+          });
+        },
+        error: function (xhr, status, error) {
+          console.error("Error fetching data: ", error);
+        }
+      });
+    }
+
+
+  </script>
+  <script src="../assets/js/changePassword.js"></script>
+  <link rel="stylesheet" href="../assets/css/popUp.css" type="text/css" />
+</body>
+
+</html>
